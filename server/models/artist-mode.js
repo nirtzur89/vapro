@@ -21,6 +21,8 @@ const artistModel = new Schema({
     vimeo: String,
     Pinterest: String,
     Instagram: String,
+    hashtags: [String],
+    projects: [{type: Schema.Types.ObjectId, ref: 'Project'}]
 })
 
 const Artist = mongoose.model('Artist', artistModel)
