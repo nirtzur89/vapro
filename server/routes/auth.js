@@ -5,7 +5,7 @@ const router  = express.Router();
 const User = require('../models/user-model')
 
 //CREATE a new artist-user
-router.post('/profile-artist', (req, res, next) => {
+router.post('/artist-profile', (req, res, next) => {
 
     User.create({
         type: "artist",
@@ -32,7 +32,7 @@ router.post('/profile-artist', (req, res, next) => {
 });
 
 //CREATE a new member-user
-router.post('/profile-member', (req, res, next) => {
+router.post('/member-profile', (req, res, next) => {
     User.create({
         type: "member",
         username: req.body.username,
