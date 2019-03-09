@@ -6,7 +6,7 @@ const projectModel = new Schema({
     name: String,
     location: String,
     event: String,
-    videos: String,
+    videos: [String],
     date: { type: Date, default: Date.now },
 })
 
