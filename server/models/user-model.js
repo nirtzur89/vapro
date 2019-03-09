@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const artistModel = new Schema({
+const userModel = new Schema({
     type: String,
     username: String,
     firstname: String,
@@ -10,14 +10,16 @@ const artistModel = new Schema({
     avatar: { data: Buffer, contentType: String },
     password: String,
     bio: String,
+    company: String,
     website: String,
     vimeo: String,
     Pinterest: String,
     Instagram: String,
     hashtags: [String],
-    projects: [{type: Schema.Types.ObjectId, ref: 'Project'}]
+    projects: [{type: Schema.Types.ObjectId, ref: 'Project'}],
+    savedArtists: Array,
 })
 
-const Artist = mongoose.model('Artist', artistModel)
+const User = mongoose.model('User', userModel)
 
-module.exports = Artist;
+module.exports = User;
