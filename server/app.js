@@ -26,7 +26,6 @@ const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.
 const app = express();
 
 // Middleware Setup
-
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -59,9 +58,8 @@ app.use(cors({
 
 
 //ROUTES
-const index = require('./routes/landingPage');
+const index = require('./routes/index');
 app.use('/', index);
-app.use('/api', require('./routes/members'));
 
 
 module.exports = app;
