@@ -61,8 +61,11 @@ app.use(cors({
 const index = require('./routes/index');
 app.use('/', index);
 
-const profile = require('./routes/profile')
+const profile = require('./routes/profile');
 app.use('/', profile)
+
+const projects = require('./routes/projects');
+app.use('/', projects)
 
 
 module.exports = app;
