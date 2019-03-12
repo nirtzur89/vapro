@@ -2,13 +2,31 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const userModel = new Schema({
-    type: String,
-    username: String,
-    firstname: String,
-    lastname: String,
-    email: String,
+    artist: {
+        type: Boolean,
+        required: true
+    },
+    username: {
+        type: String,
+        required: true
+    },
+    firstname: {
+        type: String,
+        required: true
+    },
+    lastname: {
+        type: String,
+        required: true
+    },
+    email: {
+        type: String,
+        required: true
+    },
     avatar: { data: Buffer, contentType: String },
-    password: String,
+    password: {
+        type: String,
+        required: true
+    },
     bio: String,
     company: String,
     website: String,
