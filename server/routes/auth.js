@@ -8,7 +8,7 @@ const User = require('../models/user-model')
 router.post('/artist-profile', (req, res, next) => {
 
     User.create({
-        type: "artist",
+        artist: req.body.artist,
         username: req.body.username,
         firstname: req.body.name,
         lastname: req.body.lastname,
@@ -34,7 +34,7 @@ router.post('/artist-profile', (req, res, next) => {
 //CREATE a new member-user
 router.post('/member-profile', (req, res, next) => {
     User.create({
-        type: "member",
+        artist: req.body.artist,
         username: req.body.username,
         firstName: req.body.firstName,
         lastName: req.body.lastName,
