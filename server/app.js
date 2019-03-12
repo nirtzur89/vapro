@@ -8,8 +8,8 @@ const hbs          = require('hbs');
 const mongoose     = require('mongoose');
 const logger       = require('morgan');
 const path         = require('path');
-const cors = require('cors');
-
+const cors         = require('cors');
+const passport     = require('passport')
 
 mongoose
   .connect('mongodb://localhost/server', {useNewUrlParser: true})
@@ -30,6 +30,12 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+//passport
+app.use(passport.initialize());
+
+//passport config
+require('./config/passport')(passport);
 
 // Express View engine setup
 
