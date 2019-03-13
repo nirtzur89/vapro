@@ -30,12 +30,12 @@ if (!Validator.isLength(data.lastName, {min: 2, max: 30 })){
 if (Validator.isEmpty(data.lastName)){
    errors.lastName = 'last Name is required';
 }
-if (Validator.isEmpty(data.email)){
-    errors.email = 'e-mail is required';
- }
 if (!Validator.isEmail(data.email)){
     errors.email = 'e-mail is invalid';
  }
+if (Validator.isEmpty(data.email)){
+    errors.email = 'e-mail is required';
+ } 
 if (Validator.isEmpty(data.password)){
     errors.password = 'password is required';
  }
