@@ -4,17 +4,18 @@ const Schema = mongoose.Schema;
 const userModel = new Schema({
     artist: {
         type: Boolean,
-        required: true
+        required: true,
+        default: false
     },
-    username: {
+    userName: {
         type: String,
         required: true
     },
-    firstname: {
+    firstName: {
         type: String,
         required: true
     },
-    lastname: {
+    lastName: {
         type: String,
         required: true
     },
