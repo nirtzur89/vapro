@@ -6,9 +6,13 @@ const ProfileSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
-    handle: {
-        type: String,
+    artist: {
+        type: Boolean,
         required: true,
+        default: false
+    },
+    artistName: {
+        type: String,
         max: 40
     },
     bio: String,

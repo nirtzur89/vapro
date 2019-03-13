@@ -34,6 +34,11 @@ if (!isEmpty(data.youtube)){
         errors.youtube = 'URL not valid'
     }
 }   
+// if (data.artist === true){
+//     if (Validator.isEmpty(data.artistName)){
+//         errors.artistName = 'artist name is required';
+//      }
+// }
 return{
      errors,
      isValid: isEmpty(errors)
