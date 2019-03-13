@@ -56,8 +56,6 @@ router.post('/register', (req,res) => {
                 })
             }
         })
-
-        
 });
 
 //route - GET api/users/login
