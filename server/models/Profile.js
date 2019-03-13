@@ -22,8 +22,8 @@ const ProfileSchema = new Schema({
         youtube: String
     },
     hashtags: [String],
-    projects: [{type: Schema.Types.ObjectId, ref: 'Project'}],
-    savedArtists: Array,
+//    projects: [{type: Schema.Types.ObjectId, ref: 'Project'}],
+//    savedArtists: Array,
 })
 
 module.exports = Profile = mongoose.model('profile' , ProfileSchema)
