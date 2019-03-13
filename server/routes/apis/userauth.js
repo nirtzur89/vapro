@@ -6,7 +6,8 @@ const keys = require ('../../config/keys');
 const passport = require('passport');
 
 //load validation
-const valideRegisterInput = require ('../../validation/register')
+const validateRegisterInput = require ('../../validation/register')
+const ValidateLoginInput = require ('../../validation/login')
 
 //load user
 const User = require('../../models/user-model')
@@ -20,7 +21,7 @@ router.get('/test', (req,res) => res.json({msg:"users works"}));
 //desc - register user
 // public
 router.post('/register', (req,res) => {
-    const {errors, isValid} = valideRegisterInput(req.body);
+    const {errors, isValid} = validateRegisterInput(req.body);
 
     if(!isValid){ 
         return res.status(400).json(errors)
@@ -55,12 +56,20 @@ router.post('/register', (req,res) => {
                 })
             }
         })
+
+        
 });
 
 //route - GET api/users/login
 //desc - register user
 // public
 router.post('/login' , (req,res) => {
+    const {errors, isValid} = ValidateLoginInput(req.body);
+
+    if(!isValid){ 
+        return res.status(400).json(errors)
+    }
+
     const email = req.body.email;
     const password = req.body.password;
 
@@ -68,7 +77,8 @@ router.post('/login' , (req,res) => {
     User.findOne({email})
     .then(user =>{
         if(!user) {
-            return res.status(404).json({email: 'user not found'})
+            errors.email = 'user not found'
+            return res.status(404).json(errors)
         }
 
         //check password
@@ -89,7 +99,8 @@ router.post('/login' , (req,res) => {
                         }
                     );
                 }else{
-                    return res.status(400).json({password: 'password incorrect'})
+                    errors.password = 'incorrect password'
+                    return res.status(400).json(errors)
                 }
             })
     })
