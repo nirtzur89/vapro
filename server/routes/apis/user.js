@@ -27,7 +27,7 @@ router.get('/:id', passport.authenticate('jwt', {session: false}),(req, res) =>{
 })
 
 //route - POST /user
-//des - create users profile
+//des - edit users profile
 //access - private
 router.put('/:id', passport.authenticate('jwt', {session: false}),(req, res) =>{
     const {errors, isValid} = validateUserInput(req.body);
@@ -40,11 +40,11 @@ router.put('/:id', passport.authenticate('jwt', {session: false}),(req, res) =>{
     const userFields = {};
     userFields.user = req.user.id;
     userFields.artist = req.body.artist;
-    userFields.userName = req.body.userName;
+    if(req.body.userName)userFields.userName = req.body.userName;
     userFields.firstName = req.body.firstName;
     userFields.lastName = req.body.lastName;
     userFields.email = req.body.email;
-    userFields.password = req.body.password;
+    if(req.body.password)userFields.password = req.body.password;
     if(req.body.artistName) userFields.artistName = req.body.artistName;
     if(req.body.bio) userFields.bio = req.body.bio;
     if(req.body.company) userFields.company = req.body.company;
@@ -69,32 +69,32 @@ router.put('/:id', passport.authenticate('jwt', {session: false}),(req, res) =>{
         .then(user =>{
             if (user){
                 //update
-                User.findOneAndUpdate(
-                    req.params.id,
+                console.log("here",req.params.id)
+                User.findOneAndUpdate({ _id: 
+                    req.params.id },
                     {$set: userFields},
                     {new: true}
                 ).then(user => res.json(user))
             } else{
-                //create
-                //check user
-                User.findOne({user:userFields.user}).then(user => {
-                   if(user) {
-                       errors.user = 'that user name already exists'
+                // //create
+                // //check user
+                // User.findOne({user:userFields.user}).then(user => {
+                //    if(user) {
+                //        errors.user = 'that user name already exists'
                        res.status(400).json(errors);
                    } 
                 //save user
-                new User(userFields).save().then(user=> res.json(user))   
+                //new User(userFields).save().then(user=> res.json(user))   
                 })
-            }
-        })
-})
+            })
+
 
 //route - GET api/user/artists/:artistname
 //des - get artist by artist
 //access - public
 router.get('/artist/:id', (req,res) => {
     const errors = {};
-    User.findById(req.params.id)
+    User.find({_id: req.params.id,artist:true})
     .then(user =>{
         if(!user){
             errors.nouser = 'there is no artist page for this user';
