@@ -2,19 +2,15 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const userModel = new Schema({
-    artist: {
-        type: Boolean,
-        required: true
-    },
-    username: {
+    userName: {
         type: String,
         required: true
     },
-    firstname: {
+    firstName: {
         type: String,
         required: true
     },
-    lastname: {
+    lastName: {
         type: String,
         required: true
     },
@@ -27,15 +23,6 @@ const userModel = new Schema({
         type: String,
         required: true
     },
-    bio: String,
-    company: String,
-    website: String,
-    vimeo: String,
-    Pinterest: String,
-    Instagram: String,
-    hashtags: [String],
-    projects: [{type: Schema.Types.ObjectId, ref: 'Project'}],
-    savedArtists: Array,
 })
 
 const User = mongoose.model('User', userModel)

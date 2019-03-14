@@ -2,8 +2,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const router = express.Router();
 
-const User = require('../models/user-model')
-const Project = require('../models/project-model');
+const User = require('../models/User')
+const Project = require('../models/Project');
 
 
 //GET route to retrieve all artists

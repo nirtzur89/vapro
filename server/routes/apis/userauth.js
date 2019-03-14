@@ -4,8 +4,13 @@ const bcrypt = require ('bcryptjs')
 const jwt = require ('jsonwebtoken');
 const keys = require ('../../config/keys');
 const passport = require('passport');
+
+//load validation
+const validateRegisterInput = require ('../../validation/register')
+const ValidateLoginInput = require ('../../validation/login')
+
 //load user
-const User = require('../../models/user-model')
+const User = require('../../models/User')
 
 //route - GET api/users/test
 //desc - test users route
@@ -16,16 +21,23 @@ router.get('/test', (req,res) => res.json({msg:"users works"}));
 //desc - register user
 // public
 router.post('/register', (req,res) => {
+    const {errors, isValid} = validateRegisterInput(req.body);
+
+    if(!isValid){ 
+        return res.status(400).json(errors)
+    }
+
     User.findOne({ email: req.body.email })
         .then(user => {
             if(user) {
-                return res.status(400).json({email: "email exists"})
+                errors.email = 'email already exists'
+                return res.status(400).json(errors)
             } else {
                 const newUser = new User ({
                     artist: req.body.artist,
-                    username: req.body.username,
-                    firstname: req.body.firstname,
-                    lastname: req.body.lastname,
+                    userName: req.body.userName,
+                    firstName: req.body.firstName,
+                    lastName: req.body.lastName,
                     email: req.body.email,
                     avatar: req.body.avatar,
                     company: req.body.company,
@@ -44,12 +56,20 @@ router.post('/register', (req,res) => {
                 })
             }
         })
+
+        
 });
 
 //route - GET api/users/login
 //desc - register user
 // public
 router.post('/login' , (req,res) => {
+    const {errors, isValid} = ValidateLoginInput(req.body);
+
+    if(!isValid){ 
+        return res.status(400).json(errors)
+    }
+
     const email = req.body.email;
     const password = req.body.password;
 
@@ -57,7 +77,8 @@ router.post('/login' , (req,res) => {
     User.findOne({email})
     .then(user =>{
         if(!user) {
-            return res.status(404).json({email: 'user not found'})
+            errors.email = 'user not found'
+            return res.status(404).json(errors)
         }
 
         //check password
@@ -65,7 +86,7 @@ router.post('/login' , (req,res) => {
             .then(isMatch => {
                 if (isMatch) {
                     //user matched
-                    const payload = {id: user.id, username: user.username, name: user.firstname + user.lastname}
+                    const payload = {id: user.id, userName: user.userName, name: user.firstName + user.lastName}
                     //get token
                     jwt.sign(
                         payload, keys.secret, 
@@ -78,7 +99,8 @@ router.post('/login' , (req,res) => {
                         }
                     );
                 }else{
-                    return res.status(400).json({password: 'password incorrect'})
+                    errors.password = 'incorrect password'
+                    return res.status(400).json(errors)
                 }
             })
     })
@@ -86,8 +108,9 @@ router.post('/login' , (req,res) => {
 
 // current user
 //private
-router.get('/current' , passport.authenticate('jwt', {session: false}),(req,res) =>{
-    res.json({msg: 'success'});
+router.get('/current' , passport.authenticate('jwt', {session: false}),
+(req,res) =>{
+    res.json(req.user);
 });
 
 module.exports = router;

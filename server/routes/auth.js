@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const router  = express.Router();
 
-const User = require('../models/user-model')
+const User = require('../models/User')
 
 //CREATE a new artist-user
 router.post('/artist-profile', (req, res, next) => {

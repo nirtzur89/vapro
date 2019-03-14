@@ -4,12 +4,14 @@ import logo from './logo.svg';
 import './App.css';
 
 import Navbar from './components/navbar/NavBar'
+import DemoCarousel from './components/CuratorPick/CuratorPick'
 
 class App extends Component {
   render() {
     return (
       <div className="App">
         <Navbar />
+        <DemoCarousel/>
       </div>
     );
   }
