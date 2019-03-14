@@ -13,7 +13,7 @@ router.get('/artist-profile', (req, res, next) => {
             res.json(allTheArtists);
         })
         .catch(err => {
-            res.json(err)
+            res.json(err)                                                   
         })
 });
 
