@@ -70,13 +70,13 @@ app.use('/', index);
 // const profile = require('./routes/profile');
 // app.use('/', profile)
 
-// const projects = require('./routes/projects');
-// app.use('/', projects)
+ const projects = require('./routes/apis/project');
+ app.use('/projects', projects)
 
 const userAuth = require('./routes/apis/userauth')
-app.use('/api/users', userAuth)
+app.use('/', userAuth)
 
-const profile = require('./routes/apis/profile')
-app.use('/api/profile', profile)
+const user = require('./routes/apis/user')
+app.use('/user', user)
 
 module.exports = app;
