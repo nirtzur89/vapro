@@ -5,6 +5,8 @@ import './App.css';
 
 import Navbar from './components/navbar/NavBar'
 import DemoCarousel from './components/CuratorPick/CuratorPick'
+import SignupForm from './components/Forms/SignupForm'
+import LoginForm from './components/Forms/LoginForm'
 
 class App extends Component {
   render() {
@@ -12,6 +14,8 @@ class App extends Component {
       <div className="App">
         <Navbar />
         <DemoCarousel/>
+        <SignupForm/>
+        <LoginForm/>
       </div>
     );
   }
