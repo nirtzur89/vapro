@@ -12,12 +12,12 @@ const ValidateLoginInput = require ('../../validation/login')
 //load user
 const User = require('../../models/User')
 
-//route - GET api/users/test
+//route - GET users/test
 //desc - test users route
 // public
 router.get('/test', (req,res) => res.json({msg:"users works"}));
 
-//route - GET api/users/register
+//route - POST users/register
 //desc - register user
 // public
 router.post('/register', (req,res) => {
@@ -60,7 +60,7 @@ router.post('/register', (req,res) => {
         
 });
 
-//route - GET api/users/login
+//route - POST api/users/login
 //desc - register user
 // public
 router.post('/login' , (req,res) => {
@@ -106,11 +106,6 @@ router.post('/login' , (req,res) => {
     })
 })
 
-// current user
-//private
-router.get('/current' , passport.authenticate('jwt', {session: false}),
-(req,res) =>{
-    res.json(req.user);
-});
+
 
 module.exports = router;

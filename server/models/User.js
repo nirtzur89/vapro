@@ -6,6 +6,11 @@ const userModel = new Schema({
         type: String,
         required: true
     },
+    artist: {
+        type: Boolean,
+        required: true,
+        default: false
+    },
     firstName: {
         type: String,
         required: true
@@ -23,6 +28,20 @@ const userModel = new Schema({
         type: String,
         required: true
     },
+    artistName: String,
+    bio: String,
+    company: String,
+    website: String,
+    social: {
+        vimeo: String,
+        pinterest: String,
+        instagram: String,
+        facebok: String,
+        youtube: String
+    },
+    hashtags: [String],
+    projects: [{type: Schema.Types.ObjectId, ref: 'Project'}],
+    savedArtists: Array
 })
 
 const User = mongoose.model('User', userModel)
