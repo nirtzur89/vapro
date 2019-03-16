@@ -6,6 +6,8 @@ import Navbar from './components/navbar/NavBar'
 import DemoCarousel from './components/CuratorPick/CuratorPick'
 // import Auth from './components/Auth/Auth';
 import SignupForm from './components/Auth/AuthForms/SignupForm'
+import LoginForm from './components/Auth/AuthForms/LoginForm';
+
 
 class App extends Component {
   render() {
@@ -14,6 +16,7 @@ class App extends Component {
         <Navbar />
         <DemoCarousel />
         <SignupForm/>
+        <LoginForm/>
       </div>
     );
   }
