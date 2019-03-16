@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../Auth.css';
 import axios from 'axios';
 
+
 class LoginForm extends Component {
     constructor(props) {
         super(props);
@@ -20,6 +21,7 @@ class LoginForm extends Component {
         .then(() => {
             // this.props.getData()
             this.props.history.push('/')
+
         })
         .catch(err => console.log(err))
     }
@@ -30,6 +32,7 @@ class LoginForm extends Component {
     }
 
     render() {
+        console.log("props",this.props)
         return (
             <div>
                 <form className="loginForm formDiv" onSubmit={this.handleFormSubmit}>
