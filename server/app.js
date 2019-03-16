@@ -79,4 +79,7 @@ app.use('/', userAuth)
 const user = require('./routes/apis/user')
 app.use('/user', user)
 
+const allArtists = require('./routes/apis/user')
+app.use('/allartists', allArtists)
+
 module.exports = app;

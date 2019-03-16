@@ -18,7 +18,7 @@ router.get('/:id', passport.authenticate('jwt', {session: false}),(req, res) =>{
     User.findById(req.params.id)
          .then(user =>{
              if(!user){
-                 errors.nouser = 'please edit user'
+                 errors.nouser = 'User nor found'
                  return res.status(404).json(errors)
              }
              res.json(user);
@@ -38,12 +38,12 @@ router.put('/:id', passport.authenticate('jwt', {session: false}),(req, res) =>{
     }
     
     const userFields = {};
-    userFields.user = req.user.id;
-    userFields.artist = req.body.artist;
+    if(req.user.id)userFields.user = req.user.id;
+    if(req.body.artist)userFields.artist = req.body.artist;
     if(req.body.userName)userFields.userName = req.body.userName;
-    userFields.firstName = req.body.firstName;
-    userFields.lastName = req.body.lastName;
-    userFields.email = req.body.email;
+    if(req.body.firstName)userFields.firstName = req.body.firstName;
+    if(req.body.lastName)userFields.lastName = req.body.lastName;
+    if(req.body.email)userFields.email = req.body.email;
     if(req.body.password)userFields.password = req.body.password;
     if(req.body.artistName) userFields.artistName = req.body.artistName;
     if(req.body.bio) userFields.bio = req.body.bio;
@@ -105,10 +105,10 @@ router.get('/artist/:id', (req,res) => {
     .catch(err => res.status(404).json(err));
 })
 
-//route - GET api/user/all
+//route - GET /user/all
 //des - get all artists users
 //access - public
-router.get('/all', (req,res) => {
+router.get('/', (req,res) => {
     const errors = {}
     User.find({artist: true})
     .populate('Projects')
