@@ -1,21 +1,19 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import logo from './logo.svg';
+import { Switch, Route } from 'react-router-dom';
 import './App.css';
 
 import Navbar from './components/navbar/NavBar'
 import DemoCarousel from './components/CuratorPick/CuratorPick'
-import SignupForm from './components/Forms/SignupForm'
-import LoginForm from './components/Forms/LoginForm'
+// import Auth from './components/Auth/Auth';
+import SignupForm from './components/Auth/AuthForms/SignupForm'
 
 class App extends Component {
   render() {
     return (
       <div className="App">
         <Navbar />
-        <DemoCarousel/>
+        <DemoCarousel />
         <SignupForm/>
-        <LoginForm/>
       </div>
     );
   }
