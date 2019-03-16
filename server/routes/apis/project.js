@@ -19,8 +19,7 @@ router.post('/', passport.authenticate('jwt',{session:false}),(req,res) =>{
 
     if(!isValid) {
         return res.status(400).json(errors);
-    }
-    
+    } 
     Project.create({
         name: req.body.name,
         description: req.body.description,
@@ -28,13 +27,11 @@ router.post('/', passport.authenticate('jwt',{session:false}),(req,res) =>{
         event: req.body.event,
         videos: [],
         date: req.body.date,
-        artist: req.body.userId,
+        artist: req.user.id,
     })
         .then(response => {
             User.findByIdAndUpdate(req.body.userId, { $push: { projects: response._id } })
-                .then(theResponse => {
-                    res.json(theResponse);
-                })
+                    res.json(response)
                 .catch(err => {
                     res.json(err);
                 })
@@ -73,7 +70,7 @@ router.get('/all', (req, res, next) => {
 
  //PUT route to update a specific project
  //private
-router.put('/:projectId',passport.authenticate('jwt',{session:false}), (req, res, next) => {
+router.put('/:projectId',passport.authenticate('jwt',{session:false}), (req, res) => {
     if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
         res.status(400).json({ message: 'Specified id is not valid' });
         return;
@@ -90,12 +87,13 @@ router.put('/:projectId',passport.authenticate('jwt',{session:false}), (req, res
 
 //DELETE route to delete a specific project
 //private
-router.delete('/:projectId',passport.authenticate('jwt',{session:false}), (req, res) => {
-User.findOne({user: req.user.id})
+router.delete('/:id',passport.authenticate('jwt',{session:false}), (req, res) => {
+    User.findById(req.user)
     .then(user => {
         Project.findById(req.params.id)
             .then(project => {
-                if(project.user.toString() !== req.user.id){
+                if(user._id.toString() !== project.artist.toString()){
+                    console.log(user._id,'---',project.artist)
                     return res.status(401).json({notAuthorized:'User not authorized'});
                 }
                 project.remove().then(() => res.json({success:true}))
