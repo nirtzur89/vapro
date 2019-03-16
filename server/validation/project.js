@@ -10,7 +10,7 @@ module.exports = function validateprojectInput(data) {
 
 
 if (Validator.isEmpty(data.name)){
-    errors.email = 'project must have a name!';
+    errors.name = 'project must have a name!';
  } 
 
   
