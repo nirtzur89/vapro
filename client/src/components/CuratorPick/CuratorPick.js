@@ -1,48 +1,42 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Carousel } from 'react-responsive-carousel';
+import React, { Component } from "react";
+import Slider from "react-slick";
 
-class DemoCarousel extends Component {
-    render() {
-        return (
-            <Carousel showArrows={false} infiniteLoop autoPlay>
-                <div>
-                    <img src="https://www.whitevoid.com/wordpress/wp-content/uploads/2018/05/WV-News-Stalactite-660x438.jpg" />
-                    <p className="legend">
-                        legend 1
-        </p>
-                </div>
-                <div>
-                    <img src=".." />
-                    <p className="legend">
-                        legend 2
-        </p>
-                </div>
-                <div>
-                    <img src=".." />
-                    <p className="legend">
-                        legend 3
-        </p>
-                </div>
-                <div>
-                    <img src=".." />
-                    <p className="legend">
-                        legend 4
-        </p>
-                </div>
-                <div>
-                    <img src=".." />
-                    <p className="legend">
-                        legend 5
-        </p>
-                </div>
-            </Carousel>
-
-        );
-    }
-};
-
-export default DemoCarousel;
-
-// ReactDOM.render(<DemoCarousel />, document.querySelector('.demo-carousel'));
+export default class AutoPlay extends Component {
+  render() {
+    const settings = {
+      dots: true,
+      infinite: true,
+      slidesToShow: 3,
+      slidesToScroll: 1,
+      autoplay: true,
+      speed: 2000,
+      autoplaySpeed: 2000,
+      cssEase: "linear"
+    };
+    return (
+      <div>
+        <h2>Auto Play</h2>
+        <Slider {...settings}>
+          <div>
+            <h3>1</h3>
+          </div>
+          <div>
+            <h3>2</h3>
+          </div>
+          <div>
+            <h3>3</h3>
+          </div>
+          <div>
+            <h3>4</h3>
+          </div>
+          <div>
+            <h3>5</h3>
+          </div>
+          <div>
+            <h3>6</h3>
+          </div>
+        </Slider>
+      </div>
+    );
+  }
+}
