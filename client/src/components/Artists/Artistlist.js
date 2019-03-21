@@ -5,12 +5,14 @@ import SearchBar from '../bars/SearchBar'
 class Artistlist extends Component {
     constructor(props) {
         super(props);
-        this.state = { listOfAllArtists: [] };
+        this.state = {
+            listOfAllArtists: []
+        };
     }
 
     searchArtist = (artist, location, event, technique) => {
         console.log(`searching by ${artist}, ${location}, ${event} and ${technique}`)
-      }
+    }
 
     componentDidMount() {
         axios.get("http://localhost:5000/allartists")
@@ -23,7 +25,7 @@ class Artistlist extends Component {
     render() {
         return (
             <div>
-                <SearchBar searchArtist={this.searchArtist}/>
+                <SearchBar searchArtist={this.searchArtist} />
                 <div>
                     {this.state.listOfAllArtists.map(oneArtist => {
                         return (

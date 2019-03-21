@@ -1,6 +1,9 @@
 .App {
   background-color: #282c34;
 }
+h3{
+  color: red;
+}
 
 body, html {
   margin: 0;

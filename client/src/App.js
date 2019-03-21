@@ -16,10 +16,6 @@ import SignupButtons from './components/Auth/SignupButtons';
 
 class App extends Component {
 
-  searchArtist = (artist, location, event, technique) => {
-    console.log(`searching by ${artist}, ${location}, ${event} and ${technique}`)
-  }
-
   render() {
     return (
       <BrowserRouter>
