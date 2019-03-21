@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
 
 
-import Navbar from './components/navbar/NavBar'
+import Navbar from './components/bars/NavBar'
 import Parent from './components/CuratorPick/CuratorPick'
 import ArtistSignupForm from './components/Auth/AuthForms/ArtistSignupForm'
 import MemberSignupForm from './components/Auth/AuthForms/MemberSignupForm'
@@ -15,6 +15,11 @@ import SignupButtons from './components/Auth/SignupButtons';
 
 
 class App extends Component {
+
+  searchArtist = (artist, location, event, technique) => {
+    console.log(`searching by ${artist}, ${location}, ${event} and ${technique}`)
+  }
+
   render() {
     return (
       <BrowserRouter>
