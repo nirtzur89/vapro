@@ -1,10 +1,17 @@
 import React, { Component } from 'react'
 import axios from 'axios';
+import SearchBar from '../bars/SearchBar'
 
 class Artistlist extends Component {
     constructor(props) {
         super(props);
-        this.state = { listOfAllArtists: [] };
+        this.state = {
+            listOfAllArtists: []
+        };
+    }
+
+    searchArtist = (artist, location, event, technique) => {
+        console.log(`searching by ${artist}, ${location}, ${event} and ${technique}`)
     }
 
     componentDidMount() {
@@ -16,17 +23,20 @@ class Artistlist extends Component {
     }
 
     render() {
-        console.log("this.state" ,this.state.listOfAllArtists)
         return (
             <div>
-                {this.state.listOfAllArtists.map(oneArtist => {
-                    return(
-                        <div key={oneArtist._id}>
-                            <h3>{oneArtist.userName}</h3>
-                        </div>
-                    )
-                })}
+                <SearchBar searchArtist={this.searchArtist} />
+                <div>
+                    {this.state.listOfAllArtists.map(oneArtist => {
+                        return (
+                            <div key={oneArtist._id}>
+                                <h3>{oneArtist.userName}</h3>
+                            </div>
+                        )
+                    })}
+                </div>
             </div>
+
         )
     }
 

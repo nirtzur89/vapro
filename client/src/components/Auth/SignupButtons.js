@@ -1,11 +1,14 @@
-import React, { Component } from 'react'
-import axios from 'axios';
+import React from 'react'
+
+import LinkButtonArtistSignup from './LinkButtonArtistSignup'
+import LinkButtonMemberSignup from './LinkButtonMemberSignup'
 
 const SignupButtons = () => {
+
     return (
         <div>
-            <button>Signup</button>
-            <button>Signup as Contributor</button>
+            <LinkButtonMemberSignup to='/memberSignup' />
+            <LinkButtonArtistSignup to='/artistSignup' />
         </div>
 
     )
