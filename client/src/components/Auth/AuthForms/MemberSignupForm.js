@@ -12,6 +12,7 @@ class MemberSignupForm extends Component {
             email: '',
             password: '',
             password2: '',
+            artist: false,
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleFormSubmit = this.handleFormSubmit.bind(this)
@@ -25,7 +26,8 @@ class MemberSignupForm extends Component {
         const email = this.state.email;
         const password = this.state.password;
         const password2 = this.state.password2;
-        axios.post("http://localhost:5000/register", {userName: userName, firstName: firstName, lastName: lastName, email: email, password: password, password2: password2})
+        const artist = false;
+        axios.post("http://localhost:5000/register", {artist: artist, userName: userName, firstName: firstName, lastName: lastName, email: email, password: password, password2: password2})
             .then(() => {
                 // this.props.getData()
                 this.props.history.push('/')

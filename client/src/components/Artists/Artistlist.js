@@ -16,7 +16,6 @@ class Artistlist extends Component {
     }
 
     render() {
-        console.log("this.state" ,this.state.listOfAllArtists)
         return (
             <div>
                 {this.state.listOfAllArtists.map(oneArtist => {
