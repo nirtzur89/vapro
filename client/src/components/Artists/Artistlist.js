@@ -22,7 +22,7 @@ class Artistlist extends Component {
                 {this.state.listOfAllArtists.map(oneArtist => {
                     return(
                         <div key={oneArtist._id}>
-                            <h3>{oneArtist.firstName}</h3>
+                            <h3>{oneArtist.userName}</h3>
                         </div>
                     )
                 })}

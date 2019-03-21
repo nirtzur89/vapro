@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../Auth.css';
 import axios from 'axios';
 
-class SignupForm extends Component {
+class ArtistSignupForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -11,7 +11,8 @@ class SignupForm extends Component {
             lastName: '',
             email: '',
             password: '',
-            password2: ''
+            password2: '',
+            artist: false,
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleFormSubmit = this.handleFormSubmit.bind(this)
@@ -25,7 +26,8 @@ class SignupForm extends Component {
         const email = this.state.email;
         const password = this.state.password;
         const password2 = this.state.password2;
-        axios.post("http://localhost:5000/register", {userName: userName, firstName: firstName, lastName: lastName, email: email, password: password, password2: password2})
+        const artist = true;
+        axios.post("http://localhost:5000/register", {artist: artist, userName: userName, firstName: firstName, lastName: lastName, email: email, password: password, password2: password2})
             .then(() => {
                 // this.props.getData()
                 this.props.history.push('/')
@@ -35,12 +37,15 @@ class SignupForm extends Component {
 
     handleChange(event) {
         const {name, value} = event.target;
-        this.setState({[name]: value});
+        this.setState({
+            [name]: value,
+        });
     }
 
     render() {
         return (
             <div>
+                <h1>ARTIST SIGNUP</h1>
                 <form className="signupForm formDiv" onSubmit={this.handleFormSubmit}>
                     <div>
                         <input type="text" name="userName" value={this.state.userName} className="inputfield" placeholder="username" onChange={this.handleChange}/>
@@ -67,4 +72,4 @@ class SignupForm extends Component {
     }
 }
 
-export default SignupForm;
+export default ArtistSignupForm;
