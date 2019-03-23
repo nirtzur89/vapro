@@ -1,18 +1,136 @@
-.fa-1x {
-  font-size: 1.5rem;
-  }
-  .navbar-toggler.toggler-example {
-  cursor: pointer;
-  }
-  .dark-blue-text {
-  color: #0A38F5;
-  }
-  .dark-pink-text {
-  color: #AC003A;
-  }
-  .dark-amber-text {
-  color: #ff6f00;
-  }
-  .dark-teal-text {
-  color: #004d40;
-  }
+
+@import 'https://fonts.googleapis.com/css?family=Biryani|Fjalla+One';
+
+
+.lower{
+  width:50px;
+  opacity:0.8;
+  height: 20px;
+}
+
+.lower:hover{
+color:white;
+}
+
+input{
+  display:none;
+}
+
+.lower label{
+  font-family: "Biryani";
+  text-transform:uppercase;
+  font-size:50px;
+  text-align:center;
+}
+
+.lower label:hover{
+  cursor:pointer;
+}
+
+.overlay{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background: rgba(0,0,0,0.9);
+}
+
+.overlay label{
+	width: 58px;
+	height:58px;
+	position: absolute;
+	right: 20px;
+	top: 20px;
+	background: url('https://tympanus.net/Development/FullscreenOverlayStyles/img/cross.png');
+	z-index: 100;
+  cursor:pointer;
+}
+
+.overlay nav {
+	text-align: center;
+	position: relative;
+	top: 50%;
+	height: 60%;
+	font-size: 54px;
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+
+.overlay ul {
+	list-style: none;
+	padding: 0;
+	margin: 0 auto;
+	display: inline-block;
+	height: 100%;
+	position: relative;
+}
+
+.overlay ul li {
+	display: block;
+	height: 20%;
+	height: calc(100% / 5);
+	min-height: 54px;
+}
+
+.overlay ul li a {
+	font-weight: 300;
+	display: block;
+	color: white;
+  text-decoration:none;
+	-webkit-transition: color 0.2s;
+	transition: color 0.2s;
+  font-family: "Biryani";
+  text-transform:uppercase;
+}
+
+.overlay ul li a:hover,
+.overlay ul li a:focus {
+	color: #849368;
+}
+
+.lower~.overlay-hugeinc{
+	opacity: 0;
+	visibility: hidden;
+	-webkit-transition: opacity 0.5s, visibility 0s 0.5s;
+	transition: opacity 0.5s, visibility 0s 0.5s;
+}
+
+#op:checked~.overlay-hugeinc{
+	opacity: 1;
+	visibility: visible;
+	-webkit-transition: opacity 0.5s;
+	transition: opacity 0.5s;
+}
+
+.overlay-hugeinc nav {
+	-moz-perspective: 300px;
+}
+
+.overlay-hugeinc nav ul {
+	opacity: 0.4;
+	-webkit-transform: translateY(-25%) rotateX(35deg);
+	transform: translateY(-25%) rotateX(35deg);
+	-webkit-transition: -webkit-transform 0.5s, opacity 0.5s;
+	transition: transform 0.5s, opacity 0.5s;
+}
+
+#op:checked~.overlay-hugeinc nav ul {
+	opacity: 1;
+	-webkit-transform: rotateX(0deg);
+	transform: rotateX(0deg);
+}
+
+#op:not(:checked)~.overlay-hugeinc nav ul {
+	-webkit-transform: translateY(25%) rotateX(-35deg);
+	transform: translateY(25%) rotateX(-35deg);
+}
+
+.navbar{
+  position: relative;
+  width: 100%;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  margin-top: 0px; 
+}

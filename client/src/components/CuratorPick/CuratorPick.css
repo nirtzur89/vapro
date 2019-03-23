@@ -1,0 +1,108 @@
+.pick1 {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 220px; 
+    border: 2px solid white;
+}
+.video-fluid1 {
+    width: 100%;
+    height: auto;
+    position: relative; 
+    top:-100%;
+  }
+
+#slide1 {
+    position: relative;
+    left: -1500px;
+    width: 100%;
+    height: 810px;
+    -webkit-animation: slide 1s forwards;
+    -webkit-animation-delay: 2s;
+    animation: slide1 1s forwards;
+    animation-delay: 2s;
+}
+
+@-webkit-keyframes slide1 {
+    100% { left: 0; }
+}
+
+@keyframes slide1 {
+    100% { left: 0; }
+}
+
+.pick2 {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 220px; 
+    border: 2px solid white;
+}
+
+#slide2 {
+    position: relative;
+    right: -1500px;
+    width: 100%;
+    height: 810px;
+    -webkit-animation: slide 1s forwards;
+    -webkit-animation-delay: 2s;
+    animation: slide2 1s forwards;
+    animation-delay: 2s;
+}
+
+.video-fluid2 {
+    width: 100%;
+    height: auto;
+    position: relative; 
+    top:-100%;
+  }
+
+@-webkit-keyframes slide2 {
+    100% { right: 0; }
+}
+
+@keyframes slide2 {
+    100% { right: 0; }
+}
+
+.pick3 {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 220px; 
+    border: 2px solid white;
+}
+
+.video-fluid3 {
+    width: 100%;
+    height: auto;
+    position: relative; 
+    top:-100%;
+  }
+
+#slide3 {
+    position: relative;
+    left: -1500px;
+    width: 100%;
+    height: 810px;
+    -webkit-animation: slide 1s forwards;
+    -webkit-animation-delay: 2s;
+    animation: slide3 1s forwards;
+    animation-delay: 2s;
+}
+
+
+@-webkit-keyframes slide3 {
+    100% { left: 0; }
+}
+
+@keyframes slide3 {
+    100% { left: 0; }
+}
+
+.wrapperCuratorPick{
+ margin-top: 50px;
+}
+
+
+

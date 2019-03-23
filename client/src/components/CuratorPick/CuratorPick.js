@@ -1,48 +1,22 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Carousel } from 'react-responsive-carousel';
-
-class DemoCarousel extends Component {
-    render() {
-        return (
-            <Carousel showArrows={false} infiniteLoop autoPlay>
-                <div>
-                    <img src="https://www.whitevoid.com/wordpress/wp-content/uploads/2018/05/WV-News-Stalactite-660x438.jpg" />
-                    <p className="legend">
-                        legend 1
-        </p>
-                </div>
-                <div>
-                    <img src=".." />
-                    <p className="legend">
-                        legend 2
-        </p>
-                </div>
-                <div>
-                    <img src=".." />
-                    <p className="legend">
-                        legend 3
-        </p>
-                </div>
-                <div>
-                    <img src=".." />
-                    <p className="legend">
-                        legend 4
-        </p>
-                </div>
-                <div>
-                    <img src=".." />
-                    <p className="legend">
-                        legend 5
-        </p>
-                </div>
-            </Carousel>
-
-        );
-    }
+import React from "react";
+import './CuratorPick.css';
+const CuratorPick = () => {
+    return (
+        <div className="wrapperCuratorPick">
+     <div key= "1" className="pick1 embed-responsive embed-responsive-4by3">
+     <video id = "slide1" className="video-fluid1 z-depth-1" autoPlay loop controls muted>
+  <source src="https://mdbootstrap.com/img/video/Sail-Away.mp4" type="video/mp4" /></video>
+         </div>
+     <div key= "2" className="pick2 embed-responsive embed-responsive-4by3">
+     <video id = "slide2" className="video-fluid2 z-depth-1" autoPlay loop controls muted>
+  <source src="https://mdbootstrap.com/img/video/Sail-Away.mp4" type="video/mp4" /></video>
+ </div> 
+ <div key= "3" className="pick3 embed-responsive embed-responsive-4by3">
+    <video id = "slide3" className="video-fluid2 z-depth-1" autoPlay loop controls muted>
+  <source src="https://mdbootstrap.com/img/video/Sail-Away.mp4" type="video/mp4" /></video>
+</div>
+</div>
+)
 };
 
-export default DemoCarousel;
-
-// ReactDOM.render(<DemoCarousel />, document.querySelector('.demo-carousel'));
+export default CuratorPick; 

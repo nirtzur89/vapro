@@ -5,9 +5,9 @@ import './App.css';
 
 
 import Navbar from './components/navbar/NavBar'
-import DemoCarousel from './components/CuratorPick/CuratorPick'
+import CuratorPick from './components/CuratorPick/CuratorPick'
 import SignupForm from './components/Auth/AuthForms/SignupForm'
-import LoginForm from './components/Auth/AuthForms/LoginForm';
+import LoginForm from './components/Auth/AuthForms/LoginForm'
 import Notfound from './components/Notfound'
 import Artistlist from './components/Artists/Artistlist'
 
@@ -18,9 +18,9 @@ class App extends Component {
       <BrowserRouter>
         <div className="App">
           <Navbar />
-
+          
           <Switch>
-            <Route exact path="/" component={DemoCarousel} />
+            <Route exact path="/" component={CuratorPick} />
             <Route exact path="/login" component={LoginForm} />
             <Route exact path="/signup" component={SignupForm} />
             <Route exact path="/artistlist" component={Artistlist}/>
