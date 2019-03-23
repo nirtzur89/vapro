@@ -27,7 +27,7 @@ router.post('/', passport.authenticate('jwt',{session:false}),(req,res) =>{
         event: req.body.event,
         videos: [],
         date: req.body.date,
-        artist: req.user.id,
+        artist: req.user._id,
     })
         .then(response => {
             User.findByIdAndUpdate(req.body.userId, { $push: { projects: response._id } })

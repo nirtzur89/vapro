@@ -18,19 +18,19 @@ class Artistlist extends Component {
                 this.setState({ listOfAllArtists: allArtistsFromApi.data })
             })
 
-
     }
 
     searchArtist = (artist) => {
         this.setState({
-            query: artist.artist
-        
-        })}
+            queryResult: artist.artist 
+        })
+    console.log("STATE",this.state, artist)}
 
     render() {
-        const test = this.state.listOfAllArtists.filter(e=>{
-                return e.userName === this.state.query
-         } )
+        const test = this.state.listOfAllArtists.filter(e=>
+            e.userName.includes(this.state.queryResult)
+                
+          )
 
         console.log("listOfAllArtists", this.state.listOfAllArtists)
 
@@ -46,4 +46,4 @@ class Artistlist extends Component {
 
 }
 
-export default Artistlist;
+export default Artistlist

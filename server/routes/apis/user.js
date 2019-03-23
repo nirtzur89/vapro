@@ -14,7 +14,7 @@ const User = require('../../models/User')
 //access - private
 router.get('/:id', passport.authenticate('jwt', {session: false}),(req, res) =>{
      const errors = {};
-
+console.log("AT ID")
     User.findById(req.params.id)
          .then(user =>{
              if(!user){
