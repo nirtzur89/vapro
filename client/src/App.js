@@ -10,7 +10,7 @@ import ArtistSignupForm from './components/Auth/AuthForms/ArtistSignupForm'
 import MemberSignupForm from './components/Auth/AuthForms/MemberSignupForm'
 import LoginForm from './components/Auth/AuthForms/LoginForm';
 import Notfound from './components/Notfound'
-import Artistlist from './components/Artists/Artistlist'
+import Artistlist from './components/SearchArtists/Artistlist'
 import SignupButtons from './components/Auth/SignupButtons';
 
 
