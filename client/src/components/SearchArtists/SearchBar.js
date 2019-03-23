@@ -19,7 +19,7 @@ class SearchBar extends Component {
 
 
     handleSearch = (event) => {
-        this.props.searchArtist(this.state.artist, this.state.location, this.state.event, this.state.technique)
+        this.props.onSearch(this.state)
         event.preventDefault()
     }
 
