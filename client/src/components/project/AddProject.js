@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom'
 
 class AddProject extends Component {
   constructor(props){
       super(props);
       this.state = { 
+        loggedInUser: null,
         artist: '',
         name: '',
         description: '',
@@ -13,6 +15,11 @@ class AddProject extends Component {
         video: '',
         date:''
       }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    console.log("willreceiveprops")
+    this.setState({...this.state, loggedInUser: nextProps["userInSession"]})
   }
    
   handleFormSubmit = (e) => {
@@ -24,7 +31,9 @@ class AddProject extends Component {
     const event = this.state.event;
     const video = this.state.video;
     const date = this.state.date;
-    axios.post("http://localhost:5000/projects", { artist, name, description, location, event, video, date })
+    axios.post("http://localhost:5000/projects", 
+    { artist, name, description, location, event, video, date },
+    {withCredentials:true})
     .then( () => {
         // this.props.getData();
         this.setState({artist:"", name:"", description:"", location:"", event:"", video:"", date:""});
@@ -38,6 +47,8 @@ class AddProject extends Component {
   }
 
   render(){
+    console.log(this.state.loggedInUser)
+    if(this.state.loggedInUser){
     return(
       <div>
         <form onSubmit={this.handleFormSubmit}>
@@ -66,6 +77,13 @@ class AddProject extends Component {
         </form>
       </div>
     )
+    }else{
+      return (
+        <div>
+          you are not an artist!
+        </div>
+      )
+    }
   }
 }
 
