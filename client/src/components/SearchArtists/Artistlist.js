@@ -28,12 +28,14 @@ class Artistlist extends Component {
 }
 
     render() {
-        // let companyCopy = JSON.stringify(this.state.listOfAllArtists)
-        // console.log('Company',companyCopy)
-
         const filteredArtists = this.state.listOfAllArtists.filter(e=>
-            e.userName.includes(this.state.queryResult) 
-                
+            e.userName.includes(this.state.queryResult) ||
+            e.nationality.includes(this.state.queryResult) ||
+            // e.techniques.includes(this.state.queryResult) ||
+            // e.events.includes(this.state.queryResult) ||
+            e.locations.includes(this.state.queryResult) 
+            // || e.hashtags.includes(this.state.queryResult)
+
           )
 
         console.log("listOfAllArtists", this.state.listOfAllArtists)
