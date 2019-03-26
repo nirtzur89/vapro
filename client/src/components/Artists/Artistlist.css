@@ -1,4 +1,4 @@
-.pick1 {
+.Artist {
     position: relative;
     overflow: hidden;
     width: 100%;
@@ -31,7 +31,7 @@
     100% { left: 0; }
 }
 
-.pick2 {
+.Event {
     position: relative;
     overflow: hidden;
     width: 100%;
@@ -65,7 +65,7 @@
     100% { right: 0; }
 }
 
-.pick3 {
+.Technique {
     position: relative;
     overflow: hidden;
     width: 100%;
@@ -100,9 +100,9 @@
     100% { left: 0; }
 }
 
-.wrapperCuratorPick{
+.wrapperArtistlist{
  margin-top: 50px;
- background-color: #848482; 
+ background-color:  #848482; 
 }
 
 

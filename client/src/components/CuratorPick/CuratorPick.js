@@ -12,7 +12,7 @@ const CuratorPick = () => {
   <source src="https://mdbootstrap.com/img/video/Sail-Away.mp4" type="video/mp4" /></video>
  </div> 
  <div key= "3" className="pick3 embed-responsive embed-responsive-4by3">
-    <video id = "slide3" className="video-fluid2 z-depth-1" autoPlay loop controls muted>
+    <video id = "slide3" className="video-fluid3 z-depth-1" autoPlay loop controls muted>
   <source src="https://mdbootstrap.com/img/video/Sail-Away.mp4" type="video/mp4" /></video>
 </div>
 </div>
