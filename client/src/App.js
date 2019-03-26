@@ -12,6 +12,7 @@ import LoginForm from './components/Auth/AuthForms/LoginForm';
 import Notfound from './components/Notfound'
 import Artistlist from './components/SearchArtists/Artistlist'
 import SignupButtons from './components/Auth/SignupButtons';
+import AllProjects from './components/project/AllProjects'
 
 
 class App extends Component {
@@ -29,6 +30,7 @@ class App extends Component {
             <Route exact path="/artistSignup" component={ArtistSignupForm} />
             <Route exact path="/memberSignup" component={MemberSignupForm} />
             <Route exact path="/artistlist" component={Artistlist}/>
+            <Route exact path="/allprojects" component={AllProjects}/>
             <Route component={Notfound}/>
           </Switch>
         </div>

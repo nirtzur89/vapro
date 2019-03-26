@@ -12,7 +12,7 @@ class ArtistSignupForm extends Component {
             email: '',
             password: '',
             password2: '',
-            artist: false,
+            artist: true,
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleFormSubmit = this.handleFormSubmit.bind(this)
