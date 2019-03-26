@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 //import SearchBar from '../SearchArtists/SearchBar';
-import ProjectCard from './ProjectCard';
 
 class ProjectsList extends Component {
   constructor(props){

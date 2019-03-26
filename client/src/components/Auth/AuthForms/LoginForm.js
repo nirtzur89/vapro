@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import AuthService from '../auth-service';
+import { Link } from 'react-router-dom'; 
 import '../Auth.css';
 import axios from 'axios';
 
@@ -10,6 +12,7 @@ class LoginForm extends Component {
             email: '',
             password: '',
         }
+        this.service = new AuthService();
     }
 
     handleFormSubmit = (event) => {
