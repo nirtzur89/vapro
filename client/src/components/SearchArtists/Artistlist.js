@@ -20,15 +20,19 @@ class Artistlist extends Component {
 
     }
 
-    searchArtist = (artist) => {
+    searchArtist = (searchTerm) => {
         this.setState({
-            queryResult: artist.artist 
+            queryResult: searchTerm.searchTerm
         })
-    console.log("STATE",this.state, artist)}
+    // console.log("STATE",this.state, searchTerm)
+}
 
     render() {
-        const test = this.state.listOfAllArtists.filter(e=>
-            e.userName.includes(this.state.queryResult)
+        // let companyCopy = JSON.stringify(this.state.listOfAllArtists)
+        // console.log('Company',companyCopy)
+
+        const filteredArtists = this.state.listOfAllArtists.filter(e=>
+            e.userName.includes(this.state.queryResult) 
                 
           )
 
@@ -37,7 +41,7 @@ class Artistlist extends Component {
         return (
             <div>
                 <SearchBar onSearch={this.searchArtist} />
-                <ShowArtists data={test} />
+                <ShowArtists data={filteredArtists} />
 
             </div>
 
