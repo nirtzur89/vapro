@@ -12,33 +12,41 @@ class Artistlist extends Component {
         };
     }
 
-    componentDidMount() {
+    searchArtist = (event) => {
+        console.log("EVENT",event.target.value)
+        this.setState({
+            queryResult: event.target.value
+        })
+       
+    }
+
+    getAllArtists = () => {
         axios.get("http://localhost:5000/allartists")
             .then(allArtistsFromApi => {
                 this.setState({ listOfAllArtists: allArtistsFromApi.data })
+                console.log('allArtistsFromApi', allArtistsFromApi.data[0].artist)
             })
-
     }
 
-    searchArtist = (searchTerm) => {
-        this.setState({
-            queryResult: searchTerm.searchTerm
-        })
-    // console.log("STATE",this.state, searchTerm)
-}
+    componentDidMount() {
+        this.getAllArtists()
+    }
+
+
 
     render() {
-        const filteredArtists = this.state.listOfAllArtists.filter(e=>
+
+        console.log("STATE",this.state)
+
+        const filteredArtists = this.state.listOfAllArtists.filter(e =>
             e.userName.includes(this.state.queryResult) ||
             e.nationality.includes(this.state.queryResult) ||
-            // e.techniques.includes(this.state.queryResult) ||
-            // e.events.includes(this.state.queryResult) ||
-            e.locations.includes(this.state.queryResult) 
-            // || e.hashtags.includes(this.state.queryResult)
+            e.techniques.join(', ').includes(this.state.queryResult) ||
+            e.hashtags.join(', ').includes(this.state.queryResult)
 
-          )
-
-        console.log("listOfAllArtists", this.state.listOfAllArtists)
+        )
+        console.log("listOfAllArtists!!!!jsndjkdbk", this.state.listOfAllArtists.techniques)
+        console.log('filteredArtists',filteredArtists)
 
         return (
             <div>

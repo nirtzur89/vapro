@@ -16,8 +16,6 @@ class ArtistSignupForm extends Component {
             companies: [],
             nationality: '',
             techniques: [],
-            events: [],
-            locations: [],
             hashtags: [],
 
         }

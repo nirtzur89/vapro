@@ -1,17 +1,17 @@
 import React from 'react';
 
 const ShowArtists = (props) => {
-    console.log("props", props)
+    // console.log("props", props)
 
 
     return (
         <div>
             <div>
-                {props.data.map(oneArtist => {
-                    console.log("u", oneArtist.hashtags)
+                {props.data.map((oneArtist, index) => {
+                    // console.log("u", oneArtist.hashtags)
                     return (
-                        <div>
-                            <h3>{oneArtist.userName}</h3>
+                        <div key={index}>
+                            <h3 >{oneArtist.userName}</h3>
                         </div>
                     )
                 })}

@@ -10,7 +10,7 @@ class SearchBar extends Component {
 
     onChange = e => {
         this.setState({
-          [e.target.name]: e.target.value
+          searchTerm: e.target.value
         });
         this.props.onSearch(this.state)
       };
@@ -26,11 +26,11 @@ class SearchBar extends Component {
         return (
             <div className="SearchBar">
                 <div className="SearchBar-fields">
-                    <input name="searchTerm" placeholder="Search" onChange={this.onChange} />
+                    <input name="searchTerm" placeholder="Search" onChange={this.props.onSearch} />
                 </div>
-                <button className="SearchBar-submit" onClick={this.handleSearch}>
+                {/* <button className="SearchBar-submit" onClick={this.handleSearch}>
                     <a>SEARCH</a>
-                </button>
+                </button> */}
             </div>
 
         )
