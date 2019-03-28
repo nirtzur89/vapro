@@ -6,6 +6,7 @@ const userModel = new Schema({
         type: String,
         required: true
     },
+    artistName: String,
     artist: {
         type: Boolean,
         required: true,
@@ -28,9 +29,10 @@ const userModel = new Schema({
         type: String,
         required: true
     },
-    artistName: String,
     bio: String,
-    company: String,
+    nationality: String,
+    techniques: [String],
+    companies: [String],
     website: String,
     social: {
         vimeo: String,

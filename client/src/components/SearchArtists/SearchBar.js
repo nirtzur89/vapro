@@ -4,15 +4,13 @@ class SearchBar extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            artist: '',
-            event: '',
-            technique: '',
+            searchTerm: '',
         }
     }
 
     onChange = e => {
         this.setState({
-          [e.target.name]: e.target.value
+          searchTerm: e.target.value
         });
         this.props.onSearch(this.state)
       };
@@ -28,13 +26,11 @@ class SearchBar extends Component {
         return (
             <div className="SearchBar">
                 <div className="SearchBar-fields">
-                    <input name="artist" placeholder="Search Artists" onChange={this.onChange} />
-                    <input name="event" placeholder="Event" onChange={this.onChange} />
-                    <input name="technique" placeholder="Technique" onChange={this.onChange} />
+                    <input name="searchTerm" placeholder="Search" onChange={this.props.onSearch} />
                 </div>
-                <button className="SearchBar-submit" onClick={this.handleSearch}>
+                {/* <button className="SearchBar-submit" onClick={this.handleSearch}>
                     <a>SEARCH</a>
-                </button>
+                </button> */}
             </div>
 
         )
