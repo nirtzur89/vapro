@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import AuthService from '../auth-service';
 import '../Auth.css';
-import { Link } from 'react-router-dom'; 
+import { Link } from 'react-router-dom';
 //import axios from 'axios';
 
 class ArtistSignupForm extends Component {
@@ -38,26 +38,25 @@ class ArtistSignupForm extends Component {
         const artist = true;
 
         const nationality = this.state.nationality;
-        axios.post("http://localhost:5000/register", { artist: artist, userName: userName, firstName: firstName, lastName: lastName, email: email, password: password, password2: password2, nationality: nationality })
-            .then(() => {
-                // this.props.getData()
-                this.props.history.push('/')
 
-        this.service.register(artist, userName, firstName, lastName, email, password, password2)
-            .then(response =>{
+
+
+        this.service.register(artist, userName, firstName, lastName, email, password, password2, nationality)
+            .then(response => {
                 this.setState({
-                    artist:"", 
-                    userName:"", 
-                    firstName:"", 
-                    lastName:"", 
-                    email:"", 
-                    password:"", 
-                    password2:""        
+                    artist: "",
+                    userName: "",
+                    firstName: "",
+                    lastName: "",
+                    email: "",
+                    password: "",
+                    password2: ""
                 });
                 this.props.getUser(response);
             })
             .catch(err => console.log(err))
     }
+
 
     handleChange(event) {
         const { name, value } = event.target;
@@ -91,9 +90,9 @@ class ArtistSignupForm extends Component {
                     </div>
                     <input type="submit" value="signup" className="btn" />
                 </form>
-                        <p>Already have account? 
+                <p>Already have account?
                         <Link to={"/login"}> Login</Link>
-                        </p>
+                </p>
             </div>
         )
     }
