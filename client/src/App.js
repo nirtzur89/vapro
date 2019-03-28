@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import AuthService from './components/Auth/auth-service';
 // import { Switch, Route } from 'react-router-dom';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
@@ -21,6 +22,23 @@ class App extends Component {
   constructor(props){
     super(props)
     this.state = { loggedInUser: null };
+    this.service = new AuthService();
+  }
+
+  fetchUser(){
+    if( this.state.loggedInUser === null ){
+      this.service.loggedin()
+      .then(response =>{
+        this.setState({
+          loggedInUser:  response
+        }) 
+      })
+      .catch( err =>{
+        this.setState({
+          loggedInUser:  false
+        }) 
+      })
+    }
   }
 
   getTheUser= (userObj) => {
@@ -40,11 +58,11 @@ class App extends Component {
             <Route exact path="/" component={Parent} />
             <Route exact path="/signup" component={SignupButtons} />
             <Route exact path="/login" render={() => <LoginForm getUser={this.getTheUser}/>} />
-            <Route exact path="/artistSignup" component={ArtistSignupForm} />
+            <Route exact path="/artistSignup" render={() => <ArtistSignupForm getUser={this.getTheUser}/> }/>
             <Route exact path="/memberSignup" component={MemberSignupForm} />
             <Route exact path="/artistlist" component={Artistlist}/>
             <Route exact path="/allprojects" component={AllProjects}/>
-            <Route exact path="/addproject" component={AddProject}/>
+            <Route exact path="/addproject" component={AddProject} userInSession={this.state.loggedInUser}/>
             <Route component={Notfound}/>
           </Switch>
         </div>
