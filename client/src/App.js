@@ -32,6 +32,7 @@ class App extends Component {
         this.setState({
           loggedInUser:  response
         }) 
+        console.log(this.state.loggedInUser)
       })
       .catch( err =>{
         this.setState({
@@ -49,6 +50,8 @@ class App extends Component {
 
 
   render() {
+    this.fetchUser()
+  
     return (
       <BrowserRouter>
         <div className="App">

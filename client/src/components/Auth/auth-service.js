@@ -14,8 +14,13 @@ class AuthService {
     .then(response => response.data)
   }
 
- loginForm = (email, password) => {
+  login = (email, password) => {
     return this.service.post('/login', {email, password})
+    .then(response => response.data)
+  }
+  
+  logout = () => {
+    return this.service.post('/logout', {})
     .then(response => response.data)
   }
 
