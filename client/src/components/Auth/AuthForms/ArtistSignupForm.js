@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import AuthService from '../auth-service';
 import '../Auth.css';
-import axios from 'axios';
+import { Link } from 'react-router-dom'; 
+//import axios from 'axios';
 
 class ArtistSignupForm extends Component {
     constructor(props) {
@@ -13,12 +15,14 @@ class ArtistSignupForm extends Component {
             password: '',
             password2: '',
             artist: true,
+
             companies: [],
             nationality: '',
             techniques: [],
             hashtags: [],
+        };
+        this.service = new AuthService();
 
-        }
         this.handleChange = this.handleChange.bind(this);
         this.handleFormSubmit = this.handleFormSubmit.bind(this)
     }
@@ -32,11 +36,25 @@ class ArtistSignupForm extends Component {
         const password = this.state.password;
         const password2 = this.state.password2;
         const artist = true;
+
         const nationality = this.state.nationality;
         axios.post("http://localhost:5000/register", { artist: artist, userName: userName, firstName: firstName, lastName: lastName, email: email, password: password, password2: password2, nationality: nationality })
             .then(() => {
                 // this.props.getData()
                 this.props.history.push('/')
+
+        this.service.register(artist, userName, firstName, lastName, email, password, password2)
+            .then(response =>{
+                this.setState({
+                    artist:"", 
+                    userName:"", 
+                    firstName:"", 
+                    lastName:"", 
+                    email:"", 
+                    password:"", 
+                    password2:""        
+                });
+                this.props.getUser(response);
             })
             .catch(err => console.log(err))
     }
@@ -73,6 +91,9 @@ class ArtistSignupForm extends Component {
                     </div>
                     <input type="submit" value="signup" className="btn" />
                 </form>
+                        <p>Already have account? 
+                        <Link to={"/login"}> Login</Link>
+                        </p>
             </div>
         )
     }

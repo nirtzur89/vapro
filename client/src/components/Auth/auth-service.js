@@ -9,8 +9,18 @@ class AuthService {
     this.service = service;
   }
 
+  register = (artist, userName, firstName, lastName, email, password, password2) => {
+    return this.service.post('/register', {artist, userName, firstName, lastName, email, password, password2})
+    .then(response => response.data)
+  }
+
  loginForm = (email, password) => {
     return this.service.post('/login', {email, password})
+    .then(response => response.data)
+  }
+
+  loggedin = () => {
+    return this.service.get('/loggedin')
     .then(response => response.data)
   }
 }

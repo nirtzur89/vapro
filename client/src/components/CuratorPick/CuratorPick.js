@@ -1,60 +1,22 @@
-import React, { Component } from "react";
-import Slider from "react-slick";
-import '../CuratorPick/CuratorsPick.css';
-
-
-class Carousel extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      selectedFooter: 1
-    }
-    
-    this.settings = {
-      dots: true,
-      infinite: true,
-      speed: 500,
-      arrows: true,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      beforeChange: (prevIndex, nextIndex) => {
-        this.setState({
-          selectedFooter: [0, 1, 2].indexOf(nextIndex) !== -1 ? 1 : 2
-        });
-      }
-    };
-  }
-
-  render() {
-    console.log('render');
-
+import React from "react";
+import './CuratorPick.css';
+const CuratorPick = () => {
     return (
-      <div>
-        <SimpleSlider settings={this.settings} />
-       </div> 
-    );
-  }
-}
+        <div className="wrapperCuratorPick">
+     <div key= "1" className="pick1 embed-responsive embed-responsive-4by3">
+     <video id = "slide1" className="video-fluid1 z-depth-1" autoPlay loop controls muted>
+  <source src="https://mdbootstrap.com/img/video/Sail-Away.mp4" type="video/mp4" /></video>
+         </div>
+     <div key= "2" className="pick2 embed-responsive embed-responsive-4by3">
+     <video id = "slide2" className="video-fluid2 z-depth-1" autoPlay loop controls muted>
+  <source src="https://mdbootstrap.com/img/video/Sail-Away.mp4" type="video/mp4" /></video>
+ </div> 
+ <div key= "3" className="pick3 embed-responsive embed-responsive-4by3">
+    <video id = "slide3" className="video-fluid3 z-depth-1" autoPlay loop controls muted>
+  <source src="https://mdbootstrap.com/img/video/Sail-Away.mp4" type="video/mp4" /></video>
+</div>
+</div>
+)
+};
 
-class SimpleSlider extends Component {
-  shouldComponentUpdate (nextProps) {
-    // TODO: add proper implementation that compares objects
-    return false;
-  }
-  
-  render () {
-    console.log('slider render');
-    return (
-      <Slider {...this.props.settings}>
-        <div><div className="slide-0"><h3>Graph 1</h3></div></div>
-        <div><div className="slide-1"><h3>Graph 2</h3></div></div>
-        <div><div className="slide-2"><h3>Graph 3</h3></div></div>
-        <div><div className="slide-3"><h3>Set Up</h3></div></div>
-      </Slider>
-    )
-  }
-}
-
-export default Carousel;
-        
+export default CuratorPick; 
