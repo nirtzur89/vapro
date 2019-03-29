@@ -1,49 +1,29 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import AuthService from '../../components/Auth/auth-service';
+import withAuth from '../../components/Auth/withAuth';
+
+
+const Auth = new AuthService();
 
 class Profile extends Component {
-  constructor(props){
-    super(props);
-    this.state = { loggedInUser: null };
-  }
-  componentWillReceiveProps(nextProps) {
-    this.setState({...this.state, loggedInUser: nextProps["userInSession"]})
-  }
+  // This method that we create in the AuthService will clear the token from localStorage.
+  handleLogout(){
+    Auth.logout()
+    this.props.history.replace('/');
+ }
 
-  logoutUser = () =>{
-    this.service.logout()
-    .then(() => {
-      this.setState({ loggedInUser: null });
-      this.props.getUser(null);  
-    })
+  render() {
+    return(
+      <div className="App">
+          <div className="App-header">
+              <h2>Welcome {this.props.user.username}</h2>
+          </div>
+          <p className="App-intro">
+            <button type="button" className="form-submit" onClick={this.handleLogout.bind(this)}>Logout</button>
+        </p>
+      </div>
+    );
   }
-    
-  render(){
-    if(this.state.loggedInUser){
-        return(
-          <nav className="nav-style">
-            <ul>
-              <li>Welcome, {this.state.loggedInUser.username}</li>
-              <li><Link to='/projects' style={{ textDecoration: 'none' }}>Projects</Link></li>
-              <li>
-                <Link to='/'>
-                  <button onClick={() => this.logoutUser()}>Logout</button>
-                </Link>
-              </li>
-            </ul>
-          </nav>
-        )
-      } else {
-        return ( 
-          <nav className="nav-style">
-            <ul>
-              <li><Link to='/login' style={{ textDecoration: 'none' }}>Login</Link></li>
-              <li><Link to='/signup' style={{ textDecoration: 'none' }}>Signup</Link></li>
-            </ul>
-          </nav>
-        )
-      }
-    }
-  }
+}
 
-export default Profile;
+export default withAuth(Profile);

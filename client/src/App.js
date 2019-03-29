@@ -4,7 +4,7 @@ import AuthService from './components/Auth/auth-service';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
 
-import ProtectedRoute from './components/Auth/protected-route';
+// import ProtectedRoute from './components/Auth/protected-route';
 import Navbar from './components/bars/NavBar'
 import Parent from './components/CuratorPick/CuratorPick'
 import ArtistSignupForm from './components/Auth/AuthForms/ArtistSignupForm'
@@ -52,8 +52,6 @@ class App extends Component {
 
 
   render() {
-    this.fetchUser()
-    if(this.state.loggedInUser){
     return (
       <BrowserRouter>
         <div className="App">
@@ -66,35 +64,13 @@ class App extends Component {
             <Route exact path="/memberSignup" component={MemberSignupForm} />
             <Route exact path="/artistlist" component={Artistlist}/>
             <Route exact path="/allprojects" component={AllProjects}/>
-            <ProtectedRoute user={this.state.loggedInUser} exact path="/addproject" component= {AddProject}/>
-            <ProtectedRoute user={this.state.loggedInUser} exact path="/profile" component= {Profile}/>
+            <Route exact path="/addproject" component= {AddProject}/>
+            <Route exact path="/profile" component= {Profile}/>
             <Route component={Notfound}/>
           </Switch>
         </div>
       </BrowserRouter>
     )
-    }else{
-      return (
-        <BrowserRouter>
-          <div className="App">
-            <Navbar />
-            <Switch>
-              <Route exact path="/" component={Parent} />
-              <Route exact path="/signup" component={SignupButtons} />
-              <Route exact path="/login" render={() => <LoginForm getUser={this.getTheUser}/>} />
-              <Route exact path="/artistSignup" render={() => <ArtistSignupForm getUser={this.getTheUser}/> }/>
-              <Route exact path="/memberSignup" component={MemberSignupForm} />
-              <Route exact path="/artistlist" component={Artistlist}/>
-              <Route exact path="/allprojects" component={AllProjects}/>
-              
-              <ProtectedRoute user={this.state.loggedInUser} exact path="/addproject" component= {AddProject}/>
-              <ProtectedRoute user={this.state.loggedInUser} exact path="/profile" component= {Profile}/>
-              <Route component={Notfound}/>
-            </Switch>
-          </div>
-          </BrowserRouter>
-      )
-    }
   }
 }
 

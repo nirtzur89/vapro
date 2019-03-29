@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import AuthService from '../auth-service';
+import SignupService from '../signup-service';
 import '../Auth.css';
 import { Link } from 'react-router-dom';
 //import axios from 'axios';
@@ -21,7 +21,7 @@ class ArtistSignupForm extends Component {
             techniques: [],
             hashtags: [],
         };
-        this.service = new AuthService();
+        this.service = new SignupService();
 
         this.handleChange = this.handleChange.bind(this);
         this.handleFormSubmit = this.handleFormSubmit.bind(this)
