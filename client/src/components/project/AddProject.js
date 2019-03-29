@@ -35,7 +35,7 @@ class AddProject extends Component {
     { artist, name, description, location, event, video, date },
     {withCredentials:true})
     .then( () => {
-        // this.props.getData();
+        this.props.getData();
         this.setState({artist:"", name:"", description:"", location:"", event:"", video:"", date:""});
     })
     .catch( error => console.log(error) )
