@@ -4,7 +4,7 @@ import AuthService from './components/Auth/auth-service';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
 
-
+import ProtectedRoute from './components/Auth/protected-route';
 import Navbar from './components/bars/NavBar'
 import Parent from './components/CuratorPick/CuratorPick'
 import ArtistSignupForm from './components/Auth/AuthForms/ArtistSignupForm'
@@ -15,7 +15,9 @@ import Artistlist from './components/SearchArtists/Artistlist'
 import SignupButtons from './components/Auth/SignupButtons';
 import AllProjects from './components/project/AllProjects'
 import AddProject from './components/project/AddProject';
+import Profile from './components/profile/Profile';
 
+//<Route exact path="/addproject" component={AddProject} userInSession={this.state.loggedInUser}/>
 
 class App extends Component {
 
@@ -51,12 +53,11 @@ class App extends Component {
 
   render() {
     this.fetchUser()
-  
+    if(this.state.loggedInUser){
     return (
       <BrowserRouter>
         <div className="App">
           <Navbar />
-          
           <Switch>
             <Route exact path="/" component={Parent} />
             <Route exact path="/signup" component={SignupButtons} />
@@ -65,13 +66,35 @@ class App extends Component {
             <Route exact path="/memberSignup" component={MemberSignupForm} />
             <Route exact path="/artistlist" component={Artistlist}/>
             <Route exact path="/allprojects" component={AllProjects}/>
-            <Route exact path="/addproject" component={AddProject} userInSession={this.state.loggedInUser}/>
+            <ProtectedRoute user={this.state.loggedInUser} exact path="/addproject" component= {AddProject}/>
+            <ProtectedRoute user={this.state.loggedInUser} exact path="/profile" component= {Profile}/>
             <Route component={Notfound}/>
           </Switch>
         </div>
       </BrowserRouter>
-
-    );
+    )
+    }else{
+      return (
+        <BrowserRouter>
+          <div className="App">
+            <Navbar />
+            <Switch>
+              <Route exact path="/" component={Parent} />
+              <Route exact path="/signup" component={SignupButtons} />
+              <Route exact path="/login" render={() => <LoginForm getUser={this.getTheUser}/>} />
+              <Route exact path="/artistSignup" render={() => <ArtistSignupForm getUser={this.getTheUser}/> }/>
+              <Route exact path="/memberSignup" component={MemberSignupForm} />
+              <Route exact path="/artistlist" component={Artistlist}/>
+              <Route exact path="/allprojects" component={AllProjects}/>
+              
+              <ProtectedRoute user={this.state.loggedInUser} exact path="/addproject" component= {AddProject}/>
+              <ProtectedRoute user={this.state.loggedInUser} exact path="/profile" component= {Profile}/>
+              <Route component={Notfound}/>
+            </Switch>
+          </div>
+          </BrowserRouter>
+      )
+    }
   }
 }
 

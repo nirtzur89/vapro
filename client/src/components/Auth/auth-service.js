@@ -25,7 +25,7 @@ class AuthService {
   }
 
   loggedin = () => {
-    return this.service.get('/loggedin')
+    return this.service.get('/user/:id')
     .then(response => response.data)
   }
 }

@@ -18,6 +18,10 @@ class Login extends Component {
     .then( response => {
         this.setState({ email: "", password: "" });
         this.props.getUser(response)
+        const {token} = response.data;
+        localStorage.setItem('jwt token', token);
+        setAuthToken(token);
+        
     })
     .catch( error => console.log(error) )
   }
@@ -37,7 +41,9 @@ class Login extends Component {
             <div>
                <input type="password" name="password" value={this.state.password} className="inputfield" placeholder="password" onChange={e => this.handleChange(e)}></input>
              </div>
-            <button type="submit" className="btn">Login</button>
+                <button type="submit" className="btn">
+                        Login
+                </button>
         </form>
         <p>Don't have account? 
             <Link to={"/signup"}> Signup</Link>
@@ -96,9 +102,9 @@ export default Login;
 //                     <div>
 //                         <input type="password" name="password" value={this.state.password} className="inputfield" placeholder="password" onChange={e => this.handleChange(e)}></input>
 //                     </div>
-//                     <button type="submit" className="btn">
-//                         Login
-//                     </button>
+                    // <button type="submit" className="btn">
+                    //     Login
+                    // </button>
 //                 </form>
 //             </div>
 //         )
