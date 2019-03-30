@@ -16,10 +16,11 @@ class Profile extends Component {
     return(
       <div className="App">
           <div className="App-header">
-              <h2>Welcome {this.props.user.userName}</h2>
+              <h2>MyProfile</h2>
           </div>
-          <h1>Your Profile</h1>
-          <p>username</p>
+          
+          <p>username: {this.props.user.userName}</p>
+          <p>Email: {this.props.user.email}</p>
           <p className="App-intro">
             <button type="button" className="form-submit" onClick={this.handleLogout.bind(this)}>Logout</button>
         </p>

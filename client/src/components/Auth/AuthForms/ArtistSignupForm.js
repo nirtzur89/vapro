@@ -15,7 +15,6 @@ class ArtistSignupForm extends Component {
             password: '',
             password2: '',
             artist: true,
-
             companies: [],
             nationality: '',
             techniques: [],
@@ -37,11 +36,7 @@ class ArtistSignupForm extends Component {
         const password2 = this.state.password2;
         const artist = true;
 
-        const nationality = this.state.nationality;
-
-
-
-        this.service.register(artist, userName, firstName, lastName, email, password, password2, nationality)
+        this.service.register(artist, userName, firstName, lastName, email, password, password2, )
             .then(response => {
                 this.setState({
                     artist: "",

@@ -35,7 +35,7 @@ class AddProject extends Component {
     const event = this.state.event;
     const video = this.state.video;
     const date = this.state.date;
-    axios.post("http://localhost:5000/projects", 
+    axios.post((process.env.REACT_APP_API_URL || "http://localhost:5000") + "/projects", 
     { artist, name, description, location, event, video, date },
     {withCredentials:true})
     .then( () => {
