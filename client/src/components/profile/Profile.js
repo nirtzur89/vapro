@@ -16,7 +16,6 @@ class Profile extends Component {
       <div className="App">
         <div className="App-header">
           <h2>Welcome {this.props.user.userName}</h2>
-          <h2>Welcome {this.props.user.password}</h2>
         </div>
         <h1>Your Profile</h1>
         <p>username</p>
