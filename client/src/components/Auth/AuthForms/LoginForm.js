@@ -33,10 +33,10 @@ class Login extends Component {
             <div className="loginForm formDiv">
                 <div>
                     <h1>Login</h1>
-                    <form>
+                    <form onSubmit={this.handleFormSubmit}>
                         <input
                             placeholder="Email goes here..."
-                            name="Email"
+                            name="email"
                             type="text"
                             onChange={this.handleChange}
                         />
@@ -66,58 +66,3 @@ class Login extends Component {
 }
 
 export default Login;
-
-// class Login extends Component {
-//   constructor(props){
-//     super(props);
-//     this.state = { email: '', password: '' };
-//     this.service = new AuthService();
-//   }
-
-//   handleFormSubmit = (event) => {
-//     event.preventDefault();
-//     const email = this.state.email;
-//     const password = this.state.password;
-//     this.service.login(email, password)
-//     .then( response => {
-//         this.setState({ email: "", password: "" });
-//         this.props.getUser(response)
-//         const {token} = response.data;
-//         localStorage.setItem('jwt token', token);
-//         setAuthToken(token);
-//         const decoded = jwt_decode(token);
-//         dispatchEvent(setCurrentUser(decoded))
-//     })
-//     .catch( error => console.log(error) )
-//   }
-  
-  
-
-//   handleChange = (event) => {  
-//     const {name, value} = event.target;
-//     this.setState({[name]: value});
-//   }
-    
-//   render(){
-//     return(
-//         <div>
-//         <form className="loginForm formDiv" onSubmit={this.handleFormSubmit}>
-//             <div>
-//                 <input type="email" name="email" value={this.state.email} className="inputfield" placeholder="email" onChange={e => this.handleChange(e)}></input>
-//             </div>
-//             <div>
-//                <input type="password" name="password" value={this.state.password} className="inputfield" placeholder="password" onChange={e => this.handleChange(e)}></input>
-//              </div>
-//                 <button type="submit" className="btn">
-//                         Login
-//                 </button>
-//         </form>
-//         <p>Don't have account? 
-//             <Link to={"/signup"}> Signup</Link>
-//         </p>
-//       </div>
-//     )
-//   }
-// }
-
-// export default Login;

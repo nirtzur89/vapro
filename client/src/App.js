@@ -59,7 +59,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Parent} />
             <Route exact path="/signup" component={SignupButtons} />
-            <Route exact path="/login" render={() => <LoginForm getUser={this.getTheUser}/>} />
+            <Route exact path="/login" component={LoginForm} />
             <Route exact path="/artistSignup" render={() => <ArtistSignupForm getUser={this.getTheUser}/> }/>
             <Route exact path="/memberSignup" component={MemberSignupForm} />
             <Route exact path="/artistlist" component={Artistlist}/>
