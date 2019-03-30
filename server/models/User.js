@@ -6,7 +6,6 @@ const userModel = new Schema({
         type: String,
         required: true
     },
-    artistName: String,
     artist: {
         type: Boolean,
         required: true,

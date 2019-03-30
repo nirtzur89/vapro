@@ -8,6 +8,7 @@ const validateUserInput = require ('../../validation/user')
 //profile
 const User = require('../../models/User')
 
+// initial route - '/user'
 
 //route - GET /user
 //des - get CURRENT users user
