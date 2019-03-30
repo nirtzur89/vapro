@@ -12,32 +12,46 @@ class Artistlist extends Component {
         };
     }
 
-    componentDidMount() {
-        axios.get("http://localhost:5000/allartists")
-            .then(allArtistsFromApi => {
-                this.setState({ listOfAllArtists: allArtistsFromApi.data })
-            })
-
+    searchArtist = (event) => {
+        console.log("EVENT",event.target.value)
+        this.setState({
+            queryResult: event.target.value
+        })
+       
     }
 
-    searchArtist = (artist) => {
-        this.setState({
-            queryResult: artist.artist 
-        })
-    console.log("STATE",this.state, artist)}
+    getAllArtists = () => {
+        axios.get((process.env.REACT_APP_API_URL || "http://localhost:5000") + "/allartists")
+            .then(allArtistsFromApi => {
+                this.setState({ listOfAllArtists: allArtistsFromApi.data })
+                console.log('allArtistsFromApi', allArtistsFromApi.data[0].artist)
+            })
+    }
+
+    componentDidMount() {
+        this.getAllArtists()
+    }
+
+
 
     render() {
-        const test = this.state.listOfAllArtists.filter(e=>
-            e.userName.includes(this.state.queryResult)
-                
-          )
 
-        console.log("listOfAllArtists", this.state.listOfAllArtists)
+        console.log("STATE",this.state)
+
+        const filteredArtists = this.state.listOfAllArtists.filter(e =>
+            e.userName.includes(this.state.queryResult) ||
+            e.nationality.includes(this.state.queryResult) ||
+            e.techniques.join(', ').includes(this.state.queryResult) ||
+            e.hashtags.join(', ').includes(this.state.queryResult)
+
+        )
+        console.log("listOfAllArtists!!!!jsndjkdbk", this.state.listOfAllArtists.techniques)
+        console.log('filteredArtists',filteredArtists)
 
         return (
             <div>
                 <SearchBar onSearch={this.searchArtist} />
-                <ShowArtists data={test} />
+                <ShowArtists data={filteredArtists} />
 
             </div>
 

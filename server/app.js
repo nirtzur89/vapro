@@ -12,7 +12,7 @@ const cors         = require('cors');
 const passport     = require('passport')
 
 mongoose
-  .connect('mongodb://localhost/server', {useNewUrlParser: true})
+  .connect(process.env.MONGODB_URI || 'mongodb://localhost/server', {useNewUrlParser: true})
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
@@ -67,9 +67,6 @@ app.use(cors({
 const index = require('./routes/index');
 app.use('/', index);
 
-// const profile = require('./routes/profile');
-// app.use('/', profile)
-
  const projects = require('./routes/apis/project');
  app.use('/projects', projects)
 
@@ -82,4 +79,8 @@ app.use('/user', user)
 const allArtists = require('./routes/apis/user')
 app.use('/allartists', allArtists)
 
+app.use((req, res, next) => {
+  // If no routes match, send them the React HTML.
+  res.sendFile(__dirname + "/public/index.html");
+});
 module.exports = app;

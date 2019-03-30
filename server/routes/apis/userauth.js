@@ -12,14 +12,11 @@ const ValidateLoginInput = require ('../../validation/login')
 //load user
 const User = require('../../models/User')
 
-//route - GET users/test
-//desc - test users route
-// public
-router.get('/test', (req,res) => res.json({msg:"users works"}));
 
-//route - POST users/register
-//desc - register user
-// public
+//starting point '/' 
+
+//register user
+//public
 router.post('/register', (req,res) => {
     const {errors, isValid} = validateRegisterInput(req.body);
 
@@ -60,8 +57,7 @@ router.post('/register', (req,res) => {
         
 });
 
-//route - POST api/users/login
-//desc - register user
+//login user
 // public
 router.post('/login' , (req,res) => {
     const {errors, isValid} = ValidateLoginInput(req.body);
