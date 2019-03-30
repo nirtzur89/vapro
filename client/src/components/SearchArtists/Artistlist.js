@@ -21,7 +21,7 @@ class Artistlist extends Component {
     }
 
     getAllArtists = () => {
-        axios.get((process.env.REACT_APP_API_URL || "http://localhost:3001/") + "/vor-visualartists")
+        axios.get((process.env.REACT_APP_API_URL || "http://localhost:5000") + "/allartists")
             .then(allArtistsFromApi => {
                 this.setState({ listOfAllArtists: allArtistsFromApi.data })
                 console.log('allArtistsFromApi', allArtistsFromApi.data[0].artist)

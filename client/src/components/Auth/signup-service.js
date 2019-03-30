@@ -3,7 +3,7 @@ import axios from 'axios';
 class SignupService {
   constructor() {
     let service = axios.create({
-      baseURL: ((process.env.REACT_APP_API_URL || "http://localhost:3001/") + "/vot-visualartists"),
+      baseURL: ((process.env.REACT_APP_API_URL || "http://localhost:5000") + "/"),
       withCredentials: true
     });
     this.service = service;
