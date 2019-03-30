@@ -39,6 +39,7 @@ class AddProject extends Component {
     const event = this.state.event;
     const video = this.state.video;
     const date = this.state.date;
+
     this.service
       .addProject(artist, name, description, location, event, video, date)
       .then(response => {
@@ -55,6 +56,7 @@ class AddProject extends Component {
       })
       .catch(err => console.log(err));
   };
+
 
   handleChange = e => {
     const { name, value } = e.target;

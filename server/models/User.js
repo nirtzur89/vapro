@@ -29,7 +29,10 @@ const userModel = new Schema({
         required: true
     },
     bio: String,
-    nationality: String,
+    nationality: {
+        type: String,
+        default: ''
+    },
     techniques: [String],
     companies: [String],
     website: String,
@@ -41,7 +44,7 @@ const userModel = new Schema({
         youtube: String
     },
     hashtags: [String],
-    projects: [{type: Schema.Types.ObjectId, ref: 'Project'}],
+    projects: [{ type: Schema.Types.ObjectId, ref: 'Project' }],
     savedArtists: Array
 })
 
