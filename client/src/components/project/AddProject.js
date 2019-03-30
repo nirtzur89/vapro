@@ -21,10 +21,10 @@ class AddProject extends Component {
       }
   }
 
-  componentWillReceiveProps(nextProps) {
-    console.log("willreceiveprops")
-    this.setState({...this.state, loggedInUser: nextProps["userInSession"]})
-  }
+  // componentWillReceiveProps(nextProps) {
+  //   console.log("willreceiveprops")
+  //   this.setState({...this.state, loggedInUser: nextProps["userInSession"]})
+  // }
    
   handleFormSubmit = (e) => {
     e.preventDefault();
