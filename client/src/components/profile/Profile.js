@@ -18,6 +18,8 @@ class Profile extends Component {
           <div className="App-header">
               <h2>Welcome {this.props.user.userName}</h2>
           </div>
+          <h1>Your Profile</h1>
+          <p>username</p>
           <p className="App-intro">
             <button type="button" className="form-submit" onClick={this.handleLogout.bind(this)}>Logout</button>
         </p>
