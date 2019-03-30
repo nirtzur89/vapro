@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 import AuthService from './components/Auth/auth-service';
 // import { Switch, Route } from 'react-router-dom';
@@ -18,10 +19,10 @@ import Profile from './components/profile/Profile';
 
 //<Route exact path="/addproject" component={AddProject} userInSession={this.state.loggedInUser}/>
 
-class App extends Component {
 
-  constructor(props){
-    super(props)
+class App extends Component {
+  constructor(props) {
+    super(props);
     this.state = { loggedInUser: null };
     this.service = new AuthService();
   }
@@ -43,18 +44,21 @@ class App extends Component {
     }
   }
 
-  getTheUser= (userObj) => {
+  getTheUser = userObj => {
     this.setState({
       loggedInUser: userObj
-    })
-  }
-
-
+    });
+  };
   render() {
     return (
       <BrowserRouter>
         <div className="App">
+          <div className="tracking-out-expand">
+            <h1>VOR</h1>
+          </div>
+
           <Navbar />
+
           <Switch>
             <Route exact path="/" component={Parent} />
             <Route exact path="/login" component={LoginForm} />
@@ -68,6 +72,7 @@ class App extends Component {
         </div>
       </BrowserRouter>
     )
+
   }
 }
 //<Route exact path="/signup" component={SignupButtons} />
