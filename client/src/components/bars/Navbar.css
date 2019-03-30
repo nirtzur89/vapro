@@ -2,9 +2,10 @@
 @import 'https://fonts.googleapis.com/css?family=Biryani|Fjalla+One';
 
 .lower{
-  width:50px;
+  width:100%;
   opacity:0.8;
-  height: 50px;
+	height: 50px;
+	float: right; 
 }
 
 .lower:hover{
@@ -36,13 +37,22 @@ input{
 	background: rgba(0,0,0,0.9);
 }
 
-.overlay label{
-	width: 58px;
-	height:58px;
+img {
+  float: right; 
+  width: 50px;
+	height:50px;
 	position: absolute;
 	right: 20px;
-	top: 20px;
-	background: url('https://tympanus.net/Development/FullscreenOverlayStyles/img/cross.png');
+	top: 20px;  
+}
+
+.overlay label{
+	width: 50px;
+	height:50px;
+	position: absolute;
+	right: 26px;
+	top: 14px;
+	background: url('../../components/images/buttonwhite.png');
 	z-index: 100;
   cursor:pointer;
 }
@@ -76,7 +86,7 @@ input{
 .overlay ul li a {
 	font-weight: 300;
 	display: block;
-	color:#848482;
+	color: white;
   text-decoration:none;
 	-webkit-transition: color 0.2s;
 	transition: color 0.2s;
@@ -129,10 +139,13 @@ input{
 .navbar{
   position: relative;
   width: 100%;
-  height: 25px;
+  height: 0px;
   z-index: 1;
   display: flex;
-  justify-content: center;
+  justify-content: right;
   margin-top: 0px; 
-  background-color: #848482; 
+  background-color:rgba(0,0,0,0.9); 
 }
+
+
+
