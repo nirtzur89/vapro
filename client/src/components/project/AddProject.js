@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom'
+import AuthService from '../../components/Auth/auth-service';
+import withAuth from '../../components/Auth/withAuth';
+
+const Auth = new AuthService();
 
 class AddProject extends Component {
   constructor(props){
@@ -46,11 +50,15 @@ class AddProject extends Component {
       this.setState({[name]: value});
   }
 
+      handleLogout(){
+        Auth.logout()
+        this.props.history.replace('/');
+      }
+
   render(){
-    console.log(this.state.loggedInUser)
-    if(this.state.loggedInUser){
     return(
       <div>
+        <h1>adding a project for {this.props.user.userName}</h1>
         <form onSubmit={this.handleFormSubmit}>
           <label>Artist:</label>
           <input type="text" name="artist" value={this.state.artist} onChange={ e => this.handleChange(e)}/>
@@ -77,14 +85,7 @@ class AddProject extends Component {
         </form>
       </div>
     )
-    }else{
-      return (
-        <div>
-          you are not an artist!
-        </div>
-      )
-    }
   }
 }
 
-export default AddProject;
+export default withAuth(AddProject);
