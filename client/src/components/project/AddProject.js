@@ -57,7 +57,6 @@ class AddProject extends Component {
       .catch(err => console.log(err));
   };
 
-
   handleChange = e => {
     const { name, value } = e.target;
     this.setState({ [name]: value });
@@ -68,14 +67,6 @@ class AddProject extends Component {
       <div>
         <h1>adding a project for {this.props.user.userName}</h1>
         <form onSubmit={this.handleFormSubmit}>
-          <label>Artist:</label>
-          <input
-            type="text"
-            name="artist"
-            value={this.state.artist}
-            onChange={e => this.handleChange(e)}
-          />
-
           <label>Name:</label>
           <input
             type="text"

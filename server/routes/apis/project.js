@@ -49,7 +49,7 @@ router.post(
 //GET api/projects/all
 //GET route to retrieve all projects
 //public
-router.get("/all", (req, res, next) => {
+router.get("/", (req, res, next) => {
   Project.find()
     .then(allTheProjects => {
       res.json(allTheProjects);
