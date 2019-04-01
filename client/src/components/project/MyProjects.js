@@ -5,7 +5,7 @@ import ProjectService from "./project-service";
 import withAuth from "../../components/Auth/withAuth";
 import AuthService from "../../components/Auth/auth-service";
 
-const Auth = new ProjectService();
+//const Auth = new ProjectService();
 
 class MyProjects extends Component {
   constructor(props) {
