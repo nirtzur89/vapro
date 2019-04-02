@@ -3,8 +3,8 @@ import AuthService from "../auth-service";
 import "../Auth.css";
 
 class Login extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.handleChange = this.handleChange.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.Auth = new AuthService();
@@ -15,7 +15,7 @@ class Login extends Component {
 
     this.Auth.login(this.state.email, this.state.password)
       .then(res => {
-        this.props.history.replace("/user/:id");
+        this.props.history.replace("/me");
       })
       .catch(err => {
         alert(err);
@@ -23,10 +23,11 @@ class Login extends Component {
   }
 
   componentWillMount() {
-    if (this.Auth.loggedIn()) this.props.history.replace("/user/:id");
+    if (this.Auth.loggedIn()) this.props.history.replace("me");
   }
 
   render() {
+    console.log("props", this.props);
     return (
       <div className="loginForm formDiv">
         <div>
