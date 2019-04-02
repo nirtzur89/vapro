@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import AuthService from "./components/Auth/auth-service";
 // import { Switch, Route } from 'react-router-dom';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-//import "./App.css";
+import "./App.css";
+
 
 // import ProtectedRoute from './components/Auth/protected-route';
 import Navbar from "./components/bars/NavBar";
@@ -14,10 +15,12 @@ import Notfound from "./components/Notfound";
 import Artistlist from "./components/SearchArtists/Artistlist";
 import AllProjects from "./components/project/AllProjects";
 import AddProject from "./components/project/AddProject";
+
 import MyProjects from "./components/project/MyProjects";
 import PublicProfile from "./components/profile/PublicProfile";
 import PrivateProfile from "./components/profile/PrivatProfile";
 import PrivatProfile from "./components/profile/PrivatProfile";
+
 
 //<Route exact path="/addproject" component={AddProject} userInSession={this.state.loggedInUser}/>
 
@@ -55,10 +58,6 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div className="App">
-          <div className="tracking-out-expand">
-            <h1>VOR</h1>
-          </div>
-
           <Navbar />
 
           <Switch>
@@ -72,9 +71,11 @@ class App extends Component {
             <Route exact path="/artistlist" component={Artistlist} />
             <Route exact path="/allprojects" component={AllProjects} />
             <Route exact path="/addproject" component={AddProject} />
+
             <Route exact path="/myprojects" component={MyProjects} />
             <Route exact path="/user/artist/:id" component={PublicProfile} />
             <Route exact path="/me" component={PrivatProfile} />
+
             <Route component={Notfound} />
           </Switch>
         </div>
@@ -82,5 +83,4 @@ class App extends Component {
     );
   }
 }
-//<Route exact path="/signup" component={SignupButtons} />
 export default App;

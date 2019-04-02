@@ -3,6 +3,9 @@ import "./CuratorPick.css";
 const CuratorPick = () => {
   return (
     <div className="wrapperCuratorPick">
+      <div className="tracking-out-expand">
+        <h1>VOR</h1>
+      </div>
       <div key="1" className="pick1 embed-responsive embed-responsive-4by3">
         <p className="p1">i am first</p>
 
@@ -39,7 +42,6 @@ const CuratorPick = () => {
         </video>
       </div>
       <div key="3" className="pick3 embed-responsive embed-responsive-4by3">
-        {" "}
         <p className="p3">i am third</p>
         <video
           id="slide3"
