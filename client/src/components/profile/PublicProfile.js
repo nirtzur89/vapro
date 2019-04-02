@@ -5,7 +5,7 @@ import axios from "axios";
 class PublicProfile extends Component {
   constructor(props) {
     super(props);
-    this.state = { User: {} };
+    this.state = { user: null };
   }
 
 
@@ -25,15 +25,16 @@ class PublicProfile extends Component {
   }
 
   render() {
-    console.log("state.user!dknvdjbvkjwb", this.state);
+    if (!this.state.user) return <h1>Loading...</h1>
+    console.log("state.user!", this.state.user);
     console.log('PROPS', this.props.history.location.pathname)
 
     return (
       <div className="App">
         <div className="App-header">
-          <h2>MyProfile</h2>
-          <p>username: {this.state.User.userName}</p>
-          <p>Email: {this.state.User.email}</p>
+          <h2>{this.state.user.userName}</h2>
+          <p>location: {this.state.user.nationality}</p>
+          <p>Email: {this.state.user.email}</p>
         </div>
       </div>
     );

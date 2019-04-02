@@ -2,11 +2,13 @@ import React, { Component } from "react";
 import AuthService from "../Auth/auth-service";
 import withAuth from "../Auth/withAuth";
 import axios from "axios";
+import EditProfile from "./EditProfile";
+import { Link } from 'react-router-dom';
 
 class Profile extends Component {
   constructor(props) {
     super(props);
-    this.state = { user: {} };
+    this.state = { user: null };
     this.Auth = new AuthService();
   }
 
@@ -14,7 +16,7 @@ class Profile extends Component {
     axios
       .get(
         (process.env.REACT_APP_API_URL || "http://localhost:5000") +
-          `/user/${this.props.user.id}`,
+        `/user/${this.props.user.id}`,
         {
           headers: {
             authorization: this.Auth.getToken()
@@ -40,17 +42,22 @@ class Profile extends Component {
   }
 
   render() {
-    console.log("state!", this.state.user);
-    console.log("PROPS.MATCH.PARAMS", this.props);
-    // const activeUser = this.props.user.id;
+    if (!this.state.user) return <h1>Loading...</h1>
     return (
       <div className="App">
         <div className="App-header">
           <h2>MyProfile</h2>
           <p>username: {this.state.user.userName}</p>
           <p>Email: {this.state.user.email}</p>
+          <p>Bio: {this.state.user.bio}</p>
+          <p>Website: {this.state.user.website}</p>
+          <p>Techniques: {this.state.user.techniques}</p>
         </div>
-        <p className="App-intro">
+        <div>
+       <EditProfile theUser={this.state.user} getTheUser={this.getUser}/>
+         
+        </div>
+        <Link to={'/'}>BackToLandingPage</Link>
           <button
             type="button"
             className="form-submit"
@@ -58,7 +65,7 @@ class Profile extends Component {
           >
             Logout
           </button>
-        </p>
+       
       </div>
     );
   }
