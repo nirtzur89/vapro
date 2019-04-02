@@ -35,7 +35,7 @@ class Artistlist extends Component {
 
     render() {
 
-        console.log("STATE",this.state)
+        // console.log("STATE",this.state)
 
         const filteredArtists = this.state.listOfAllArtists.filter(e =>
             e.userName.includes(this.state.queryResult) ||
