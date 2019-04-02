@@ -9,17 +9,23 @@ class Profile extends Component {
     this.state = { user: {} };
     this.Auth = new AuthService();
   }
+
   getUser = () => {
     axios
-      .get((process.env.REACT_APP_API_URL || "http://localhost:5000") + `/user`, {
-        headers: {
-          authorization: this.Auth.getToken()
+      .get(
+        (process.env.REACT_APP_API_URL || "http://localhost:5000") +
+          `/user/${this.props.user.id}`,
+        {
+          headers: {
+            authorization: this.Auth.getToken()
+          }
         }
-      })
+      )
       .then(responseFromApi => {
         this.setState({
           user: responseFromApi.data
         });
+        console.log("give me user", this.state.user);
       });
   };
 
@@ -35,7 +41,7 @@ class Profile extends Component {
 
   render() {
     console.log("state!", this.state.user);
-    console.log('PROPS.MATCH.PARAMS', this.props)
+    console.log("PROPS.MATCH.PARAMS", this.props);
     // const activeUser = this.props.user.id;
     return (
       <div className="App">
@@ -44,18 +50,6 @@ class Profile extends Component {
           <p>username: {this.state.user.userName}</p>
           <p>Email: {this.state.user.email}</p>
         </div>
-        {/* <div>
-          {this.state.user.map(user => {
-            if (user._id === activeUser) {
-              return (
-                <div>
-                  <p>username: {user.userName}</p>
-                  <p>Email: {user.email}</p>
-                </div>
-              );
-            }
-          })}
-        </div> */}
         <p className="App-intro">
           <button
             type="button"

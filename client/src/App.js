@@ -16,6 +16,8 @@ import AllProjects from "./components/project/AllProjects";
 import AddProject from "./components/project/AddProject";
 import MyProjects from "./components/project/MyProjects";
 import PublicProfile from "./components/profile/PublicProfile";
+import PrivateProfile from "./components/profile/PrivatProfile";
+import PrivatProfile from "./components/profile/PrivatProfile";
 
 //<Route exact path="/addproject" component={AddProject} userInSession={this.state.loggedInUser}/>
 
@@ -72,6 +74,7 @@ class App extends Component {
             <Route exact path="/addproject" component={AddProject} />
             <Route exact path="/myprojects" component={MyProjects} />
             <Route exact path="/user/artist/:id" component={PublicProfile} />
+            <Route exact path="/user/:id" component={PrivatProfile} />
             <Route component={Notfound} />
           </Switch>
         </div>
