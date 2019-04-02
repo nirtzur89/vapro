@@ -2,10 +2,10 @@ const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
 const passport = require("passport");
-
 const User = require("../../models/User");
 const Project = require("../../models/Project");
 const ValidateProjectInput = require("../../validation/project");
+
 //route GET api/projects/test
 //des test project route
 //acc public
@@ -59,10 +59,26 @@ router.get("/", (req, res, next) => {
     });
 });
 
+//GET route to get my projects
+//private
+router.get(
+  "/myprojects",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    Project.find({ artist: req.user._id })
+      .then(allTheProjects => {
+        res.json(allTheProjects);
+      })
+      .catch(err => {
+        res.status(404).json({ nopost: "No projects under this id" });
+      });
+  }
+);
+
 //GET /api/artists/:artistName/projects/:projectID
 //GET route to retrieve a specific project
 //public
-router.get("/artists/:artistName/projects/:projectID", (req, res, next) => {
+router.get("/artist/:projectId", (req, res, next) => {
   Project.findById(req.params.projectId)
     .then(theProject => {
       res.status(200).json(theProject);
@@ -78,45 +94,66 @@ router.put(
   "/:projectId",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
-      res.status(400).json({ message: "Specified id is not valid" });
-      return;
-    }
-
-    Project.findByIdAndUpdate(req.params.id, req.body)
-      .then(() => {
-        res.json({
-          message: `Project with ID ${req.params.id} is updated successfully.`
-        });
-      })
-      .catch(err => {
-        res.json(err);
+    User.findById(req.user).then(user => {
+      Project.findById(req.params.id).then(project => {
+        if (user._id.toString() !== project.artist.toString()) {
+          console.log(user._id, "---", project.artist);
+          return res.status(401).json({ notAuthorized: "User not authorized" });
+        }
+        project
+          .findByIdAndUpdate(req.params.id, req.body)
+          .then(() => {
+            res.json({
+              message: `Project with ID ${
+                req.params.id
+              } is updated successfully.`
+            });
+          })
+          .catch(err =>
+            res.status(404).json({ projectnotfound: "no project found" })
+          );
       });
+    });
   }
 );
 
 //DELETE route to delete a specific project
 //private
 router.delete(
-  "/:id",
+  "/:projectid",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    User.findById(req.user).then(user => {
-      Project.findById(req.params.id)
-        .then(project => {
-          if (user._id.toString() !== project.artist.toString()) {
-            console.log(user._id, "---", project.artist);
-            return res
-              .status(401)
-              .json({ notAuthorized: "User not authorized" });
-          }
-          project.remove().then(() => res.json({ success: true }));
-        })
-        .catch(err =>
-          res.status(404).json({ projectnotfound: "no project found" })
+    console.log("body", req.url);
+    Project.find({ _id: req.url })
+
+      .then(project => {
+        project.remove().then(() =>
+          res.json({
+            message: `Project with ${req.params.id} is removed successfully.`
+          })
         );
-    });
+      })
+      .catch(err => {
+        res.json(err);
+      });
   }
 );
+//     User.findById(req.user._id).then(user => {
+//       Project.findOne(req.params.id)
+//         .then(project => {
+//           if (user.toString() !== project.artist.toString()) {
+//             console.log(user._id, "---", project.artist);
+//             return res
+//               .status(401)
+//               .json({ notAuthorized: "User not authorized" });
+//           }
+//           project.remove().then(() => res.json({ success: true }));
+//         })
+//         .catch(err =>
+//           res.status(404).json({ projectnotfound: "no project found" })
+//         );
+//     });
+//   }
+// );
 
 module.exports = router;
