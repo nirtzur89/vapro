@@ -1,18 +1,21 @@
 import React, { Component } from "react";
-import withAuth from "../Auth/withAuth";
+
 import axios from "axios";
 
-class Profile extends Component {
+class PublicProfile extends Component {
   constructor(props) {
     super(props);
-    this.state = { user: {} };
+    this.state = { User: {} };
   }
+
+
+
   getUser = () => {
     axios
-      .get((process.env.REACT_APP_API_URL || "http://localhost:5000") + `/user/artist/:id`)
+      .get((process.env.REACT_APP_API_URL || "http://localhost:5000") + `${this.props.history.location.pathname}`)
       .then(responseFromApi => {
         this.setState({
-          user: responseFromApi.data
+          user: responseFromApi.data[0]
         });
       });
   };
@@ -22,19 +25,19 @@ class Profile extends Component {
   }
 
   render() {
-    console.log("state!", this.state);
-    console.log('PROPS', this)
+    console.log("state.user!dknvdjbvkjwb", this.state);
+    console.log('PROPS', this.props.history.location.pathname)
 
     return (
       <div className="App">
         <div className="App-header">
           <h2>MyProfile</h2>
-          <p>username: {this.state.user.userName}</p>
-          <p>Email: {this.state.user.email}</p>
+          <p>username: {this.state.User.userName}</p>
+          <p>Email: {this.state.User.email}</p>
         </div>
       </div>
     );
   }
 }
 
-export default withAuth(Profile);
+export default PublicProfile;
