@@ -74,7 +74,7 @@ class App extends Component {
             <Route exact path="/addproject" component={AddProject} />
             <Route exact path="/myprojects" component={MyProjects} />
             <Route exact path="/user/artist/:id" component={PublicProfile} />
-            <Route exact path="/user/:id" component={PrivatProfile} />
+            <Route exact path="/me" component={PrivatProfile} />
             <Route component={Notfound} />
           </Switch>
         </div>
