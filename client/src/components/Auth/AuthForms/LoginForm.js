@@ -23,7 +23,7 @@ class Login extends Component {
   }
 
   componentWillMount() {
-    if (this.Auth.loggedIn()) this.props.history.replace("me");
+    if (this.Auth.loggedIn()) this.props.history.replace("/me");
   }
 
   render() {

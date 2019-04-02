@@ -5,7 +5,7 @@ import axios from "axios";
 class PublicProfile extends Component {
   constructor(props) {
     super(props);
-    this.state = { user: {} };
+    this.state = { user: null };
   }
 
 
@@ -25,6 +25,7 @@ class PublicProfile extends Component {
   }
 
   render() {
+    if (!this.state.user) return <h1>Loading...</h1>
     console.log("state.user!", this.state.user);
     console.log('PROPS', this.props.history.location.pathname)
 
