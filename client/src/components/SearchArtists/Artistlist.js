@@ -21,10 +21,9 @@ class Artistlist extends Component {
     }
 
     getAllArtists = () => {
-        axios.get((process.env.REACT_APP_API_URL || "http://localhost:5000") + "/allartists")
+        axios.get((process.env.REACT_APP_API_URL || "http://localhost:5000") + "/user")
             .then(allArtistsFromApi => {
                 this.setState({ listOfAllArtists: allArtistsFromApi.data })
-                console.log('allArtistsFromApi', allArtistsFromApi.data[0].artist)
             })
     }
 
@@ -45,8 +44,8 @@ class Artistlist extends Component {
             e.hashtags.join(', ').includes(this.state.queryResult)
 
         )
-        console.log("listOfAllArtists!!!!jsndjkdbk", this.state.listOfAllArtists.techniques)
-        console.log('filteredArtists',filteredArtists)
+        // console.log("listOfAllArtists!!!!jsndjkdbk", this.state.listOfAllArtists.techniques)
+        // console.log('filteredArtists',filteredArtists)
 
         return (
             <div>
