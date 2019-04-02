@@ -74,7 +74,7 @@ export default class AuthService {
     if (this.loggedIn()) {
       headers["Authorization"] = "Bearer " + this.getToken();
     }
-
+    //console.log("this is what we want", options);
     return fetch(url, {
       headers,
       ...options
@@ -87,6 +87,7 @@ export default class AuthService {
     // raises an error in case response status is not a success
     if (response.status >= 200 && response.status < 300) {
       // Success status lies between 200 to 300
+      console.log("this is what we want", response);
       return response;
     } else {
       var error = new Error(response.statusText);

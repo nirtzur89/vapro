@@ -23,17 +23,14 @@ class Artistlist extends Component {
     });
   };
 
-  getAllArtists = () => {
-    axios
-      .get(
-        (process.env.REACT_APP_API_URL || "http://localhost:5000") +
-          "/allartists"
-      )
-      .then(allArtistsFromApi => {
-        this.setState({ listOfAllArtists: allArtistsFromApi.data });
-        console.log("allArtistsFromApi", allArtistsFromApi.data[0].artist);
-      });
-  };
+
+    getAllArtists = () => {
+        axios.get((process.env.REACT_APP_API_URL || "http://localhost:5000") + "/user")
+            .then(allArtistsFromApi => {
+                this.setState({ listOfAllArtists: allArtistsFromApi.data })
+            })
+    }
+
 
   componentDidMount() {
     this.getAllArtists();
@@ -79,6 +76,7 @@ class Artistlist extends Component {
       </div>
     );
   }
+
 }
 
 export default Artistlist;

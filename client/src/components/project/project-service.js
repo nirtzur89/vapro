@@ -11,11 +11,33 @@ class ProjectService {
   }
 
   addProject = (artist, name, description, location, event, video, date) => {
+    return this.service
+      .post(
+        "/projects",
+        {
+          artist,
+          name,
+          description,
+          location,
+          event,
+          video,
+          date
+        },
+        {
+          headers: {
+            authorization: this.authService.getToken()
+          }
+        }
+      )
+      .then(response => response.data);
+  };
+
+  deleteProject = (artist, name, description, location, event, video, date) => {
     return (
       this.service
         // .get("/projects/test",
         // })
-        .post(
+        .delete(
           "/projects",
           {
             artist,
