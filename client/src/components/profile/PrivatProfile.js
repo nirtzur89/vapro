@@ -1,19 +1,21 @@
 import React, { Component } from "react";
-import AuthService from "../../components/Auth/auth-service";
-import withAuth from "../../components/Auth/withAuth";
+import AuthService from "../Auth/auth-service";
+import withAuth from "../Auth/withAuth";
 import axios from "axios";
 
 class Profile extends Component {
   constructor(props) {
     super(props);
-    this.state = { user: [] };
+    this.state = { user: {} };
     this.Auth = new AuthService();
-    // this.handleChange = this.handleChange.bind(this);
-    //this.handleFormSubmit = this.handleFormSubmit.bind(this);
   }
   getUser = () => {
     axios
-      .get((process.env.REACT_APP_API_URL || "http://localhost:5000") + "/user")
+      .get((process.env.REACT_APP_API_URL || "http://localhost:5000") + `/user`, {
+        headers: {
+          authorization: this.Auth.getToken()
+        }
+      })
       .then(responseFromApi => {
         this.setState({
           user: responseFromApi.data
@@ -33,13 +35,16 @@ class Profile extends Component {
 
   render() {
     console.log("state!", this.state.user);
-    const activeUser = this.props.user.id;
+    console.log('PROPS.MATCH.PARAMS', this.props)
+    // const activeUser = this.props.user.id;
     return (
       <div className="App">
         <div className="App-header">
           <h2>MyProfile</h2>
+          <p>username: {this.state.user.userName}</p>
+          <p>Email: {this.state.user.email}</p>
         </div>
-        <div>
+        {/* <div>
           {this.state.user.map(user => {
             if (user._id === activeUser) {
               return (
@@ -50,7 +55,7 @@ class Profile extends Component {
               );
             }
           })}
-        </div>
+        </div> */}
         <p className="App-intro">
           <button
             type="button"
