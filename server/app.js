@@ -73,17 +73,23 @@ app.use(
 const index = require("./routes/index");
 app.use("/", index);
 
-const projects = require("./routes/apis/project");
-app.use("/projects", projects);
+const artists = require("./routes/apis/Artist-routes");
+app.use("/", artists);
 
-const userAuth = require("./routes/apis/userauth");
-app.use("/", userAuth);
+const projects = require("./routes/apis/Project-routes");
+app.use("/", projects);
 
-const user = require("./routes/apis/user");
-app.use("/user", user);
+// const projects = require("./routes/apis/project");
+// app.use("/", projects);
 
-const allArtists = require("./routes/apis/user");
-app.use("/allartists", allArtists);
+// const userAuth = require("./routes/apis/userauth");
+// app.use("/", userAuth);
+
+// const user = require("./routes/apis/user");
+// app.use("/", user);
+
+// const allArtists = require("./routes/apis/user");
+// app.use("/", allArtists);
 
 app.use((req, res, next) => {
   // If no routes match, send them the React HTML.
