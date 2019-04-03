@@ -8,7 +8,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Navbar from "./components/bars/NavBar";
 import Parent from "./components/CuratorPick/CuratorPick";
 import ArtistSignupForm from "./components/Auth/AuthForms/ArtistSignupForm";
-
+import Signup from "./components/Auth/AuthForms/Signup";
 import LoginForm from "./components/Auth/AuthForms/LoginForm";
 import Notfound from "./components/Notfound";
 import Artistlist from "./components/SearchArtists/Artistlist";
@@ -61,10 +61,11 @@ class App extends Component {
 
           <Switch>
             <Route exact path="/" component={Parent} />
+            <Route exact path="/signup" component={Signup} />
             <Route exact path="/login" component={LoginForm} />
             <Route
               exact
-              path="/signup"
+              path="/Artistsignup"
               render={() => <ArtistSignupForm getUser={this.getTheUser} />}
             />
             <Route exact path="/artistlist" component={Artistlist} />
