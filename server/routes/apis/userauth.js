@@ -5,7 +5,7 @@ const passport = require("passport");
 const bcrypt = require("bcryptjs");
 
 // require the user model !!!!
-const User = require("../models/user-model");
+const User = require("../../models/User");
 
 authRoutes.post("/signup", (req, res, next) => {
   const email = req.body.email;
@@ -16,10 +16,10 @@ authRoutes.post("/signup", (req, res, next) => {
     return;
   }
 
-  if (password.length < 7) {
+  if (password.length < 5) {
     res.status(400).json({
       message:
-        "Please make your password at least 8 characters long for security purposes."
+        "Please make your password at least 6 characters long for security purposes."
     });
     return;
   }

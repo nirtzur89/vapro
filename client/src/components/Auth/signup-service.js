@@ -1,35 +1,35 @@
-import axios from "axios";
+// import axios from "axios";
 
-class SignupService {
-  constructor() {
-    let service = axios.create({
-      baseURL: (process.env.REACT_APP_API_URL || "http://localhost:5000") + "/",
-      withCredentials: true
-    });
-    this.service = service;
-  }
+// class SignupService {
+//   constructor() {
+//     let service = axios.create({
+//       baseURL: (process.env.REACT_APP_API_URL || "http://localhost:5000") + "/",
+//       withCredentials: true
+//     });
+//     this.service = service;
+//   }
 
-  register = (
-    artist,
-    userName,
-    firstName,
-    lastName,
-    email,
-    password,
-    password2
-  ) => {
-    return this.service
-      .post("/projects", {
-        artist,
-        userName,
-        firstName,
-        lastName,
-        email,
-        password,
-        password2
-      })
-      .then(response => response.data);
-  };
-}
+//   register = (
+//     artist,
+//     userName,
+//     firstName,
+//     lastName,
+//     email,
+//     password,
+//     password2
+//   ) => {
+//     return this.service
+//       .post("/projects", {
+//         artist,
+//         userName,
+//         firstName,
+//         lastName,
+//         email,
+//         password,
+//         password2
+//       })
+//       .then(response => response.data);
+//   };
+// }
 
-export default SignupService;
+// export default SignupService;

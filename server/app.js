@@ -12,7 +12,6 @@ const cors = require("cors");
 const passport = require("passport");
 
 const session = require("express-session");
-const passport = require("passport");
 
 require("../server/config/passport");
 
