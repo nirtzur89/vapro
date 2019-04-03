@@ -10,7 +10,7 @@ class EditProfile extends Component {
             userName: this.props.theUser.userName,
             // email: this.props.theUser.email,
             // password: this.props.theUser.email,
-            // nationality: this.props.theUser.nationality,
+            nationality: this.props.theUser.nationality,
             bio: this.props.theUser.bio,
             techniques: this.props.theUser.techniques,
             // company: this.props.theUser.company,
@@ -35,12 +35,13 @@ class EditProfile extends Component {
         const bio = this.state.bio;
         const techniques = this.state.techniques;
         const website = this.state.website;
+        const nationality = this.state.nationality;
         // const vimeo = this.state.social.vimeo;
         // const pinterest = this.state.social.pinterest;
 
         event.preventDefault();
 
-        axios.put((process.env.REACT_APP_API_URL || "http://localhost:5000") + `/user/${this.props.theUser._id}`, { userName, bio, techniques }, {
+        axios.put((process.env.REACT_APP_API_URL || "http://localhost:5000") + `/user/${this.props.theUser._id}`, { userName, bio, techniques, website, nationality }, {
             headers: {
                 authorization: this.Auth.getToken()
             }
@@ -65,8 +66,10 @@ class EditProfile extends Component {
                     <textarea name="bio" value={this.state.bio} onChange={e => this.onChange(e)} />
                     <label>Techniques:</label>
                     <input name="techniques" type="text" value={this.state.techniques} onChange={e => this.onChange(e)} />
-                    {/* <label>Website:</label>
-                    <input name="website" type="text" value={this.state.website} onChange={e => this.onChange(e)} /> */}
+                    <label>Website:</label>
+                    <input name="website" type="text" value={this.state.website} onChange={e => this.onChange(e)} />
+                    <label>Homebase:</label>
+                    <input name="nationality" type="text" value={this.state.nationality} onChange={e => this.onChange(e)} />
                     {/* <h3>Social Media</h3>
                     <label>Vimeo:</label>
                     <input type="text" value={this.state.social.vimeo} onChange={e => this.onChange(e)} />

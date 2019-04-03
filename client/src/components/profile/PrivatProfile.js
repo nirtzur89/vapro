@@ -52,8 +52,10 @@ class Profile extends Component {
           <p>Bio: {this.state.user.bio}</p>
           <p>Website: {this.state.user.website}</p>
           <p>Techniques: {this.state.user.techniques}</p>
+          <p>Homebase: {this.state.user.nationality}</p>
         </div>
         <div>
+
        <EditProfile theUser={this.state.user} getTheUser={this.getUser}/>
          
         </div>
