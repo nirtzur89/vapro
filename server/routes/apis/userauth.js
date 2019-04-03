@@ -38,6 +38,7 @@ router.post('/register', (req,res) => {
                     email: req.body.email,
                     avatar: req.body.avatar,
                     company: req.body.company,
+                    nationality: req.body.nationality,
                     password: req.body.password,
                     savedArtists: [],
                 });
