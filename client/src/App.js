@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import AuthService from "./components/Auth/auth-service";
 // import { Switch, Route } from 'react-router-dom';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import "./App.css";
-
+//import "./App.css";
 
 // import ProtectedRoute from './components/Auth/protected-route';
 import Navbar from "./components/bars/NavBar";
@@ -20,7 +19,6 @@ import MyProjects from "./components/project/MyProjects";
 import PublicProfile from "./components/profile/PublicProfile";
 import PrivateProfile from "./components/profile/PrivatProfile";
 import PrivatProfile from "./components/profile/PrivatProfile";
-
 
 //<Route exact path="/addproject" component={AddProject} userInSession={this.state.loggedInUser}/>
 
@@ -73,8 +71,8 @@ class App extends Component {
             <Route exact path="/addproject" component={AddProject} />
 
             <Route exact path="/myprojects" component={MyProjects} />
-            <Route exact path="/user/artist/:id" component={PublicProfile} />
-            <Route exact path="/me" component={PrivatProfile} />
+            <Route exact path="/artists/:id" component={PublicProfile} />
+            <Route exact path="/myprofile" component={PrivatProfile} />
 
             <Route component={Notfound} />
           </Switch>

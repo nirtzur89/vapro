@@ -54,7 +54,7 @@ router.post("/artist", (req, res, next) => {
 // GET route => to get all the artists
 router.get("/artists", (req, res, next) => {
   Artist.find()
-    .populate("projects")
+    //.populate("projects")
     .then(allTheArtists => {
       res.json(allTheArtists);
     })
@@ -63,7 +63,7 @@ router.get("/artists", (req, res, next) => {
     });
 });
 
-// GET route => to get a specific project/detailed view
+// GET route => to get a specific artist/detailed view
 router.get("/artists/:id", (req, res, next) => {
   if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
     res.status(400).json({ message: "Specified id is not valid" });
@@ -76,7 +76,7 @@ router.get("/artists/:id", (req, res, next) => {
   //                                   |
   //                                   |
   Artist.findById(req.params.id)
-    .populate("projects")
+    //.populate("projects")
     .then(response => {
       res.status(200).json(response);
     })

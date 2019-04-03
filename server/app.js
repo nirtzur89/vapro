@@ -41,7 +41,7 @@ app.use(cookieParser());
 app.use(passport.initialize());
 
 //passport config
-require("./config/passport")(passport);
+require("./config/passport", passport);
 
 // Express View engine setup
 
