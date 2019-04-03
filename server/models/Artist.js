@@ -1,7 +1,9 @@
 const mongoose = require("mongoose");
+const User = require("./user-model");
 const Schema = mongoose.Schema;
 
 const ArtistSchema = new Schema({
+  owner: { type: Schema.Types.ObjectId, ref: "User" },
   userName: {
     type: String,
     required: true

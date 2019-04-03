@@ -38,6 +38,7 @@ router.post("/artist", (req, res, next) => {
         },
         hashtags: [],
         projects: [],
+        owner: req.user._id,
         title: req.body.title,
         description: req.body.description
       })

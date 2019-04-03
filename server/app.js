@@ -37,11 +37,21 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-//passport
+// USE passport.initialize() and passport.session() HERE:
 app.use(passport.initialize());
+app.use(passport.session());
 
 //passport config
 require("./config/passport", passport);
+
+// ADD SESSION SETTINGS HERE:
+app.use(
+  session({
+    secret: "some secret goes here",
+    resave: true,
+    saveUninitialized: true
+  })
+);
 
 // Express View engine setup
 
@@ -72,6 +82,9 @@ app.use(
 //ROUTES
 const index = require("./routes/index");
 app.use("/", index);
+
+const authRoutes = require("./routes/apis/userauth");
+app.use("/", authRoutes);
 
 const artists = require("./routes/apis/Artist-routes");
 app.use("/", artists);

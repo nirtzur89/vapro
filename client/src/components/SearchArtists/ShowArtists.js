@@ -13,6 +13,11 @@ const ShowArtists = props => {
               <Link to={`/artists/${oneArtist._id}`}>
                 <h3>{oneArtist.userName}</h3>
               </Link>
+              <ul>
+                {oneArtist.projects.map((project, index) => {
+                  return <li key={index}>{project.name}</li>;
+                })}
+              </ul>
             </div>
           );
         })}

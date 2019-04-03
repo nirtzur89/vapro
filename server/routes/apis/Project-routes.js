@@ -7,6 +7,16 @@ const Project = require("../../models/Project");
 const Artist = require("../../models/Artist");
 const ValidateProjectInput = require("../../validation/project");
 
+router.get("/projects", (req, res, next) => {
+  Project.find()
+    .then(allTheProjects => {
+      res.json(allTheProjects);
+    })
+    .catch(err => {
+      res.json(err);
+    });
+});
+
 // GET route => to retrieve a specific Project
 router.get("/artists/:artistId/projects/:projectId", (req, res, next) => {
   Project.findById(req.params.taskId)

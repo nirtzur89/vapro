@@ -19,6 +19,7 @@ import MyProjects from "./components/project/MyProjects";
 import PublicProfile from "./components/profile/PublicProfile";
 import PrivateProfile from "./components/profile/PrivatProfile";
 import PrivatProfile from "./components/profile/PrivatProfile";
+import SingleProject from "./components/project/SingleProject";
 
 //<Route exact path="/addproject" component={AddProject} userInSession={this.state.loggedInUser}/>
 
@@ -69,7 +70,11 @@ class App extends Component {
             <Route exact path="/artistlist" component={Artistlist} />
             <Route exact path="/allprojects" component={AllProjects} />
             <Route exact path="/addproject" component={AddProject} />
-
+            <Route
+              exact
+              path="/artists/:id/projects/:projectId"
+              component={SingleProject}
+            />
             <Route exact path="/myprojects" component={MyProjects} />
             <Route exact path="/artists/:id" component={PublicProfile} />
             <Route exact path="/myprofile" component={PrivatProfile} />
