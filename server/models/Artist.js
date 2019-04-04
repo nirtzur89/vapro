@@ -11,7 +11,7 @@ const ArtistSchema = new Schema({
   artist: {
     type: Boolean,
     required: true,
-    default: false
+    default: true
   },
   firstName: {
     type: String,

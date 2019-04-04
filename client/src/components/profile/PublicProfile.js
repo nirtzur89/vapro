@@ -20,7 +20,7 @@ class PublicProfile extends Component {
     axios
       .get(
         (process.env.REACT_APP_API_URL || "http://localhost:5000") +
-          `/artists/${params.id}`
+        `/artists/${params.id}`
       )
       .then(responseFromApi => {
         const theProfile = responseFromApi.data;
@@ -33,9 +33,6 @@ class PublicProfile extends Component {
     if (!this.state.userName) {
       this.getSingleArtist();
     } else {
-      //                                                    {...props} => so we can have 'this.props.history' in Edit.js
-      //                                                                                          ^
-      //                                                                                          |
       return (
         <EditProfile
           theProfile={this.state}
@@ -47,12 +44,22 @@ class PublicProfile extends Component {
   };
 
   render() {
+    console.log('techs', this.state.techniques)
     return (
       <div className="App">
         <div className="App-header">
           <h2>{this.state.userName}</h2>
           <p>location: {this.state.nationality}</p>
           <p>Email: {this.state.email}</p>
+          <p>Homebase: {this.state.nationality}</p>
+          {/* <p>Designs: {this.state.techniques.map(oneTech => {
+            return (
+              <div>
+                {oneTech}
+              </div>
+            )
+
+          })}</p> */}
           <div>{this.renderEditForm()} </div>
         </div>
       </div>
