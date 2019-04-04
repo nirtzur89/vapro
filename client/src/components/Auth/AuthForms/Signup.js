@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import AuthService from "../auth-service";
-
+import "../Auth.css";
 import { Link } from "react-router-dom";
 
 class Signup extends Component {
@@ -33,34 +33,86 @@ class Signup extends Component {
   };
 
   render() {
+    console.log("props", this.props);
     return (
-      <div>
-        <form onSubmit={this.handleFormSubmit}>
-          <label>email:</label>
-          <input
-            type="text"
-            name="email"
-            value={this.state.email}
-            onChange={e => this.handleChange(e)}
-          />
-
-          <label>Password:</label>
-          <textarea
-            name="password"
-            value={this.state.password}
-            onChange={e => this.handleChange(e)}
-          />
-
-          <input type="submit" value="Signup" />
-        </form>
-
-        <p>
-          Already have account?
-          <Link to={"/"}> Login</Link>
-        </p>
+      <div className="wrapperloginForm color-change-3x">
+        <div className="col-md-6 mx-auto text-center">
+          <div className="slide-right">Join us</div>
+        </div>
+        <div className="slide-right">
+          <input type="checkbox" id="form-switch" />
+          <form
+            id="login-form"
+            className="forms"
+            action
+            method="post"
+            onSubmit={this.handleFormSubmit}
+          >
+            <input
+              type="text"
+              className="inputs"
+              placeholder="Email"
+              required
+              name="email"
+              value={this.state.email}
+              onChange={e => this.handleChange(e)}
+            />
+            <input
+              type="password"
+              className="inputs"
+              placeholder="Password"
+              required
+              name="password"
+              value={this.state.password}
+              onChange={e => this.handleChange(e)}
+            />
+            <button type="submit">Signup</button>
+            <label htmlFor="form-switch">
+              <Link to={"/login"}>
+                <span>Login</span>
+              </Link>
+            </label>
+          </form>
+        </div>
       </div>
     );
   }
+
+  // render() {
+  //   console.log("props", this.props);
+  //   return (
+  //     <div className="wrapperloginForm color-change-3x">
+  //       <div className="col-md-6 mx-auto text-center">
+  //         <div className="slide-right">Join us</div>
+  //       </div>
+  //       <div className="slide-right">
+  //         <input type="checkbox" id="form-switch" />
+  //         <form id="register-form" className="forms" action method="post">
+  //           <input
+  //             type="email"
+  //             className="inputs"
+  //             placeholder="Email"
+  //             required
+  //             name="email"
+  //             value={this.state.email}
+  //             onChange={e => this.handleChange(e)}
+  //           />
+  //           <input
+  //             type="password"
+  //             className="inputs"
+  //             placeholder="Password"
+  //             required
+  //             name="password"
+  //             value={this.state.password}
+  //             onChange={e => this.handleChange(e)}
+  //           />
+  //           <button type="submit">Signup</button>
+  //           <label htmlFor="form-switch">Already a Member? Login!</label>
+  //         </form>
+  //       </div>
+  //     </div>
+  //   );
+  // }
 }
 
 export default Signup;
