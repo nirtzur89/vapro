@@ -2,6 +2,7 @@ const User = require("../models/User");
 const LocalStrategy = require("passport-local").Strategy;
 const bcrypt = require("bcryptjs");
 const passport = require("passport");
+const mongoose = require("mongoose");
 
 passport.serializeUser((loggedInUser, cb) => {
   cb(null, loggedInUser._id);
@@ -18,27 +19,35 @@ passport.deserializeUser((userIdFromSession, cb) => {
 });
 
 passport.use(
-  new LocalStrategy((email, password, next) => {
-    User.findOne({ email }, (err, foundUser) => {
-      if (err) {
-        next(err);
-        return;
-      }
+  new LocalStrategy(
+    {
+      usernameField: "email",
+      passwordField: "password"
+    },
+    (email, password, next) => {
+      User.findOne({ email }, (err, foundUser) => {
+        if (err) {
+          next(err);
+          return;
+        }
 
-      if (!foundUser) {
-        next(null, false, { message: "Incorrect username." });
-        return;
-      }
+        if (!foundUser) {
+          next(null, false, { message: "Incorrect username." });
+          return;
+        }
 
-      if (!bcrypt.compareSync(password, foundUser.password)) {
-        next(null, false, { message: "Incorrect password." });
-        return;
-      }
+        if (!bcrypt.compareSync(password, foundUser.password)) {
+          next(null, false, { message: "Incorrect password." });
+          return;
+        }
 
-      next(null, foundUser);
-    });
-  })
+        next(null, foundUser);
+      });
+    }
+  )
 );
+
+module.exports = passport;
 
 // const jwtStrategy = require('passport-jwt').Strategy;
 // const ExtractJwt = require('passport-jwt').ExtractJwt;

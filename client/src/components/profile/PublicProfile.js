@@ -20,7 +20,10 @@ class PublicProfile extends Component {
     axios
       .get(
         (process.env.REACT_APP_API_URL || "http://localhost:5000") +
-        `/artists/${params.id}`
+
+          `/artists/${params.id}`,
+        { withCredentials: true }
+
       )
       .then(responseFromApi => {
         const theProfile = responseFromApi.data;

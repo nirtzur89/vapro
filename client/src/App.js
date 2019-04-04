@@ -27,7 +27,6 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = { loggedInUser: null };
-    this.service = new AuthService();
   }
 
   fetchUser() {
@@ -38,7 +37,6 @@ class App extends Component {
           this.setState({
             loggedInUser: response
           });
-          console.log(this.state.loggedInUser);
         })
         .catch(err => {
           this.setState({
@@ -53,20 +51,26 @@ class App extends Component {
       loggedInUser: userObj
     });
   };
+
   render() {
     return (
       <BrowserRouter>
         <div className="App">
-          <Navbar />
+          <Navbar userInSession={this.state.loggedInUser} />
 
           <Switch>
             <Route exact path="/" component={Parent} />
-            <Route exact path="/signup" component={Signup} />
-            <Route exact path="/login" component={LoginForm} />
             <Route
               exact
-              path="/Artistsignup"
-              render={() => <ArtistSignupForm getUser={this.getTheUser} />}
+              path="/signup"
+              render={() => <Signup getUser={this.getTheUser} />}
+            />
+            <Route
+              exact
+              path="/login"
+              render={() => <LoginForm getUser={this.getTheUser} />}
+            />
+            <Route exact path="/Artistsignup" component={ArtistSignupForm} />}
             />
             <Route exact path="/artistlist" component={Artistlist} />
             <Route exact path="/allprojects" component={AllProjects} />
@@ -79,7 +83,6 @@ class App extends Component {
             <Route exact path="/myprojects" component={MyProjects} />
             <Route exact path="/artists/:id" component={PublicProfile} />
             <Route exact path="/myprofile" component={PrivatProfile} />
-
             <Route component={Notfound} />
           </Switch>
         </div>
