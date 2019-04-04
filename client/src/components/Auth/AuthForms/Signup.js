@@ -38,6 +38,7 @@ class Signup extends Component {
         <form onSubmit={this.handleFormSubmit}>
           <label>email:</label>
           <input
+            style={{}}
             type="text"
             name="email"
             value={this.state.email}
