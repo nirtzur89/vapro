@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import AuthService from "../auth-service";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import "../Auth.css";
 
 class Login extends Component {
@@ -19,6 +19,7 @@ class Login extends Component {
       .then(response => {
         this.setState({ email: "", password: "" });
         this.props.getUser(response);
+        this.props.history.push("/Artistsignup");
       })
       .catch(error => console.log(error));
   };
@@ -62,7 +63,9 @@ class Login extends Component {
               value={this.state.password}
               onChange={e => this.handleChange(e)}
             />
+
             <button type="submit">Login</button>
+
             <label htmlFor="form-switch">
               <Link to={"/signup"}>
                 <span>SignUp</span>
@@ -74,4 +77,4 @@ class Login extends Component {
     );
   }
 }
-export default Login;
+export default withRouter(Login);

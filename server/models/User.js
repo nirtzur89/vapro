@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema(
   {
     email: String,
-    password: String
+    password: String,
+    artist: { type: Schema.Types.ObjectId, ref: "Artist" }
   },
   {
     timestamps: true
