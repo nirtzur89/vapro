@@ -1,6 +1,6 @@
 const express = require("express");
 const authRoutes = express.Router();
-
+const mongoose = require("mongoose");
 const passport = require("passport");
 const bcrypt = require("bcryptjs");
 
@@ -80,6 +80,7 @@ authRoutes.post("/login", (req, res, next) => {
       // "failureDetails" contains the error messages
       // from our logic in "LocalStrategy" { message: '...' }.
       res.status(401).json(failureDetails);
+      console.log("u r here", theUser);
       return;
     }
 

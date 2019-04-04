@@ -45,7 +45,8 @@ class EditProfile extends Component {
       .put(
         (process.env.REACT_APP_API_URL || "http://localhost:5000") +
           `/artist/${this.props.theProfile._id}`,
-        { userName, bio, techniques, website, nationality }
+        { userName, bio, techniques, website, nationality },
+        { withCredentials: true }
         // {
         //   headers: {
         //     authorization: this.Auth.getToken()

@@ -17,7 +17,8 @@ class Profile extends Component {
     axios
       .get(
         (process.env.REACT_APP_API_URL || "http://localhost:5000") +
-          `/artists/${params.id}`
+          `/artists/${params.id}`,
+        { withCredentials: true }
         // {
         //   headers: {
         //     authorization: this.Auth.getToken()

@@ -28,7 +28,8 @@ class Artistlist extends Component {
     axios
 
       .get(
-        (process.env.REACT_APP_API_URL || "http://localhost:5000") + "/artists"
+        (process.env.REACT_APP_API_URL || "http://localhost:5000") + "/artists",
+        { withCredentials: true }
       )
       .then(allArtistsFromApi => {
         this.setState({ listOfAllArtists: allArtistsFromApi.data });

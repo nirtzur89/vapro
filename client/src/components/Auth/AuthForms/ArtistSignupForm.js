@@ -45,7 +45,8 @@ class ArtistSignupForm extends Component {
           lastName,
           email,
           password
-        }
+        },
+        { withCredentials: true }
       )
       .then(() => {
         // this.props.getdata();
