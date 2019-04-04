@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import SignupService from "../signup-service";
 import "../Auth.css";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 import axios from "axios";
 
@@ -9,6 +9,7 @@ class ArtistSignupForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      loggedInUser: this.props.userInSession,
       userName: "",
       firstName: "",
       lastName: "",
@@ -47,7 +48,7 @@ class ArtistSignupForm extends Component {
         { withCredentials: true }
       )
       .then(() => {
-        // this.props.getdata();
+        //this.props.getdata();
         this.setState({
           userName: "",
           firstName: "",
@@ -56,6 +57,9 @@ class ArtistSignupForm extends Component {
 
           password: ""
         });
+
+      //  this.props.history.push("/artistlist");
+
       })
       .catch(err => console.log(err));
   }
@@ -68,6 +72,7 @@ class ArtistSignupForm extends Component {
   }
 
   render() {
+    console.log("props", this.state.loggedInUser);
     return (
       <div className="wrappersignupForm color-change-3x">
         <div className="col-md-6 mx-auto text-center">
@@ -135,4 +140,4 @@ class ArtistSignupForm extends Component {
   }
 }
 
-export default ArtistSignupForm;
+export default withRouter(ArtistSignupForm);

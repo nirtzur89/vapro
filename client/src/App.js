@@ -26,7 +26,10 @@ import SingleProject from "./components/project/SingleProject";
 class App extends Component {
   constructor(props) {
     super(props);
+
     this.state = { loggedInUser: null, searchTerm: "" };
+    this.service = new AuthService();
+
   }
 
   fetchUser() {
@@ -59,6 +62,7 @@ class App extends Component {
   };
 
   render() {
+    this.fetchUser();
     return (
       <BrowserRouter>
         <div className="App">
@@ -79,8 +83,30 @@ class App extends Component {
               path="/login"
               render={() => <LoginForm getUser={this.getTheUser} />}
             />
-            <Route exact path="/Artistsignup" component={ArtistSignupForm} />}
+            <Route
+              exact
+              path="/Artistsignup"
+              render={() =>
+                this.state.loggedInUser ? (
+                  <ArtistSignupForm userInSession={this.state.loggedInUser} />
+                ) : (
+                  <h1>Loading...</h1>
+                )
+              }
             />
+            } />
+            <Route
+              exact
+              path="/artistlist"
+              render={() =>
+                this.state.loggedInUser ? (
+                  <Artistlist userInSession={this.state.loggedInUser} />
+                ) : (
+                  <h1>Loading...</h1>
+                )
+              }
+            />
+
             <Route
               exact
               path="/artistlist"
@@ -88,6 +114,7 @@ class App extends Component {
                 return <Artistlist searchTerm={this.state.searchTerm} />;
               }}
             />
+
             <Route exact path="/allprojects" component={AllProjects} />
             <Route exact path="/addproject" component={AddProject} />
             <Route
@@ -96,7 +123,17 @@ class App extends Component {
               component={SingleProject}
             />
             <Route exact path="/myprojects" component={MyProjects} />
-            <Route exact path="/artists/:id" component={PublicProfile} />
+            <Route
+              exact
+              path="/artists/:id"
+              render={() =>
+                this.state.loggedInUser ? (
+                  <PublicProfile userInSession={this.state.loggedInUser} />
+                ) : (
+                  <h1>Loading...</h1>
+                )
+              }
+            />
             <Route exact path="/myprofile" component={PrivatProfile} />
             <Route component={Notfound} />
           </Switch>
@@ -105,4 +142,5 @@ class App extends Component {
     );
   }
 }
+
 export default App;

@@ -31,6 +31,7 @@ router.get("/artists/:artistId/projects/:projectId", (req, res, next) => {
 // POST route => to create a new Project
 router.post("/projects", (req, res, next) => {
   Project.create({
+    owner: req.user._id,
     name: req.body.name,
     description: req.body.description,
     location: req.body.location,

@@ -8,7 +8,9 @@ import EditProfile from "./EditProfile";
 class PublicProfile extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      loggedInUser: this.props.userInSession
+    };
   }
 
   componentDidMount() {
@@ -20,10 +22,8 @@ class PublicProfile extends Component {
     axios
       .get(
         (process.env.REACT_APP_API_URL || "http://localhost:5000") +
-
           `/artists/${params.id}`,
         { withCredentials: true }
-
       )
       .then(responseFromApi => {
         const theProfile = responseFromApi.data;
@@ -47,7 +47,7 @@ class PublicProfile extends Component {
   };
 
   render() {
-    console.log('techs', this.state.techniques)
+    console.log("techs", this.state.techniques);
     return (
       <div className="App">
         <div className="App-header">
