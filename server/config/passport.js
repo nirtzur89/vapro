@@ -2,6 +2,7 @@ const User = require("../models/User");
 const LocalStrategy = require("passport-local").Strategy;
 const bcrypt = require("bcryptjs");
 const passport = require("passport");
+const mongoose = require("mongoose");
 
 passport.serializeUser((loggedInUser, cb) => {
   cb(null, loggedInUser._id);
@@ -39,6 +40,8 @@ passport.use(
     });
   })
 );
+
+module.exports = passport;
 
 // const jwtStrategy = require('passport-jwt').Strategy;
 // const ExtractJwt = require('passport-jwt').ExtractJwt;

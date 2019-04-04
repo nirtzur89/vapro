@@ -22,7 +22,7 @@ class Signup extends Component {
           email: "",
           password: ""
         });
-        // this.props.getUser(response)
+        this.props.getUser(response);
       })
       .catch(error => console.log(error));
   };

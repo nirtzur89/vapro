@@ -14,6 +14,26 @@ class AuthService {
       .post("/signup", { email, password })
       .then(response => response.data);
   };
+
+  loggedin = () => {
+    return this.service.get("/loggedin").then(response => response.data);
+  };
+
+  login = (email, password) => {
+    return this.service
+      .post("/login", { email, password })
+      .then(response => response.data);
+  };
+
+  logout = () => {
+    return this.service.post("/logout", {}).then(response => response.data);
+  };
+
+  getToken() {
+    // Retrieves the user token from localStorage
+    console.log("GET TOKEN", localStorage.getItem("id_token"));
+    return localStorage.getItem("id_token");
+  }
 }
 export default AuthService;
 
@@ -63,12 +83,6 @@ export default AuthService;
 //   setToken(idToken) {
 //     // Saves user token to localStorage
 //     localStorage.setItem("id_token", idToken);
-//   }
-
-//   getToken() {
-//     // Retrieves the user token from localStorage
-//     console.log("GET TOKEN", localStorage.getItem("id_token"));
-//     return localStorage.getItem("id_token");
 //   }
 
 //   logout() {
