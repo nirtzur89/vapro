@@ -29,59 +29,45 @@ class Login extends Component {
   };
 
   render() {
+    console.log("props", this.props);
     return (
-
       <div className="wrapperloginForm color-change-3x">
         <div className="col-md-6 mx-auto text-center">
-          <div className="slide-right">Join us</div>
+          <div className="slide-right">Log In</div>
         </div>
         <div className="slide-right">
           <input type="checkbox" id="form-switch" />
-          <form id="login-form" className="forms" action method="post">
+          <form
+            id="login-form"
+            className="forms"
+            action
+            method="post"
+            onSubmit={this.handleFormSubmit}
+          >
             <input
               type="text"
-              className="inputs"
-              placeholder="Username"
-              required
-            />
-            <input
-              type="password"
-              className="inputs"
-              placeholder="Password"
-              required
-            />
-            <button type="submit">Login</button>
-            <label htmlFor="form-switch">
-              <span>Register</span>
-            </label>
-          </form>
-          <form id="register-form" className="forms" action method="post">
-            <input
-              type="text"
-              className="inputs"
-              placeholder="Username"
-              required
-            />
-            <input
-              type="email"
               className="inputs"
               placeholder="Email"
               required
+              name="email"
+              value={this.state.email}
+              onChange={e => this.handleChange(e)}
             />
             <input
               type="password"
               className="inputs"
               placeholder="Password"
               required
+              name="password"
+              value={this.state.password}
+              onChange={e => this.handleChange(e)}
             />
-            <input
-              type="password"
-              className="inputs"
-              placeholder="Password"
-              required
-            />
-            <button type="submit">Register</button>
-            <label htmlFor="form-switch">Already a Member? Sign In!</label>
+            <button type="submit">Login</button>
+            <label htmlFor="form-switch">
+              <Link to={"/signup"}>
+                <span>SignUp</span>
+              </Link>
+            </label>
           </form>
         </div>
       </div>
@@ -89,60 +75,3 @@ class Login extends Component {
   }
 }
 export default Login;
-
-// class Login extends Component {
-//   constructor(props) {
-//     super(props);
-//     this.handleChange = this.handleChange.bind(this);
-//     this.handleFormSubmit = this.handleFormSubmit.bind(this);
-//     this.Auth = new AuthService();
-//   }
-
-//   handleFormSubmit(e) {
-//     e.preventDefault();
-
-//     this.Auth.login(this.state.email, this.state.password)
-//       .then(res => {
-//         this.props.history.replace("/me");
-//       })
-//       .catch(err => {
-//         alert(err);
-//       });
-//   }
-
-//   componentWillMount() {
-//     if (this.Auth.loggedIn()) this.props.history.replace("/me");
-//   }
-
-//   render() {
-//     console.log("props", this.props);
-//     return (
-//       <div className="loginForm formDiv">
-//         <div>
-//           <h1>Login</h1>
-//           <form onSubmit={this.handleFormSubmit}>
-//             <input
-//               placeholder="Email goes here..."
-//               name="email"
-//               type="text"
-//               onChange={this.handleChange}
-//             />
-//             <input
-//               placeholder="Password goes here..."
-//               name="password"
-//               type="password"
-//               onChange={this.handleChange}
-//             />
-//             <input value="SUBMIT" type="submit" />
-//           </form>
-//         </div>
-//       </div>
-//     );
-//   }
-
-//   handleChange(e) {
-//     this.setState({
-//       [e.target.name]: e.target.value
-//     });
-//   }
-// }
