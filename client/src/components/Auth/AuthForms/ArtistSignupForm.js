@@ -57,7 +57,9 @@ class ArtistSignupForm extends Component {
 
           password: ""
         });
-        this.props.history.push("/artistlist");
+
+      //  this.props.history.push("/artistlist");
+
       })
       .catch(err => console.log(err));
   }
@@ -86,7 +88,6 @@ class ArtistSignupForm extends Component {
               placeholder="Username"
               onChange={this.handleChange}
             />
-
             <input
               type="text"
               name="firstName"
@@ -95,7 +96,6 @@ class ArtistSignupForm extends Component {
               placeholder="Firstname"
               onChange={this.handleChange}
             />
-
             <input
               type="text"
               name="lastName"
@@ -104,7 +104,6 @@ class ArtistSignupForm extends Component {
               placeholder="Lastname"
               onChange={this.handleChange}
             />
-
             <input
               type="email"
               name="email"
@@ -113,7 +112,6 @@ class ArtistSignupForm extends Component {
               placeholder="Email"
               onChange={this.handleChange}
             />
-
             <input
               type="password"
               name="password"
@@ -122,7 +120,6 @@ class ArtistSignupForm extends Component {
               placeholder="Password"
               onChange={this.handleChange}
             />
-
             <input
               type="password"
               name="password2"

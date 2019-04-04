@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./SearchBar.css";
+import { withRouter } from "react-router-dom";
 
 class SearchBar extends Component {
   constructor(props) {
@@ -13,11 +14,12 @@ class SearchBar extends Component {
     this.setState({
       searchTerm: e.target.value
     });
-    this.props.onSearch(this.state);
   };
 
   handleSearch = event => {
     event.preventDefault();
+    this.props.onSearch(this.state.searchTerm);
+    this.props.history.push("/artistlist");
   };
 
   render() {
@@ -28,13 +30,18 @@ class SearchBar extends Component {
           integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
           crossOrigin="anonymous"
         />
-        <form className="SearchBarform" action="/artistlist">
+        <form
+          className="SearchBarform"
+          action="/artistlist"
+          onSubmit={this.handleSearch}
+        >
           <input
             className="inputSearchbar"
             type="search"
             name="searchTerm"
             placeholder="Search"
-            onChange={this.props.onSearch}
+            value={this.state.searchTerm}
+            onChange={this.onChange}
           />
           <i className="fa fa-search" />
           {/* <button className="SearchBar-submit" onClick={this.handleSearch}>
@@ -46,4 +53,4 @@ class SearchBar extends Component {
   }
 }
 
-export default SearchBar;
+export default withRouter(SearchBar);
