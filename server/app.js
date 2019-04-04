@@ -11,6 +11,10 @@ const path = require("path");
 const cors = require("cors");
 const passport = require("passport");
 
+const session = require("express-session");
+
+require("../server/config/passport");
+
 mongoose
   .connect(process.env.MONGODB_URI || "mongodb://localhost/server", {
     useNewUrlParser: true
@@ -37,11 +41,21 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-//passport
-app.use(passport.initialize());
-
 //passport config
-require("./config/passport")(passport);
+require("./config/passport", passport);
+
+// ADD SESSION SETTINGS HERE:
+app.use(
+  session({
+    secret: "some secret goes here",
+    resave: true,
+    saveUninitialized: true
+  })
+);
+
+// USE passport.initialize() and passport.session() HERE:
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Express View engine setup
 
@@ -73,17 +87,26 @@ app.use(
 const index = require("./routes/index");
 app.use("/", index);
 
-const projects = require("./routes/apis/project");
-app.use("/projects", projects);
+const authRoutes = require("./routes/apis/userauth");
+app.use("/", authRoutes);
 
-const userAuth = require("./routes/apis/userauth");
-app.use("/", userAuth);
+const artists = require("./routes/apis/Artist-routes");
+app.use("/", artists);
 
-const user = require("./routes/apis/user");
-app.use("/user", user);
+const projects = require("./routes/apis/Project-routes");
+app.use("/", projects);
 
-const allArtists = require("./routes/apis/user");
-app.use("/allartists", allArtists);
+// const projects = require("./routes/apis/project");
+// app.use("/", projects);
+
+// const userAuth = require("./routes/apis/userauth");
+// app.use("/", userAuth);
+
+// const user = require("./routes/apis/user");
+// app.use("/", user);
+
+// const allArtists = require("./routes/apis/user");
+// app.use("/", allArtists);
 
 app.use((req, res, next) => {
   // If no routes match, send them the React HTML.

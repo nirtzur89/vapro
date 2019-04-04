@@ -3,7 +3,7 @@ import AuthService from "../Auth/auth-service";
 import withAuth from "../Auth/withAuth";
 import axios from "axios";
 import EditProfile from "./EditProfile";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 class Profile extends Component {
   constructor(props) {
@@ -12,16 +12,17 @@ class Profile extends Component {
     this.Auth = new AuthService();
   }
 
-  getUser = () => {
+  getArtist = () => {
+    const { params } = this.props.match;
     axios
       .get(
         (process.env.REACT_APP_API_URL || "http://localhost:5000") +
-        `/user/${this.props.user.id}`,
-        {
-          headers: {
-            authorization: this.Auth.getToken()
-          }
-        }
+          `/artists/${params.id}`
+        // {
+        //   headers: {
+        //     authorization: this.Auth.getToken()
+        //   }
+        // }
       )
       .then(responseFromApi => {
         this.setState({
@@ -42,7 +43,7 @@ class Profile extends Component {
   }
 
   render() {
-    if (!this.state.user) return <h1>Loading...</h1>
+    if (!this.state.user) return <h1>Loading...</h1>;
     return (
       <div className="App">
         <div className="App-header">
@@ -55,19 +56,16 @@ class Profile extends Component {
           <p>Homebase: {this.state.user.nationality}</p>
         </div>
         <div>
-
-       <EditProfile theUser={this.state.user} getTheUser={this.getUser}/>
-         
+          <EditProfile theUser={this.state.user} getTheUser={this.getUser} />
         </div>
-        <Link to={'/'}>BackToLandingPage</Link>
-          <button
-            type="button"
-            className="form-submit"
-            onClick={this.handleLogout.bind(this)}
-          >
-            Logout
-          </button>
-       
+        <Link to={"/"}>BackToLandingPage</Link>
+        <button
+          type="button"
+          className="form-submit"
+          onClick={this.handleLogout.bind(this)}
+        >
+          Logout
+        </button>
       </div>
     );
   }
