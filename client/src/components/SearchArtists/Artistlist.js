@@ -6,7 +6,7 @@ import "./Artistlist.css";
 import artistList from "../images/ArtistList.png";
 import eventList from "../images/EventList.png";
 import designList from "../images/designList.png";
-import ArtistSignupForm from "../Auth/AuthForms/ArtistSignupForm";
+
 
 class Artistlist extends Component {
   constructor(props) {
@@ -31,7 +31,9 @@ class Artistlist extends Component {
       )
       .then(allArtistsFromApi => {
         this.setState({ listOfAllArtists: allArtistsFromApi.data });
+        console.log("artistsfromAPI", allArtistsFromApi.data)
       });
+
     console.log("stateeee", this.state);
   };
 
@@ -44,21 +46,21 @@ class Artistlist extends Component {
 
     const filteredArtists = this.state.listOfAllArtists.filter(
       e =>
-        e.userName.includes(this.state.queryResult) ||
-        e.nationality.includes(this.state.queryResult) ||
-        e.techniques.join(", ").includes(this.state.queryResult) ||
-        e.hashtags.join(", ").includes(this.state.queryResult)
+        e.userName.toLowerCase().includes(this.state.queryResult.toLowerCase()) ||
+        e.nationality.toLowerCase().includes(this.state.queryResult.toLowerCase()) ||
+        e.techniques.join(", ").toLowerCase().includes(this.state.queryResult.toLowerCase()) ||
+        e.hashtags.join(", ").toLowerCase().includes(this.state.queryResult.toLowerCase())
     );
-    console.log(
-      "listOfAllArtists!!!!jsndjkdbk",
-      this.state.listOfAllArtists.techniques
-    );
-    console.log("filteredArtists", filteredArtists);
 
+
+      
+
+    console.log('filteredArtists', filteredArtists)
     return (
       <div>
+        <SearchBar onSearch={this.searchArtist} />
         <div className="wrapperArtistList">
-          <ShowArtists data={filteredArtists} />
+          <ShowArtists data={filteredArtists}/>
           <div key="A" className="pickA">
             <img id="slideA" alt="ArtistList" src={artistList} autoPlay loop />
           </div>
@@ -74,7 +76,7 @@ class Artistlist extends Component {
               loop
             />
           </div>
-          <SearchBar onSearch={this.searchArtist} />
+
         </div>
       </div>
     );
