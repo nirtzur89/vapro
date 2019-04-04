@@ -2,21 +2,43 @@
 
 .wrapperArtistList {
   margin-top: 0px;
-  background-color: white;
+  background: rgba(0, 0, 0, 0.5);
   width: 100%;
   height: 100%;
   font-family: "Biryani";
-  border: black;
+  position: fixed;
+}
+
+.flex-containerA {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-content: flex-start;
+  align-items: flex-start;
+  justify-items: flex-start;
+  flex-wrap: nowrap;
+  width: 100vw;
+  flex-shrink: 1;
+}
+.flex-containerE {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-content: flex-end;
+  align-items: flex-start;
+  justify-items: flex-end;
+  flex-wrap: nowrap;
+  width: 100vw;
+  flex-shrink: 1;
 }
 
 .pickA {
   position: relative;
   overflow: hidden;
-  width: 100%;
+  width: 10%;
   height: 250px;
   transition: all 0.5s ease-out;
-  z-index: 9;
-  background: rgba(0, 0, 0, 0.5);
+  margin-right: 0;
 }
 
 .pickA::after {
@@ -24,16 +46,57 @@
   height: 100%;
   position: absolute;
   top: 0;
-  /* left: 0; */
   transition: all 0.5s ease-out;
   pointer-events: none;
+}
+
+.Artist {
+  display: center;
+  border: 2px solid white;
+  height: 200px;
+  width: 200px;
+  margin-top: 2%;
+  font-family: "Biryani";
+  font-size: 15px;
+}
+
+.Artist:hover {
+  background-color: rgba(250, 245, 245, 0.3);
+}
+
+.Event {
+  display: center;
+  border: 2px solid white;
+  height: 200px;
+  width: 200px;
+  margin-top: 2%;
+  font-family: "Biryani";
+  font-size: 15px;
+}
+
+.Event:hover {
+  background-color: rgba(250, 245, 245, 0.3);
+}
+
+.Design {
+  display: center;
+  border: 2px solid white;
+  height: 200px;
+  width: 200px;
+  margin-top: 2%;
+  font-family: "Biryani";
+  font-size: 15px;
+}
+
+.Design:hover {
+  background-color: rgba(250, 245, 245, 0.3);
 }
 
 #slideA {
   position: relative;
   right: -1500px;
-  width: 100px;
-  height: 200px;
+  width: 100vw;
+  height: 250px;
   -webkit-animation: slide 1s forwards;
   -webkit-animation-delay: 1s;
   animation: slideA 1s forwards;
@@ -42,24 +105,23 @@
 
 @-webkit-keyframes slideA {
   100% {
-    right: 25px;
+    right: 0;
   }
 }
 
 @keyframes slideA {
   100% {
-    right: 25px;
+    right: 0;
   }
 }
 
 .pickE {
   position: relative;
   overflow: hidden;
-  width: 100%;
+  width: 10%;
   height: 250px;
   transition: all 0.5s ease-out;
   z-index: 9;
-  background: rgba(0, 0, 0, 0.5);
 }
 
 .pickE::after {
@@ -75,8 +137,8 @@
 #slideE {
   position: relative;
   left: -1500px;
-  width: 100px;
-  height: 200px;
+  width: 100vw;
+  height: 250px;
   -webkit-animation: slide 1s forwards;
   -webkit-animation-delay: 1s;
   animation: slideE 1s forwards;
@@ -86,25 +148,24 @@
 
 @-webkit-keyframes slideE {
   100% {
-    left: 25px;
+    left: 0;
   }
 }
 
 @keyframes slideE {
   100% {
-    left: 25px;
+    left: 0;
   }
 }
 
 .pickT {
   position: relative;
   overflow: hidden;
-  width: 100%;
+  width: 10%;
   height: 250px;
   transition: all 0.5s ease-out;
   border: 10px white;
   z-index: 9;
-  background: rgba(0, 0, 0, 0.5);
 }
 
 .pickT::after {
@@ -120,8 +181,8 @@
 #slideT {
   position: relative;
   right: -1500px;
-  width: 100px;
-  height: 200px;
+  width: 100vw;
+  height: 250px;
   -webkit-animation: slide 1s forwards;
   -webkit-animation-delay: 1s;
   animation: slideT 1s forwards;
@@ -130,12 +191,12 @@
 
 @-webkit-keyframes slideT {
   100% {
-    right: 25px;
+    right: 0;
   }
 }
 
 @keyframes slideT {
   100% {
-    right: 25px;
+    right: 0;
   }
 }
