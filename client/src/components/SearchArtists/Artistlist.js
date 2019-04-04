@@ -6,6 +6,7 @@ import "./Artistlist.css";
 import artistList from "../images/ArtistList.png";
 import eventList from "../images/EventList.png";
 import designList from "../images/designList.png";
+import ArtistSignupForm from "../Auth/AuthForms/ArtistSignupForm";
 
 class Artistlist extends Component {
   constructor(props) {
@@ -25,10 +26,15 @@ class Artistlist extends Component {
 
   getAllArtists = () => {
     axios
-      .get((process.env.REACT_APP_API_URL || "http://localhost:5000") + "/user")
+
+      .get(
+        (process.env.REACT_APP_API_URL || "http://localhost:5000") + "/artists"
+      )
       .then(allArtistsFromApi => {
         this.setState({ listOfAllArtists: allArtistsFromApi.data });
       });
+    console.log("stateeee", this.state);
+
   };
 
   componentDidMount() {

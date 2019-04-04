@@ -2,14 +2,13 @@ import React, { Component } from "react";
 import AuthService from "./components/Auth/auth-service";
 // import { Switch, Route } from 'react-router-dom';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import "./App.css";
-
+//import "./App.css";
 
 // import ProtectedRoute from './components/Auth/protected-route';
 import Navbar from "./components/bars/NavBar";
 import Parent from "./components/CuratorPick/CuratorPick";
 import ArtistSignupForm from "./components/Auth/AuthForms/ArtistSignupForm";
-
+import Signup from "./components/Auth/AuthForms/Signup";
 import LoginForm from "./components/Auth/AuthForms/LoginForm";
 import Notfound from "./components/Notfound";
 import Artistlist from "./components/SearchArtists/Artistlist";
@@ -20,7 +19,7 @@ import MyProjects from "./components/project/MyProjects";
 import PublicProfile from "./components/profile/PublicProfile";
 import PrivateProfile from "./components/profile/PrivatProfile";
 import PrivatProfile from "./components/profile/PrivatProfile";
-
+import SingleProject from "./components/project/SingleProject";
 
 //<Route exact path="/addproject" component={AddProject} userInSession={this.state.loggedInUser}/>
 
@@ -62,19 +61,24 @@ class App extends Component {
 
           <Switch>
             <Route exact path="/" component={Parent} />
+            <Route exact path="/signup" component={Signup} />
             <Route exact path="/login" component={LoginForm} />
             <Route
               exact
-              path="/signup"
+              path="/Artistsignup"
               render={() => <ArtistSignupForm getUser={this.getTheUser} />}
             />
             <Route exact path="/artistlist" component={Artistlist} />
             <Route exact path="/allprojects" component={AllProjects} />
             <Route exact path="/addproject" component={AddProject} />
-
+            <Route
+              exact
+              path="/artists/:id/projects/:projectId"
+              component={SingleProject}
+            />
             <Route exact path="/myprojects" component={MyProjects} />
-            <Route exact path="/user/artist/:id" component={PublicProfile} />
-            <Route exact path="/me" component={PrivatProfile} />
+            <Route exact path="/artists/:id" component={PublicProfile} />
+            <Route exact path="/myprofile" component={PrivatProfile} />
 
             <Route component={Notfound} />
           </Switch>

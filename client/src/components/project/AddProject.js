@@ -32,7 +32,7 @@ class AddProject extends Component {
 
   handleFormSubmit = e => {
     e.preventDefault();
-    const artist = this.state.artist;
+    const artist = this.artist._id;
     const name = this.state.name;
     const description = this.state.description;
     const location = this.state.location;
@@ -40,9 +40,22 @@ class AddProject extends Component {
     const video = this.state.video;
     const date = this.state.date;
 
-    this.service
-      .addProject(artist, name, description, location, event, video, date)
-      .then(response => {
+    axios
+      .post(
+        (process.env.REACT_APP_API_URL || "http://localhost:5000") +
+          "/projects",
+        {
+          artist,
+          name,
+          description,
+          location,
+          event,
+          video,
+          date
+        }
+      )
+      .then(() => {
+        this.props.getTheArtist();
         this.setState({
           artist: "",
           name: "",
@@ -60,6 +73,14 @@ class AddProject extends Component {
   handleChange = e => {
     const { name, value } = e.target;
     this.setState({ [name]: value });
+  };
+
+  toggleForm = () => {
+    if (!this.state.isShowing) {
+      this.setState({ isShowing: true });
+    } else {
+      this.setState({ isShowing: false });
+    }
   };
 
   render() {

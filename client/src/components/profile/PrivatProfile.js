@@ -2,24 +2,27 @@ import React, { Component } from "react";
 import AuthService from "../Auth/auth-service";
 import withAuth from "../Auth/withAuth";
 import axios from "axios";
+import EditProfile from "./EditProfile";
+import { Link } from "react-router-dom";
 
 class Profile extends Component {
   constructor(props) {
     super(props);
-    this.state = { user: {} };
+    this.state = { user: null };
     this.Auth = new AuthService();
   }
 
-  getUser = () => {
+  getArtist = () => {
+    const { params } = this.props.match;
     axios
       .get(
         (process.env.REACT_APP_API_URL || "http://localhost:5000") +
-          `/user/${this.props.user.id}`,
-        {
-          headers: {
-            authorization: this.Auth.getToken()
-          }
-        }
+          `/artists/${params.id}`
+        // {
+        //   headers: {
+        //     authorization: this.Auth.getToken()
+        //   }
+        // }
       )
       .then(responseFromApi => {
         this.setState({
@@ -40,25 +43,29 @@ class Profile extends Component {
   }
 
   render() {
-    console.log("state!", this.state.user);
-    console.log("PROPS.MATCH.PARAMS", this.props);
-    // const activeUser = this.props.user.id;
+    if (!this.state.user) return <h1>Loading...</h1>;
     return (
       <div className="App">
         <div className="App-header">
           <h2>MyProfile</h2>
           <p>username: {this.state.user.userName}</p>
           <p>Email: {this.state.user.email}</p>
+          <p>Bio: {this.state.user.bio}</p>
+          <p>Website: {this.state.user.website}</p>
+          <p>Techniques: {this.state.user.techniques}</p>
+          <p>Homebase: {this.state.user.nationality}</p>
         </div>
-        <p className="App-intro">
-          <button
-            type="button"
-            className="form-submit"
-            onClick={this.handleLogout.bind(this)}
-          >
-            Logout
-          </button>
-        </p>
+        <div>
+          <EditProfile theUser={this.state.user} getTheUser={this.getUser} />
+        </div>
+        <Link to={"/"}>BackToLandingPage</Link>
+        <button
+          type="button"
+          className="form-submit"
+          onClick={this.handleLogout.bind(this)}
+        >
+          Logout
+        </button>
       </div>
     );
   }

@@ -1,39 +1,59 @@
 import React, { Component } from "react";
-
+import { Link } from "react-router-dom";
 import axios from "axios";
+
+//this will go to private!!!
+import EditProfile from "./EditProfile";
 
 class PublicProfile extends Component {
   constructor(props) {
     super(props);
-    this.state = { User: {} };
+    this.state = {};
   }
 
+  componentDidMount() {
+    this.getSingleArtist();
+  }
 
-
-  getUser = () => {
+  getSingleArtist = () => {
+    const { params } = this.props.match;
     axios
-      .get((process.env.REACT_APP_API_URL || "http://localhost:5000") + `${this.props.history.location.pathname}`)
+      .get(
+        (process.env.REACT_APP_API_URL || "http://localhost:5000") +
+          `/artists/${params.id}`
+      )
       .then(responseFromApi => {
-        this.setState({
-          user: responseFromApi.data[0]
-        });
+        const theProfile = responseFromApi.data;
+        this.setState(theProfile);
       });
   };
 
-  componentDidMount() {
-    this.getUser();
-  }
+  //this will go to private!!!
+  renderEditForm = () => {
+    if (!this.state.userName) {
+      this.getSingleArtist();
+    } else {
+      //                                                    {...props} => so we can have 'this.props.history' in Edit.js
+      //                                                                                          ^
+      //                                                                                          |
+      return (
+        <EditProfile
+          theProfile={this.state}
+          getTheProfile={this.getSingleArtist}
+          {...this.props}
+        />
+      );
+    }
+  };
 
   render() {
-    console.log("state.user!dknvdjbvkjwb", this.state);
-    console.log('PROPS', this.props.history.location.pathname)
-
     return (
       <div className="App">
         <div className="App-header">
-          <h2>MyProfile</h2>
-          <p>username: {this.state.User.userName}</p>
-          <p>Email: {this.state.User.email}</p>
+          <h2>{this.state.userName}</h2>
+          <p>location: {this.state.nationality}</p>
+          <p>Email: {this.state.email}</p>
+          <div>{this.renderEditForm()} </div>
         </div>
       </div>
     );
