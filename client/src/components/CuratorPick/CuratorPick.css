@@ -173,8 +173,8 @@
 
 .wrapperCuratorPick {
   margin-top: 0px;
-  background-color: rgba(0, 0, 0, 0.8);
-  width: 100;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
 }
 
 .p1 {
@@ -226,4 +226,47 @@
   animation-delay: 2s;
   font-family: "Biryani";
   top: 190px;
+}
+
+h1 {
+  font-size: 250px;
+  color: #893843;
+  font-family: "Biryani";
+  z-index: 99;
+}
+
+.tracking-out-expand {
+  -webkit-animation: tracking-out-expand 1.2s
+    cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: tracking-out-expand 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+}
+
+@-webkit-keyframes tracking-out-expand {
+  0% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 0.8;
+  }
+  100% {
+    letter-spacing: 10em;
+    opacity: 0;
+  }
+}
+@keyframes tracking-out-expand {
+  0% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 0.8;
+  }
+  100% {
+    letter-spacing: 10em;
+    opacity: 0;
+  }
 }

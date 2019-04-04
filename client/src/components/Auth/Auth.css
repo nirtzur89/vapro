@@ -1,10 +1,107 @@
-.inputfield{
-    margin: 2px;
-    border-radius: 4px
+@import "https://fonts.googleapis.com/css?family=Biryani|Fjalla+One";
+
+.wrapperloginForm {
+  margin-top: 0px;
+  height: 100vh;
+  width: 100%;
 }
 
-.formDiv {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.forms {
+  margin: 0 auto;
+  width: 500px;
+  height: 40px;
+  font-family: "Biryani";
+}
+.inputs {
+  margin-bottom: 20px;
+  padding: 10px;
+  width: 100%;
+  border: 4px solid black;
+  background: transparent;
+  height: 30px;
+  font-family: "Biryani";
+  font-size: 20px;
+  border-radius: 25px;
+  margin-bottom: 5px;
+  position: block;
+}
+button {
+  padding: 8px;
+  border-radius: 25px;
+  font-family: "Biryani";
+  font-size: 20px;
+  background: transparent;
+  border: 4px solid black;
+}
+label {
+  cursor: pointer;
+  font-family: "Biryani";
+  font-size: 20px;
+  margin-left: 10px;
+}
+#form-switch {
+  display: none;
+}
+#register-form {
+  display: none;
+}
+#form-switch:checked ~ #register-form {
+  display: block;
+}
+#form-switch:checked ~ #login-form {
+  display: none;
+}
+
+.text-center {
+  font: "Biryani";
+  font-size: 30vh;
+}
+
+.slide-right {
+  width: 100%;
+  overflow: hidden;
+  height: 50vh;
+}
+.slide-right {
+  animation: 2s slide-right;
+}
+
+@keyframes slide-right {
+  from {
+    margin-left: -100%;
+    width: 200%;
+  }
+
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
+}
+
+.color-change-3x {
+  -webkit-animation: color-change-3x 4s linear infinite alternate both;
+  animation: color-change-3x 4s linear infinite alternate both;
+}
+
+@-webkit-keyframes color-change-3x {
+  0% {
+    background: white;
+  }
+  50% {
+    background: rgba(0, 0, 0, 0.5);
+  }
+  100% {
+    background: #893843;
+  }
+}
+@keyframes color-change-3x {
+  0% {
+    background: white;
+  }
+  50% {
+    background: rgba(0, 0, 0, 0.5);
+  }
+  100% {
+    background: #893843;
+  }
 }
