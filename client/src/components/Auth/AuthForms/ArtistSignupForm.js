@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import SignupService from "../signup-service";
 import "../Auth.css";
 import { Link } from "react-router-dom";
+
 import axios from "axios";
+
 
 class ArtistSignupForm extends Component {
   constructor(props) {
@@ -19,10 +21,12 @@ class ArtistSignupForm extends Component {
       techniques: [],
       hashtags: []
     };
+
     // this.service = new SignupService();
     this.handleChange = this.handleChange.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
   }
+
 
   handleFormSubmit(event) {
     event.preventDefault();
@@ -31,6 +35,7 @@ class ArtistSignupForm extends Component {
     const lastName = this.state.lastName;
     const email = this.state.email;
     const password = this.state.password;
+
     axios
       .post(
         (process.env.REACT_APP_API_URL || "http://localhost:5000") + "/artist",
@@ -46,12 +51,15 @@ class ArtistSignupForm extends Component {
       .then(() => {
         // this.props.getdata();
         this.setState({
+
           userName: "",
           firstName: "",
           lastName: "",
           email: "",
+
           password: ""
         });
+
       })
       .catch(err => console.log(err));
   }
@@ -65,75 +73,81 @@ class ArtistSignupForm extends Component {
 
   render() {
     return (
-      <div>
-        <h1>ARTIST SIGNUP</h1>
-        <form className="signupForm formDiv" onSubmit={this.handleFormSubmit}>
-          <div>
+
+      <div className="wrappersignupForm color-change-3x">
+        <div className="col-md-6 mx-auto text-center">
+          <div className="slide-right">Signup</div>
+        </div>
+        <div className="SignupForm slide-right">
+          <form onSubmit={this.handleFormSubmit}>
+
             <input
               type="text"
               name="userName"
               value={this.state.userName}
               className="inputfield"
-              placeholder="username"
+
+              placeholder="Username"
               onChange={this.handleChange}
             />
-          </div>
-          <div>
+
             <input
               type="text"
               name="firstName"
               value={this.state.firstName}
               className="inputfield"
-              placeholder="firstname"
+
+              placeholder="Firstname"
               onChange={this.handleChange}
             />
-          </div>
-          <div>
+
             <input
               type="text"
               name="lastName"
               value={this.state.lastName}
               className="inputfield"
-              placeholder="lastname"
+
+              placeholder="Lastname"
               onChange={this.handleChange}
             />
-          </div>
-          <div>
+
             <input
               type="email"
               name="email"
               value={this.state.email}
               className="inputfield"
-              placeholder="email"
+
+              placeholder="Email"
               onChange={this.handleChange}
             />
-          </div>
-          <div>
+
             <input
               type="password"
               name="password"
               value={this.state.password}
               className="inputfield"
-              placeholder="password"
+
+              placeholder="Password"
               onChange={this.handleChange}
             />
-          </div>
-          <div>
+
             <input
               type="password"
               name="password2"
               value={this.state.password2}
               className="inputfield"
-              placeholder="password"
+
+              placeholder="Password"
               onChange={this.handleChange}
             />
-          </div>
-          <input type="submit" value="signup" className="btn" />
-        </form>
-        <p>
-          Already have account?
-          <Link to={"/login"}> Login</Link>
-        </p>
+            <input type="Submit" value="Signup" className="btn" />
+          </form>
+          <p>
+            Already have account?
+            <Link to={"/login"}> Login</Link>
+          </p>
+        </div>
+
       </div>
     );
   }

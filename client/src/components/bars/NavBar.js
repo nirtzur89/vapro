@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import AuthService from "../Auth/auth-service";
 // import { Link } from 'react-router-dom';
-//import "./Navbar.css";
+import "./Navbar.css";
 import buttonred from "./../images/buttonred.png";
 import SearchBar from "../../components/SearchArtists/SearchBar.js";
 

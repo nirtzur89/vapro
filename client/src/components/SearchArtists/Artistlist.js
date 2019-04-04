@@ -6,7 +6,7 @@ import "./Artistlist.css";
 import artistList from "../images/ArtistList.png";
 import eventList from "../images/EventList.png";
 import designList from "../images/designList.png";
-import ArtistSignupForm from "../Auth/AuthForms/ArtistSignupForm";
+
 
 class Artistlist extends Component {
   constructor(props) {
@@ -26,14 +26,18 @@ class Artistlist extends Component {
 
   getAllArtists = () => {
     axios
+
       .get(
         (process.env.REACT_APP_API_URL || "http://localhost:5000") + "/artists",
         { withCredentials: true }
       )
       .then(allArtistsFromApi => {
         this.setState({ listOfAllArtists: allArtistsFromApi.data });
+        console.log("artistsfromAPI", allArtistsFromApi.data)
       });
+
     console.log("stateeee", this.state);
+
   };
 
   componentDidMount() {
@@ -45,38 +49,46 @@ class Artistlist extends Component {
 
     const filteredArtists = this.state.listOfAllArtists.filter(
       e =>
-        e.userName.includes(this.state.queryResult) ||
-        e.nationality.includes(this.state.queryResult) ||
-        e.techniques.join(", ").includes(this.state.queryResult) ||
-        e.hashtags.join(", ").includes(this.state.queryResult)
+        e.userName.toLowerCase().includes(this.state.queryResult.toLowerCase()) ||
+        e.nationality.toLowerCase().includes(this.state.queryResult.toLowerCase()) ||
+        e.techniques.join(", ").toLowerCase().includes(this.state.queryResult.toLowerCase()) ||
+        e.hashtags.join(", ").toLowerCase().includes(this.state.queryResult.toLowerCase())
     );
-    console.log(
-      "listOfAllArtists!!!!jsndjkdbk",
-      this.state.listOfAllArtists.techniques
-    );
-    console.log("filteredArtists", filteredArtists);
 
+
+      
+
+    console.log('filteredArtists', filteredArtists)
     return (
-      <div>
-        <div className="wrapperArtistList">
-          <ShowArtists data={filteredArtists} />
-          <div key="A" className="pickA">
-            <img id="slideA" alt="ArtistList" src={artistList} autoPlay loop />
-          </div>
-          <div key="E" className="pickE">
-            <img id="slideE" alt="EventList" src={eventList} autoPlay loop />
-          </div>
-          <div key="T" className="pickT">
-            <img
-              id="slideT"
-              alt="TechniqueList"
-              src={designList}
-              autoPlay
-              loop
-            />
-          </div>
-          <SearchBar onSearch={this.searchArtist} />
+
+      <div className="wrapperArtistList">
+        <ShowArtists data={filteredArtists} />
+        <div className="flex-containerA" key="A" id="slideA" autoPlay loop>
+          <img className="pickA" alt="ArtistList" src={artistList} />
+          <div className="Artist">hi</div>
+          <div className="Artist">hi</div>
+          <div className="Artist">hi</div>
+          <div className="Artist">hi</div>
+          <div className="pickA" />
         </div>
+        <div className="flex-containerE" key="E" id="slideE" autoPlay loop>
+          <div className="pickE" />
+          <div className="Event">hi</div>
+          <div className="Event">hi</div>
+          <div className="Event">hi</div>
+          <div className="Event">hi</div>
+          <img className="pickE" alt="EventList" src={eventList} />
+        </div>
+        <div className="flex-containerA" key="T" id="slideT" autoPlay loop>
+          <img className="pickT" alt="TechniqueList" src={designList} />
+          <div className="Design">hi</div>
+          <div className="Design">hi</div>
+          <div className="Design">hi</div>
+          <div className="Design">hi</div>
+          <div className="pickT" />
+
+        </div>
+        <SearchBar onSearch={this.searchArtist} />
       </div>
     );
   }

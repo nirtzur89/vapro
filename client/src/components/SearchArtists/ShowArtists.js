@@ -6,20 +6,45 @@ const ShowArtists = props => {
   return (
     <div>
       <div>
+        <h1>Artists</h1>
         {props.data.map(oneArtist => {
-          // console.log("u", oneArtist.hashtags)
           return (
             <div key={oneArtist._id}>
               <Link to={`/artists/${oneArtist._id}`}>
                 <h3>{oneArtist.userName}</h3>
               </Link>
-              <ul>
+              {/* <ul>
                 {oneArtist.projects.map((project, index) => {
                   return <li key={index}>{project.name}</li>;
                 })}
-              </ul>
+              </ul> */}
             </div>
           );
+        })}
+      </div>
+      <div>
+        <h1>Designs</h1>
+        {props.data.map(oneTechnique => {
+          return (
+            <div key={oneTechnique._id}>
+              {oneTechnique.techniques.map(oneTechnique => {
+                return (
+                  <ul>
+                    {oneTechnique}
+                  </ul>
+                )
+              })}
+            </div>
+          )
+        })}
+      </div>
+      <div>
+        <h1>Homebase</h1>
+        {props.data.map(oneHomebase => {
+          return (
+            <div> { oneHomebase.nationality }</div>
+           
+          )
         })}
       </div>
     </div>
