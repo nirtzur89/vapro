@@ -1,4 +1,4 @@
-/* @import "https://fonts.googleapis.com/css?family=Biryani|Fjalla+One";
+@import "https://fonts.googleapis.com/css?family=Biryani|Fjalla+One";
 
 .SearchBarform {
   position: fixed;
@@ -60,4 +60,4 @@ form:hover .fa {
   color: white;
   font-family: "Biryani";
   font-size: 25px;
-} */
+}
