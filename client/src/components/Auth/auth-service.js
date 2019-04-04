@@ -21,7 +21,15 @@ class AuthService {
 
   login = (email, password) => {
     return this.service
-      .post("/login", { email, password })
+      .post(
+        "/login",
+        { email, password }
+        // {
+        //   headers: {
+        //     authorization: this.Auth.getToken()
+        //   }
+        // }
+      )
       .then(response => response.data);
   };
 
