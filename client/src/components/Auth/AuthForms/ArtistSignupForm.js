@@ -13,14 +13,13 @@ class ArtistSignupForm extends Component {
       lastName: "",
       email: "",
       password: "",
-      password2: "",
       artist: true,
       companies: [],
       nationality: "",
       techniques: [],
       hashtags: []
     };
-    this.service = new SignupService();
+    // this.service = new SignupService();
     this.handleChange = this.handleChange.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
   }
@@ -32,31 +31,25 @@ class ArtistSignupForm extends Component {
     const lastName = this.state.lastName;
     const email = this.state.email;
     const password = this.state.password;
-    const password2 = this.state.password2;
-    const artist = true;
     axios
       .post(
         (process.env.REACT_APP_API_URL || "http://localhost:5000") + "/artist",
         {
-          artist,
           userName,
           firstName,
           lastName,
           email,
-          password,
-          password2
+          password
         }
       )
       .then(() => {
         // this.props.getdata();
         this.setState({
-          artist: "",
           userName: "",
           firstName: "",
           lastName: "",
           email: "",
-          password: "",
-          password2: ""
+          password: ""
         });
       })
       .catch(err => console.log(err));
