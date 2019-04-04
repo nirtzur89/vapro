@@ -26,7 +26,7 @@ import SingleProject from "./components/project/SingleProject";
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { loggedInUser: null };
+    this.state = { loggedInUser: null, searchTerm: "" };
   }
 
   fetchUser() {
@@ -52,11 +52,20 @@ class App extends Component {
     });
   };
 
+  searchArtist = searchTerm => {
+    this.setState({
+      searchTerm: searchTerm
+    });
+  };
+
   render() {
     return (
       <BrowserRouter>
         <div className="App">
-          <Navbar userInSession={this.state.loggedInUser} />
+          <Navbar
+            userInSession={this.state.loggedInUser}
+            searchArtist={this.searchArtist}
+          />
 
           <Switch>
             <Route exact path="/" component={Parent} />
@@ -72,7 +81,13 @@ class App extends Component {
             />
             <Route exact path="/Artistsignup" component={ArtistSignupForm} />}
             />
-            <Route exact path="/artistlist" component={Artistlist} />
+            <Route
+              exact
+              path="/artistlist"
+              render={() => {
+                return <Artistlist searchTerm={this.state.searchTerm} />;
+              }}
+            />
             <Route exact path="/allprojects" component={AllProjects} />
             <Route exact path="/addproject" component={AddProject} />
             <Route
