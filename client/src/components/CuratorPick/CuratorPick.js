@@ -42,7 +42,7 @@ const CuratorPick = () => {
         </video>
       </div>
       <div key="3" className="pick3 embed-responsive embed-responsive-4by3">
-        <p className="p3">The wind</p>
+        <p className="p3">The Wind</p>
         <video
           id="slide3"
           className="video-fluid3 z-depth-1"
