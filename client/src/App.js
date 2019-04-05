@@ -60,7 +60,7 @@ class App extends Component {
   };
 
   render() {
-    console.log("propssss", this.props.searchTerm);
+    // console.log("propssss", this.props.searchTerm);
     this.fetchUser();
     return (
       <BrowserRouter>
@@ -107,7 +107,7 @@ class App extends Component {
               component={SingleProject}
             />
             <Route exact path="/myprojects" component={MyProjects} />
-            <Route
+            {/* <Route
               exact
               path="/artists/:id"
               render={() =>
@@ -117,8 +117,8 @@ class App extends Component {
                   <h1>Loading...</h1>
                 )
               }
-            />
-            <Route exact path="/myprofile" component={PrivatProfile} />
+            /> */}
+            <Route exact path="/artists/:id" component={PublicProfile} />
             <Route component={Notfound} />
           </Switch>
         </div>
