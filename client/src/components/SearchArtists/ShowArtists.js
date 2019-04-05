@@ -17,7 +17,7 @@ const ShowArtists = props => {
             return (
               <div className="Artist" key={oneArtist._id}>
                 <Link to={`/artists/${oneArtist._id}`}>
-                  <h3>{oneArtist.userName}</h3>
+                  <h3>{oneArtist.artistName}</h3>
                 </Link>
               </div>
             );
