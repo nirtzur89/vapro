@@ -17,7 +17,7 @@ const ShowArtists = props => {
               return (
                 <div className="Artist" key={oneArtist._id}>
                   <Link to={`/artists/${oneArtist._id}`}>
-                    <div className="ArtistName">{oneArtist.userName}</div>
+                    <div className="ArtistName">{oneArtist.artistName}</div>
                   </Link>
                 </div>
               );
@@ -59,45 +59,10 @@ const ShowArtists = props => {
             <div className="pickT" />
           </div>
         </div>
-        {/* <div>
-        <div>
-          <h1>Artists</h1>
-          {props.data.map(oneArtist => {
-            return (
-              <div key={oneArtist._id}>
-                <Link to={`/artists/${oneArtist._id}`}>
-                  <h3>{oneArtist.userName}</h3>
-                </Link>
-                <ul>
-                    {oneArtist.projects.map((project, index) => {
-                      return <li key={index}>{project.name}</li>;
-                    })}
-                  </ul>
-              </div>
-            );
-          })}
-        </div>
-        <div>
-          <h1>Designs</h1>
-          {props.data.map(oneTechnique => {
-            return (
-              <div key={oneTechnique._id}>
-                {oneTechnique.techniques.map(oneTechnique => {
-                  return <ul>{oneTechnique}</ul>;
-                })}
-              </div>
-            );
-          })}
-        </div>
-        <div>
-          <h1>Homebase</h1>
-          {props.data.map(oneHomebase => {
-            return <div> {oneHomebase.nationality}</div>;
-          })}
-        </div>
-      </div> */}
+
       </div>
-      );
-    };
-    
-    export default ShowArtists;
+    </div>
+  );
+};
+
+export default ShowArtists;
