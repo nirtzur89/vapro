@@ -100,7 +100,7 @@ class Navbar extends Component {
               </li>
               <li>
               <a>
-                  {this.props.userInSession ? (<a href="/artistsignup" >Contribute</a>) : (<a href="/login">Signup</a>)}
+                  {this.props.userInSession ? (<a href="/artistsignup" >Contribute</a>) : (<a href="/signup">Join Us</a>)}
                 </a>
               </li>
               <li>
