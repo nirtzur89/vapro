@@ -22,6 +22,7 @@ router.post("/artist", (req, res, next) => {
         artistUserId: req.body.artist,
         firstName: req.body.firstName,
         lastName: req.body.lastName,
+        artistName: req.body.artistName,
         email: req.body.email,
         avatar: {},
         password: req.body.password,
