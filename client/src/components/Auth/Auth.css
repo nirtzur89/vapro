@@ -4,27 +4,30 @@
   margin-top: 0px;
   height: 100vh;
   width: 100%;
+  position: fixed;
 }
 
 .forms {
-  margin: 0 auto;
-  width: 500px;
+  margin-left: 25%;
+  width: 600px;
   height: 40px;
   font-family: "Biryani";
+  position: fixed;
 }
 .inputs {
   margin-bottom: 20px;
   padding: 10px;
-  width: 100%;
+  width: 600px;
   border: 4px solid black;
   background: transparent;
-  height: 30px;
+  height: 40px;
   font-family: "Biryani";
   font-size: 20px;
   border-radius: 25px;
   margin-bottom: 5px;
   position: block;
 }
+.Authbutton,
 button {
   padding: 8px;
   border-radius: 25px;
@@ -39,6 +42,12 @@ label {
   font-size: 20px;
   margin-left: 10px;
 }
+
+.switch {
+  color: black;
+  font-family: "Biryani";
+}
+
 #form-switch {
   display: none;
 }
