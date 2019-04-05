@@ -17,8 +17,9 @@ router.post("/artist", (req, res, next) => {
       return res.status(400).json(errors);
     } else {
       Artist.create({
-        userName: req.body.userName,
-        artist: req.body.artist,
+        owner: req.user._id,
+        artistUserName: req.body.userName,
+        artistUserId: req.body.artist,
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         email: req.body.email,
@@ -38,7 +39,6 @@ router.post("/artist", (req, res, next) => {
         },
         hashtags: [],
         projects: [],
-        owner: req.user._id,
         title: req.body.title,
         description: req.body.description
       })

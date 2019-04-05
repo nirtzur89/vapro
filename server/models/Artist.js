@@ -4,14 +4,12 @@ const Schema = mongoose.Schema;
 
 const ArtistSchema = new Schema({
   owner: { type: Schema.Types.ObjectId, ref: "User" },
-  userName: {
-    type: String,
-    required: true
+  artistUserName: {
+    type: String
   },
-  artist: {
-    type: Boolean,
-    required: true,
-    default: true
+  artistUserId: String,
+  artistName: {
+    type: String
   },
   firstName: {
     type: String,
@@ -22,14 +20,9 @@ const ArtistSchema = new Schema({
     required: true
   },
   email: {
-    type: String,
-    required: true
+    type: String
   },
   avatar: { data: Buffer, contentType: String },
-  password: {
-    type: String,
-    required: true
-  },
   bio: String,
   nationality: {
     type: String,
