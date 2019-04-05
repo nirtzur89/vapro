@@ -69,7 +69,7 @@ class Signup extends Component {
             <button type="submit">Signup</button>
             <label htmlFor="form-switch">
               <Link to={"/login"}>
-                <span>Login</span>
+                <span className="switch">Login</span>
               </Link>
             </label>
           </form>

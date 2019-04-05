@@ -58,8 +58,7 @@ class ArtistSignupForm extends Component {
           password: ""
         });
 
-      //  this.props.history.push("/artistlist");
-
+        //  this.props.history.push("/artistlist");
       })
       .catch(err => console.log(err));
   }

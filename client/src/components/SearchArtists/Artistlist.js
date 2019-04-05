@@ -7,7 +7,8 @@ class Artistlist extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      listOfAllArtists: []
+      listOfAllArtists: [],
+      searchTerm: ""
     };
   }
 

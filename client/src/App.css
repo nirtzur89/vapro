@@ -1,8 +1,69 @@
 @import "https://fonts.googleapis.com/css?family=Biryani|Fjalla+One";
 
 .App {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.7);
   border: 0px;
   width: 100%;
   height: 100%;
+}
+
+.wrapperloadingForm {
+  margin-top: 0px;
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+}
+
+.loading {
+  font: "Biryani";
+  font-size: 30vh;
+}
+
+.slide-right {
+  width: 100%;
+  overflow: hidden;
+  height: 50vh;
+}
+.slide-right {
+  animation: 2s slide-right;
+}
+
+@keyframes slide-right {
+  from {
+    margin-left: -100%;
+    width: 200%;
+  }
+
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
+}
+
+.color-change-3x {
+  -webkit-animation: color-change-3x 4s linear infinite alternate both;
+  animation: color-change-3x 4s linear infinite alternate both;
+}
+
+@-webkit-keyframes color-change-3x {
+  0% {
+    background: white;
+  }
+  50% {
+    background: rgba(0, 0, 0, 0.5);
+  }
+  100% {
+    background: #893843;
+  }
+}
+@keyframes color-change-3x {
+  0% {
+    background: white;
+  }
+  50% {
+    background: rgba(0, 0, 0, 0.5);
+  }
+  100% {
+    background: #893843;
+  }
 }

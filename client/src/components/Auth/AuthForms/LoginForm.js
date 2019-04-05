@@ -34,7 +34,7 @@ class Login extends Component {
     return (
       <div className="wrapperloginForm color-change-3x">
         <div className="col-md-6 mx-auto text-center">
-          <div className="slide-right">Log In</div>
+          <div className="slide-right">Login</div>
         </div>
         <div className="slide-right">
           <input type="checkbox" id="form-switch" />
@@ -64,11 +64,12 @@ class Login extends Component {
               onChange={e => this.handleChange(e)}
             />
 
-            <button type="submit">Login</button>
-
+            <button type="submit" className="Authbutton">
+              Login
+            </button>
             <label htmlFor="form-switch">
               <Link to={"/signup"}>
-                <span>SignUp</span>
+                <span className="switch">SignUp</span>
               </Link>
             </label>
           </form>
