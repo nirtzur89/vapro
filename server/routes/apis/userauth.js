@@ -8,10 +8,11 @@ const bcrypt = require("bcryptjs");
 const User = require("../../models/User");
 
 authRoutes.post("/signup", (req, res, next) => {
+  const userName = req.body.userName;
   const email = req.body.email;
   const password = req.body.password;
 
-  if (!email || !password) {
+  if (!userName || !email || !password) {
     res.status(400).json({ message: "Provide email and password" });
     return;
   }
@@ -39,6 +40,7 @@ authRoutes.post("/signup", (req, res, next) => {
     const hashPass = bcrypt.hashSync(password, salt);
 
     const aNewUser = new User({
+      userName: userName,
       email: email,
       password: hashPass
     });

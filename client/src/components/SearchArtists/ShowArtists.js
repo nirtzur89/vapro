@@ -29,6 +29,7 @@ const ShowArtists = props => {
 
         <div className="flex-containerE" key="E" id="slideE" autoPlay loop>
           <div className="pickE" />
+
           <div className="flex-containerInner" key="E" id="slideE">
             {_.sampleSize(props.data, 4).map(oneArtist => {
               return (
@@ -40,6 +41,7 @@ const ShowArtists = props => {
               );
             })}
           </div>
+
           <img className="pickE" alt="EventList" src={eventList} />
         </div>
         <div className="flex-containerA" key="T" id="slideT" autoPlay loop>
