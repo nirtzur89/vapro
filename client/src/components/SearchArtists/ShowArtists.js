@@ -41,29 +41,31 @@ const ShowArtists = props => {
               });
             })}
           </div>
-
-          <img className="pickE" alt="EventList" src={eventList} />
-        </div>
-        <div className="flex-containerA" key="T" id="slideT" autoPlay loop>
-          <img className="pickT" alt="TechniqueList" src={designList} />
-          <div className="flex-containerInner" key="T" id="slideT">
-            {_.sampleSize(props.data, 4).map(Techniques => {
-              return _.sampleSize(Techniques.techniques, 2).map(
-                oneTechnique => {
-                  return (
-                    <div className="Design" key={Techniques._id}>
-                      <div className="DesignName">{oneTechnique}</div>
-                    </div>
-                  );
-                }
-              );
-            })}
+          <div className="flex-containerA" key="T" id="slideT" autoPlay loop>
+            <img className="pickT" alt="TechniqueList" src={designList} />
+            <div className="flex-containerInner" key="T" id="slideT">
+              {_.sampleSize(props.data, 4).map(Techniques => {
+                return _.sampleSize(Techniques.techniques, 2).map(
+                  oneTechnique => {
+                    return (
+                      <div className="Design" key={Techniques._id}>
+                        <div className="DesignName">{oneTechnique}</div>
+                      </div>
+                    );
+                  }
+                );
+              })}
+            </div>
+            <div className="pickT" />
           </div>
-          <div className="pickT" />
         </div>
+<<<<<<< HEAD
       </div>
 
       {/* <div>
+=======
+        {/* <div>
+>>>>>>> 900cb8aa4d15bf43049e65cf95b8ba08619472e3
         <div>
           <h1>Artists</h1>
           {props.data.map(oneArtist => {
@@ -100,8 +102,8 @@ const ShowArtists = props => {
           })}
         </div>
       </div> */}
-    </div>
-  );
-};
-
-export default ShowArtists;
+      </div>
+      );
+    };
+    
+    export default ShowArtists;

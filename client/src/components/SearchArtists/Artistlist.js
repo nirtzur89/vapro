@@ -44,7 +44,7 @@ class Artistlist extends Component {
 
     const filteredArtists = this.state.listOfAllArtists.filter(
       e =>
-        e.userName
+        e.artistName
           .toLowerCase()
           .includes(this.props.searchTerm.toLowerCase()) ||
         e.nationality

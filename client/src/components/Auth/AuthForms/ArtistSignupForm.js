@@ -48,6 +48,7 @@ class ArtistSignupForm extends Component {
     const lastName = this.state.lastName;
     const artistName = this.state.artistName;
     const bio = this.state.bio;
+    const techniques = this.state.techniques;
 
     axios
       .post(
@@ -59,7 +60,8 @@ class ArtistSignupForm extends Component {
           firstName,
           lastName,
           artistName,
-          bio
+          bio,
+          techniques
         },
         { withCredentials: true }
       )
@@ -72,7 +74,8 @@ class ArtistSignupForm extends Component {
           firstName: "",
           lastName: "",
           artistName: "",
-          bio: ""
+          bio: "",
+          techniques: [],
         });
 
         //  this.props.history.push("/artistlist");
@@ -85,6 +88,14 @@ class ArtistSignupForm extends Component {
     this.setState({
       [name]: value
     });
+  }
+
+  addTechnique = e => {
+    e.preventDefault()
+    let techniques = this.state.techniques.concat([''])
+    this.setState({
+      techniques: techniques
+    })
   }
 
   render() {
@@ -120,7 +131,7 @@ class ArtistSignupForm extends Component {
               placeholder="Lastname"
               onChange={this.handleChange}
             />
-            <input
+            <textarea
               type="text"
               name="bio"
               value={this.state.bio}
@@ -128,6 +139,22 @@ class ArtistSignupForm extends Component {
               placeholder="Bio"
               onChange={this.handleChange}
             />
+            <h3>Techniques</h3>
+            
+            {this.state.techniques.map((technique, index) => (
+              <span key={index}>
+                <input
+                  type="text"
+                  name="techniques"
+                  className="Techniques"
+                  onChange={this.handleChange}
+                  value={technique}
+                />
+                
+              </span>
+            ))}
+            <button onClick={this.addTechnique}>+</button>
+
             <input type="Submit" value="Signup" className="btn" />
           </form>
           <p>
