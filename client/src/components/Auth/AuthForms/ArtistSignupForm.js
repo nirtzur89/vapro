@@ -139,7 +139,9 @@ class ArtistSignupForm extends Component {
               placeholder="Bio"
               onChange={this.handleChange}
             />
+
             {/* <h3>Techniques</h3>
+
             
             {this.state.techniques.map((technique, index) => (
               <span key={index}>
@@ -152,7 +154,11 @@ class ArtistSignupForm extends Component {
                 />
                 
               </span>
+
+            ))}
+
             ))} */}
+
             <button onClick={this.addTechnique}>+</button>
 
             <input type="Submit" value="Signup" className="btn" />

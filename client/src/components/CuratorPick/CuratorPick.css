@@ -191,6 +191,7 @@
   animation-delay: 2s;
   top: 190px;
   font-size: 15px;
+  margin-left: 3%;
 }
 .p2 {
   color: white;
@@ -228,6 +229,7 @@
   animation-delay: 2s;
   font-family: "Biryani";
   top: 190px;
+  margin-left: 3%;
 }
 
 h1 {

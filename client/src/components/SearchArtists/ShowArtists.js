@@ -41,27 +41,32 @@ const ShowArtists = props => {
               });
             })}
           </div>
-          <div className="flex-containerA" key="T" id="slideT" autoPlay loop>
-            <img className="pickT" alt="TechniqueList" src={designList} />
-            <div className="flex-containerInner" key="T" id="slideT">
-              {_.sampleSize(props.data, 4).map(Techniques => {
-                return _.sampleSize(Techniques.techniques, 2).map(
-                  oneTechnique => {
-                    return (
-                      <div className="Design" key={Techniques._id}>
-                        <div className="DesignName">{oneTechnique}</div>
-                      </div>
-                    );
-                  }
-                );
-              })}
-            </div>
-            <div className="pickT" />
+
+          <img className="pickE" alt="EventList" src={eventList} />
+        </div>
+
+        <div className="flex-containerA" key="T" id="slideT" autoPlay loop>
+          <img className="pickT" alt="TechniqueList" src={designList} />
+          <div className="flex-containerInner" key="T" id="slideT">
+            {_.sampleSize(props.data, 4).map(Techniques => {
+              return _.sampleSize(Techniques.techniques, 2).map(
+                oneTechnique => {
+                  return (
+                    <div className="Design" key={Techniques._id}>
+                      <div className="DesignName">{oneTechnique}</div>
+                    </div>
+                  );
+                }
+              );
+            })}
+
           </div>
         </div>
 
       </div>
     </div>
+
+
   );
 };
 
