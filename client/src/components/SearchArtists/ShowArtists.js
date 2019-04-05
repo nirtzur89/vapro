@@ -31,14 +31,14 @@ const ShowArtists = props => {
           <div className="pickE" />
 
           <div className="flex-containerInner" key="E" id="slideE">
-            {_.sampleSize(props.data, 4).map(oneArtist => {
-              return (
-                <div className="Event" key={oneArtist._id}>
-                  <Link to={`/artists/${oneArtist._id}`}>
-                    <div className="EventName">{oneArtist.userName}</div>
-                  </Link>
-                </div>
-              );
+            {_.sampleSize(props.data, 4).map(Events => {
+              return _.sampleSize(Events.events, 2).map(oneEvent => {
+                return (
+                  <div className="Event" key={Events._id}>
+                    <div className="EventName">{oneEvent}</div>
+                  </div>
+                );
+              });
             })}
           </div>
 
@@ -62,6 +62,7 @@ const ShowArtists = props => {
           <div className="pickT" />
         </div>
       </div>
+
       {/* <div>
         <div>
           <h1>Artists</h1>
