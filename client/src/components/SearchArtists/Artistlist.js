@@ -7,7 +7,8 @@ class Artistlist extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      listOfAllArtists: []
+      listOfAllArtists: [],
+      searchTerm: ""
     };
   }
 
@@ -43,7 +44,7 @@ class Artistlist extends Component {
 
     const filteredArtists = this.state.listOfAllArtists.filter(
       e =>
-        e.userName
+        e.artistName
           .toLowerCase()
           .includes(this.props.searchTerm.toLowerCase()) ||
         e.nationality
