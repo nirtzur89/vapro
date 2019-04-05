@@ -16,32 +16,35 @@ const ShowArtists = props => {
             {_.sampleSize(props.data, 4).map(oneArtist => {
               return (
                 <div className="Artist" key={oneArtist._id}>
-                  <Link to={`/artists/${oneArtist._id}`}>
-                    <div className="ArtistName">{oneArtist.artistName}</div>
-                  </Link>
+                  <img
+                    className="ArtistPic"
+                    alt="ArtistPic"
+                    src={oneArtist.avatar}
+                  />
+                  <div class="middle">
+                    <Link to={`/artists/${oneArtist._id}`}>
+                      <div className="ArtistName">{oneArtist.artistName}</div>
+                    </Link>
+                  </div>
                 </div>
               );
             })}
           </div>
-
           <div className="pickA" />
         </div>
-
         <div className="flex-containerE" key="E" id="slideE" autoPlay loop>
           <div className="pickE" />
-
           <div className="flex-containerInner" key="E" id="slideE">
             {_.sampleSize(props.data, 4).map(Events => {
               return _.sampleSize(Events.events, 2).map(oneEvent => {
                 return (
-                  <div className="Event" key={Events._id}>
+                  <div className="Event color-change-3x" key={Events._id}>
                     <div className="EventName">{oneEvent}</div>
                   </div>
                 );
               });
             })}
           </div>
-
           <img className="pickE" alt="EventList" src={eventList} />
         </div>
 
@@ -49,24 +52,19 @@ const ShowArtists = props => {
           <img className="pickT" alt="TechniqueList" src={designList} />
           <div className="flex-containerInner" key="T" id="slideT">
             {_.sampleSize(props.data, 4).map(Techniques => {
-              return _.sampleSize(Techniques.techniques, 2).map(
-                oneTechnique => {
-                  return (
-                    <div className="Design" key={Techniques._id}>
-                      <div className="DesignName">{oneTechnique}</div>
-                    </div>
-                  );
-                }
-              );
+              return _.sampleSize(Techniques.techniques).map(oneTechnique => {
+                return (
+                  <div className="Design color-change-3x" key={Techniques._id}>
+                    <div className="DesignName">{oneTechnique}</div>
+                  </div>
+                );
+              });
             })}
-
           </div>
+          <div className="pickT" />
         </div>
-
       </div>
     </div>
-
-
   );
 };
 

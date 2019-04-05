@@ -50,7 +50,6 @@
   width: 25%;
   height: 250px;
   transition: all 0.5s ease-out;
-  margin-right: 0;
 }
 
 .pickA::after {
@@ -67,14 +66,52 @@
   border: 2px solid white;
   height: 200px;
   width: 200px;
-  margin-top: 2%;
   font-family: "Biryani";
-  font-size: 15px;
+  border-radius: 10px;
+  position: relative;
+}
+
+.ArtistPic:hover {
+  background-color: rgba(250, 245, 245, 0.3);
+}
+
+.ArtistPic {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: 0.5s ease;
+  backface-visibility: hidden;
+  height: 100%;
   border-radius: 10px;
 }
 
-.Artist:hover {
-  background-color: rgba(250, 245, 245, 0.3);
+.middle {
+  transition: 0.5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 75%;
+  left: 75%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+  font-family: "Biryani";
+}
+
+.Artist:hover .ArtistPic {
+  opacity: 0.3;
+}
+
+.Artist:hover .middle {
+  opacity: 1;
+}
+
+.ArtistName {
+  color: white;
+  font-size: 15px;
+  font-family: "Biryani";
+  text-align: right;
+  margin-top: 10%;
 }
 
 .Event {
@@ -82,7 +119,6 @@
   border: 2px solid white;
   height: 200px;
   width: 200px;
-  margin-top: 2%;
   font-family: "Biryani";
   font-size: 15px;
   border-radius: 10px;
@@ -109,7 +145,6 @@
   border: 2px solid white;
   height: 200px;
   width: 200px;
-  margin-top: 2%;
   font-family: "Biryani";
   font-size: 15px;
   border-radius: 10px;
@@ -148,7 +183,6 @@
   width: 25%;
   height: 250px;
   transition: all 0.5s ease-out;
-  margin-right: 0;
 }
 
 .pickE::after {
@@ -156,7 +190,6 @@
   height: 100%;
   position: relative;
   top: 0;
-  /*left: 0;*/
   transition: all 0.5s ease-out;
   pointer-events: none;
 }
@@ -192,8 +225,6 @@
   height: 250px;
   transition: all 0.5s ease-out;
   border: 10px white;
-  z-index: 9;
-  margin-left: 0;
 }
 
 .pickT::after {
@@ -226,5 +257,33 @@
 @keyframes slideT {
   100% {
     right: 0;
+  }
+}
+
+.color-change-3x {
+  -webkit-animation: color-change-3x 4s linear infinite alternate both;
+  animation: color-change-3x 4s linear infinite alternate both;
+}
+
+@-webkit-keyframes color-change-3x {
+  0% {
+    background: white;
+  }
+  50% {
+    background: rgba(0, 0, 0, 0.5);
+  }
+  100% {
+    background: #893843;
+  }
+}
+@keyframes color-change-3x {
+  0% {
+    background: white;
+  }
+  50% {
+    background: rgba(0, 0, 0, 0.5);
+  }
+  100% {
+    background: #893843;
   }
 }
