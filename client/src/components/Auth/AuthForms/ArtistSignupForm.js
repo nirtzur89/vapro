@@ -20,6 +20,7 @@ class ArtistSignupForm extends Component {
       bio: "",
       nationality: "",
       techniques: [],
+      techniquevalue: "",
       companies: [],
       website: "",
       social: {
@@ -75,7 +76,7 @@ class ArtistSignupForm extends Component {
           lastName: "",
           artistName: "",
           bio: "",
-          techniques: [],
+          techniques: []
         });
 
         //  this.props.history.push("/artistlist");
@@ -90,13 +91,29 @@ class ArtistSignupForm extends Component {
     });
   }
 
+  onChangeValue = event => {
+    this.setState({ techniquevalue: event.target.value });
+  };
+
+  onAddItem = () => {
+    this.setState(state => {
+      //const techniques = [...state.list, state.techniquevalue];
+      const techniques = state.techniques.concat(state.techniquevalue);
+
+      return {
+        techniques,
+        value: ""
+      };
+    });
+  };
+
   addTechnique = e => {
-    e.preventDefault()
-    let techniques = this.state.techniques.concat([''])
+    e.preventDefault();
+    let techniques = this.state.techniques.concat([""]);
     this.setState({
       techniques: techniques
-    })
-  }
+    });
+  };
 
   render() {
     console.log("props", this.state.loggedInUser);
@@ -139,6 +156,25 @@ class ArtistSignupForm extends Component {
               placeholder="Bio"
               onChange={this.handleChange}
             />
+
+            <ul>
+              {this.state.techniques.map(item => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+
+            <input
+              type="text"
+              value={this.state.techniquevalue}
+              onChange={this.onChangeValue}
+            />
+            <button
+              type="button"
+              onClick={this.onAddItem}
+              disabled={!this.state.techniquevalue}
+            >
+              Add
+            </button>
 
             {/* <h3>Techniques</h3>
 

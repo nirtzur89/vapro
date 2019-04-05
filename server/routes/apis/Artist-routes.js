@@ -29,7 +29,7 @@ router.post("/artist", (req, res, next) => {
         password: req.body.password,
         bio: req.body.bio,
         nationality: req.body.nationality,
-        techniques: [],
+        techniques: req.body.techniques,
         companies: [],
         website: req.body.website,
         social: {
