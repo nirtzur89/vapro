@@ -17,7 +17,6 @@ import AddProject from "./components/project/AddProject";
 
 import MyProjects from "./components/project/MyProjects";
 import PublicProfile from "./components/profile/PublicProfile";
-import PrivateProfile from "./components/profile/PrivatProfile";
 import PrivatProfile from "./components/profile/PrivatProfile";
 import SingleProject from "./components/project/SingleProject";
 

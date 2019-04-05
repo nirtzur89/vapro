@@ -40,6 +40,7 @@ class Artistlist extends Component {
 
   render() {
     console.log("STATE", this.state);
+    console.log('this.props', this.props)
 
     const filteredArtists = this.state.listOfAllArtists.filter(
       e =>
