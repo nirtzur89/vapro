@@ -60,7 +60,7 @@
 .overlay nav {
   text-align: center;
   position: relative;
-  top: 60%;
+  top: 50%;
   height: 50%;
   font-size: 60px;
   -webkit-transform: translateY(-50%);

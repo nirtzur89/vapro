@@ -10,16 +10,28 @@ class ArtistSignupForm extends Component {
     super(props);
     this.state = {
       loggedInUser: this.props.userInSession,
-      userName: "",
+      artistUserName: this.props.userInSession.userName,
+      artistUserId: this.props.userInSession._id,
+      email: this.props.userInSession.email,
+      artistName: "",
       firstName: "",
       lastName: "",
-      email: "",
-      password: "",
-      artist: true,
-      companies: [],
+      avatar: {},
+      bio: "",
       nationality: "",
       techniques: [],
-      hashtags: []
+      companies: [],
+      website: "",
+      social: {
+        vimeo: "",
+        pinterest: "",
+        instagram: "",
+        facebok: "",
+        youtube: ""
+      },
+      hashtags: [],
+      projects: [],
+      owner: this.props.userInSession
     };
 
     // this.service = new SignupService();
@@ -29,33 +41,38 @@ class ArtistSignupForm extends Component {
 
   handleFormSubmit(event) {
     event.preventDefault();
-    const userName = this.state.userName;
+    //const artistUserId = this.state.loggedInUser._id;
+    //const artistUserName = this.state.loggedInUser.userName;
+    const email = this.state.loggedInUser.email;
     const firstName = this.state.firstName;
     const lastName = this.state.lastName;
-    const email = this.state.email;
-    const password = this.state.password;
+    const artistName = this.state.artistName;
+    const bio = this.state.bio;
 
     axios
       .post(
         (process.env.REACT_APP_API_URL || "http://localhost:5000") + "/artist",
         {
-          userName,
+          //artistUserId,
+          //artistUserName,
+          email,
           firstName,
           lastName,
-          email,
-          password
+          artistName,
+          bio
         },
         { withCredentials: true }
       )
       .then(() => {
         //this.props.getdata();
         this.setState({
-          userName: "",
+          //artistUserId: "",
+          //artistUserName: "",
+          //email: "",
           firstName: "",
           lastName: "",
-          email: "",
-
-          password: ""
+          artistName: "",
+          bio: ""
         });
 
         //  this.props.history.push("/artistlist");
@@ -81,10 +98,10 @@ class ArtistSignupForm extends Component {
           <form onSubmit={this.handleFormSubmit}>
             <input
               type="text"
-              name="userName"
-              value={this.state.userName}
+              name="artistName"
+              value={this.state.artistName}
               className="inputfield"
-              placeholder="Username"
+              placeholder="Stage Name"
               onChange={this.handleChange}
             />
             <input
@@ -104,27 +121,11 @@ class ArtistSignupForm extends Component {
               onChange={this.handleChange}
             />
             <input
-              type="email"
-              name="email"
-              value={this.state.email}
+              type="text"
+              name="bio"
+              value={this.state.bio}
               className="inputfield"
-              placeholder="Email"
-              onChange={this.handleChange}
-            />
-            <input
-              type="password"
-              name="password"
-              value={this.state.password}
-              className="inputfield"
-              placeholder="Password"
-              onChange={this.handleChange}
-            />
-            <input
-              type="password"
-              name="password2"
-              value={this.state.password2}
-              className="inputfield"
-              placeholder="Password"
+              placeholder="Bio"
               onChange={this.handleChange}
             />
             <input type="Submit" value="Signup" className="btn" />

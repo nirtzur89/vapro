@@ -47,6 +47,7 @@ class Navbar extends Component {
     });
   };
 
+
   searchArtist = searchTerm => {
     this.setState(
       {
@@ -65,7 +66,7 @@ class Navbar extends Component {
   };
 
   render() {
-    console.log("this.state.overlayOpen", this.state.overlayOpen);
+    console.log("loggedInUser", this.props.loggedInUser);
     return (
       <div className="navbar">
         <input className="hide" type="checkbox" id="op" />
@@ -90,16 +91,23 @@ class Navbar extends Component {
           <nav>
             <ul>
               <li>
-                <a href="/login">Login</a>
+                <a href="/">Home</a>
               </li>
               <li>
-                <a href="/signup">Signup</a>
+                <a>
+                  {this.props.userInSession ? (<a href="/" onClick={this.logoutUser}>Logout</a>) : (<a href="/login" >Login</a>)}
+                </a>
+              </li>
+              <li>
+              <a>
+                  {this.props.userInSession ? (<a href="/artistsignup" >Contribute</a>) : (<a href="/login">Signup</a>)}
+                </a>
               </li>
               <li>
                 <a href="/artistlist">Catalogue</a>
               </li>
               <li>
-                <SearchBar onSearch={this.searchArtist} />
+                <SearchBar className="Searchbar" onSearch={this.searchArtist} />
               </li>
             </ul>
           </nav>
