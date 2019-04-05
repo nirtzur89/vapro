@@ -41,6 +41,7 @@ const ShowArtists = props => {
               });
             })}
           </div>
+
           <img className="pickE" alt="EventList" src={eventList} />
         </div>
 
@@ -58,14 +59,14 @@ const ShowArtists = props => {
                 }
               );
             })}
+
           </div>
-          <div className="pickT" />
         </div>
+
       </div>
     </div>
 
-    //   </div>
-    // </div>
+
   );
 };
 
