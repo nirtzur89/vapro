@@ -89,14 +89,12 @@ class App extends Component {
                 this.state.loggedInUser ? (
                   <ArtistSignupForm userInSession={this.state.loggedInUser} />
                 ) : (
-
                   <div className="wrapperloadingForm">
                     <div className="wrapperloginForm color-change-3x">
                       <div className="col-md-6 mx-auto loading" />
                       <div className="slide-right">Loading...</div>
                     </div>
                   </div>
-
                 )
               }
             />
@@ -106,7 +104,6 @@ class App extends Component {
               path="/artistlist"
               render={() => <Artistlist searchTerm={this.state.searchTerm} />}
             />
-
             <Route
               exact
               path="/artistlist"
@@ -114,7 +111,6 @@ class App extends Component {
                 return <Artistlist searchTerm={this.state.searchTerm} />;
               }}
             />
-
             <Route exact path="/allprojects" component={AllProjects} />
             <Route exact path="/addproject" component={AddProject} />
             <Route
