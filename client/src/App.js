@@ -17,7 +17,6 @@ import AddProject from "./components/project/AddProject";
 
 import MyProjects from "./components/project/MyProjects";
 import PublicProfile from "./components/profile/PublicProfile";
-import PrivateProfile from "./components/profile/PrivatProfile";
 import PrivatProfile from "./components/profile/PrivatProfile";
 import SingleProject from "./components/project/SingleProject";
 
@@ -90,8 +89,8 @@ class App extends Component {
                 this.state.loggedInUser ? (
                   <ArtistSignupForm userInSession={this.state.loggedInUser} />
                 ) : (
-                  <h1>Loading...</h1>
-                )
+                    <h1>Loading...</h1>
+                  )
               }
             />
             } />
@@ -99,11 +98,9 @@ class App extends Component {
               exact
               path="/artistlist"
               render={() =>
-                this.state.loggedInUser ? (
-                  <Artistlist userInSession={this.state.loggedInUser} />
-                ) : (
-                  <h1>Loading...</h1>
-                )
+
+                <Artistlist searchTerm={this.state.searchTerm} />
+
               }
             />
 
@@ -130,8 +127,8 @@ class App extends Component {
                 this.state.loggedInUser ? (
                   <PublicProfile userInSession={this.state.loggedInUser} />
                 ) : (
-                  <h1>Loading...</h1>
-                )
+                    <h1>Loading...</h1>
+                  )
               }
             />
             <Route exact path="/myprofile" component={PrivatProfile} />
