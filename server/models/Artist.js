@@ -31,7 +31,7 @@ const ArtistSchema = new Schema({
     type: String,
     default: ""
   },
-  techniques: [String],
+  techniques: [],
   companies: [String],
   website: String,
   social: {
