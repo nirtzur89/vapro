@@ -3,7 +3,7 @@
 .SearchBarform {
   position: fixed;
   text-align: center;
-  top: 70%;
+  top: 95%;
   left: 50%;
   transform: translate(-50%, -50%);
   transition: all 1s;
