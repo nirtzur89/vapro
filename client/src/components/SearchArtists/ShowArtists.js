@@ -12,18 +12,6 @@ const ShowArtists = props => {
       <div className="wrapperArtistList">
         <div className="flex-containerA" key="A" id="slideA" autoPlay loop>
           <img className="pickA" alt="ArtistList" src={artistList} />
-<<<<<<< HEAD
-
-          {_.sampleSize(props.data, 4).map(oneArtist => {
-            return (
-              <div className="Artist" key={oneArtist._id}>
-                <Link to={`/artists/${oneArtist._id}`}>
-                  <h3>{oneArtist.artistName}</h3>
-                </Link>
-              </div>
-            );
-          })}
-=======
           <div className="flex-containerInner" key="A" id="slideA">
             {_.sampleSize(props.data, 4).map(oneArtist => {
               return (
@@ -35,7 +23,6 @@ const ShowArtists = props => {
               );
             })}
           </div>
->>>>>>> 63aa929174e7354ce85c12c69f40f56c493c765f
 
           <div className="pickA" />
         </div>
@@ -47,35 +34,32 @@ const ShowArtists = props => {
             {_.sampleSize(props.data, 4).map(Events => {
               return _.sampleSize(Events.events, 2).map(oneEvent => {
                 return (
-                  <div className="Event" key={oneEvent._id}>
+                  <div className="Event" key={Events._id}>
                     <div className="EventName">{oneEvent}</div>
                   </div>
                 );
               });
             })}
           </div>
-
-          <img className="pickE" alt="EventList" src={eventList} />
-        </div>
-        <div className="flex-containerA" key="T" id="slideT" autoPlay loop>
-          <img className="pickT" alt="TechniqueList" src={designList} />
-          <div className="flex-containerInner" key="T" id="slideT">
-            {_.sampleSize(props.data, 4).map(Techniques => {
-              return _.sampleSize(Techniques.techniques, 2).map(
-                oneTechnique => {
-                  return (
-                    <div className="Design" key={Techniques._id}>
-                      <div className="DesignName">{oneTechnique}</div>
-                    </div>
-                  );
-                }
-              );
-            })}
+          <div className="flex-containerA" key="T" id="slideT" autoPlay loop>
+            <img className="pickT" alt="TechniqueList" src={designList} />
+            <div className="flex-containerInner" key="T" id="slideT">
+              {_.sampleSize(props.data, 4).map(Techniques => {
+                return _.sampleSize(Techniques.techniques, 2).map(
+                  oneTechnique => {
+                    return (
+                      <div className="Design" key={Techniques._id}>
+                        <div className="DesignName">{oneTechnique}</div>
+                      </div>
+                    );
+                  }
+                );
+              })}
+            </div>
+            <div className="pickT" />
           </div>
-          <div className="pickT" />
         </div>
-      </div>
-      {/* <div>
+        {/* <div>
         <div>
           <h1>Artists</h1>
           {props.data.map(oneArtist => {
@@ -112,8 +96,8 @@ const ShowArtists = props => {
           })}
         </div>
       </div> */}
-    </div>
-  );
-};
-
-export default ShowArtists;
+      </div>
+      );
+    };
+    
+    export default ShowArtists;
