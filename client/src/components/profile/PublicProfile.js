@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
+import { Link, withRouter } from "react-router-dom";
 
 //this will go to private!!!
 import EditProfile from "./EditProfile";
@@ -40,9 +40,8 @@ class PublicProfile extends Component {
 
   //this will go to private!!!
   renderEditForm = () => {
-    if (!this.state.userName) {
-      this.getSingleArtist();
-    } else {
+    const theLoggedInUser = this.state.owner;
+    if (theLoggedInUser === this.props.match.params.id) {
       return (
         <EditProfile
           theProfile={this.state}
@@ -50,10 +49,17 @@ class PublicProfile extends Component {
           {...this.props}
         />
       );
-    }
+    } else { return}
+    // if (!this.state.userName) {
+    //   this.getSingleArtist();
+    // } 
   };
 
+
+
   render() {
+    console.log('profile', this.state)
+    console.log('currentUser', this.props.userInSession)
     return (
       <div className="App">
         <div className="App-header">
@@ -86,4 +92,4 @@ class PublicProfile extends Component {
   }
 }
 
-export default PublicProfile;
+export default withRouter(PublicProfile);
