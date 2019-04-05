@@ -28,7 +28,6 @@ class App extends Component {
 
     this.state = { loggedInUser: null, searchTerm: "" };
     this.service = new AuthService();
-
   }
 
   fetchUser() {
@@ -61,6 +60,7 @@ class App extends Component {
   };
 
   render() {
+    console.log("propssss", this.props.searchTerm);
     this.fetchUser();
     return (
       <BrowserRouter>
@@ -89,29 +89,16 @@ class App extends Component {
                 this.state.loggedInUser ? (
                   <ArtistSignupForm userInSession={this.state.loggedInUser} />
                 ) : (
-                    <h1>Loading...</h1>
-                  )
+                  <h1>Loading...</h1>
+                )
               }
             />
             } />
             <Route
               exact
               path="/artistlist"
-              render={() =>
-
-                <Artistlist searchTerm={this.state.searchTerm} />
-
-              }
+              render={() => <Artistlist searchTerm={this.state.searchTerm} />}
             />
-
-            <Route
-              exact
-              path="/artistlist"
-              render={() => {
-                return <Artistlist searchTerm={this.state.searchTerm} />;
-              }}
-            />
-
             <Route exact path="/allprojects" component={AllProjects} />
             <Route exact path="/addproject" component={AddProject} />
             <Route
@@ -127,8 +114,8 @@ class App extends Component {
                 this.state.loggedInUser ? (
                   <PublicProfile userInSession={this.state.loggedInUser} />
                 ) : (
-                    <h1>Loading...</h1>
-                  )
+                  <h1>Loading...</h1>
+                )
               }
             />
             <Route exact path="/myprofile" component={PrivatProfile} />
