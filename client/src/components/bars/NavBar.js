@@ -47,7 +47,6 @@ class Navbar extends Component {
     });
   };
 
-
   searchArtist = searchTerm => {
     this.setState(
       {
@@ -95,12 +94,20 @@ class Navbar extends Component {
               </li>
               <li>
                 <a>
-                  {this.props.userInSession ? (<a href="/" onClick={this.logoutUser}>Logout</a>) : (<a href="/login" >Login</a>)}
+                  {this.props.userInSession ? (
+                    <a href="/" onClick={this.logoutUser}>
+                      Logout
+                    </a>
+                  ) : (
+                    <a href="/login">Login</a>
+                  )}
                 </a>
               </li>
               <li>
+
               <a>
                   {this.props.userInSession ? (<a href="/artistsignup" >Contribute</a>) : (<a href="/signup">Join Us</a>)}
+
                 </a>
               </li>
               <li>

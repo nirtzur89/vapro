@@ -11,7 +11,7 @@ class EditProfile extends Component {
       email: this.props.theProfile.email,
       password: this.props.theProfile.email,
       nationality: this.props.theProfile.nationality,
-      bio: this.props.theProfile.bio,
+      bio: this.props.theProfile.nationality,
       techniques: this.props.theProfile.techniques,
       company: this.props.theProfile.company,
       website: this.props.theProfile.website
@@ -44,7 +44,7 @@ class EditProfile extends Component {
     axios
       .put(
         (process.env.REACT_APP_API_URL || "http://localhost:5000") +
-          `/artist/${this.props.theProfile._id}`,
+          `/artists/${this.props.theProfile._id}`,
         { userName, bio, techniques, website, nationality },
         { withCredentials: true }
         // {
@@ -55,8 +55,8 @@ class EditProfile extends Component {
       )
       .then(() => {
         console.log("proppppps", this.props);
-        this.props.getTheProfile();
-        this.props.history.push("/artistlist");
+        //this.props.getTheProfile();
+        //this.props.history.push("/artistlist");
       })
       .catch(error => console.log(error));
   };

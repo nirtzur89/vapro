@@ -4,6 +4,9 @@ const Schema = mongoose.Schema;
 
 const ArtistSchema = new Schema({
   owner: { type: Schema.Types.ObjectId, ref: "User" },
+  userName: {
+    type: String
+  },
   artistUserName: {
     type: String
   },

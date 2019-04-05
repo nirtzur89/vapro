@@ -18,6 +18,7 @@ router.post("/artist", (req, res, next) => {
     } else {
       Artist.create({
         owner: req.user._id,
+        userName: req.user.userName,
         artistUserName: req.body.userName,
         artistUserId: req.body.artist,
         firstName: req.body.firstName,
