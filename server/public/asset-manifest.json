@@ -1,13 +1,13 @@
 {
   "main.css": "/static/css/main.eb84b23b.chunk.css",
-  "main.js": "/static/js/main.5429b0fa.chunk.js",
-  "main.js.map": "/static/js/main.5429b0fa.chunk.js.map",
+  "main.js": "/static/js/main.645dabab.chunk.js",
+  "main.js.map": "/static/js/main.645dabab.chunk.js.map",
   "runtime~main.js": "/static/js/runtime~main.fdfcfda2.js",
   "runtime~main.js.map": "/static/js/runtime~main.fdfcfda2.js.map",
   "static/js/2.886a3b9a.chunk.js": "/static/js/2.886a3b9a.chunk.js",
   "static/js/2.886a3b9a.chunk.js.map": "/static/js/2.886a3b9a.chunk.js.map",
   "index.html": "/index.html",
-  "precache-manifest.87d5c7bfef8e53086457df2790a1b337.js": "/precache-manifest.87d5c7bfef8e53086457df2790a1b337.js",
+  "precache-manifest.9fd397c35b939598e1aef4dfe17dde2d.js": "/precache-manifest.9fd397c35b939598e1aef4dfe17dde2d.js",
   "service-worker.js": "/service-worker.js",
   "static/css/main.eb84b23b.chunk.css.map": "/static/css/main.eb84b23b.chunk.css.map",
   "static/media/Matcha.mp4": "/static/media/Matcha.303928a0.mp4"
