@@ -189,8 +189,13 @@ class ArtistSignupForm extends Component {
                 />
               </span>
             ))}
-            ))}
+
+
+            ))} */}
+{/* 
             <button onClick={this.addTechnique}>+</button> */}
+
+
             <input type="Submit" value="Signup" className="btn" />
           </form>
         </div>

@@ -19,6 +19,8 @@ import MyProjects from "./components/project/MyProjects";
 import PublicProfile from "./components/profile/PublicProfile";
 import SingleProject from "./components/project/SingleProject";
 
+
+
 //<Route exact path="/addproject" component={AddProject} userInSession={this.state.loggedInUser}/>
 
 class App extends Component {
@@ -148,6 +150,7 @@ class App extends Component {
             <Route component={Notfound} />
           </Switch>
         </div>
+
       </BrowserRouter>
     );
   }
