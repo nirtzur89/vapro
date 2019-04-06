@@ -62,42 +62,46 @@ class PublicProfile extends Component {
     console.log("currentUser", this.props.userInSession);
     return (
       <div className="Profilewrapper">
-        <div className="App-header text-center slide-right">
-          <div className="Artist" key={this.state._id}>
-            <img
-              className="ArtistPic"
-              alt="ArtistPic"
-              src={this.state.avatar}
-            />
-            <div className="ArtistProfile">
-              <div className="Artisth2">{this.state.userName}</div>
-              <div className="Artistdata">
-                Stage Name: {this.state.artistName}
-              </div>
-              <div className="Artistdata">
-                Location: {this.state.nationality}
-              </div>
-              <div className="Artistdata">Email: {this.state.email}</div>
-              <div className="Artistdata">
-                Homebase: {this.state.nationality}
-              </div>
-              <div className="Artistdata">Bio: {this.state.bio}</div>
-              <div className="Artistdata">
-                Homebase: {this.state.nationality}
-              </div>
-              <div className="Artistdata">Website: {this.state.website}</div>
-              {/* <p>
+        <div className="App-header">
+          <div className="slide-right2">
+            <div className="Artist" key={this.state._id}>
+              <img
+                className="ArtistPic"
+                alt="ArtistPic"
+                src={this.state.avatar}
+              />
+              <div className="line" />
+              <div className="ArtistProfile">
+                <div className="Artisth2">{this.state.userName}</div>
+                <div className="Artistdata">
+                  Stage Name: {this.state.artistName}
+                </div>
+                <div className="Artistdata">
+                  Location: {this.state.nationality}
+                </div>
+                <div className="Artistdata">Email: {this.state.email}</div>
+                <div className="Artistdata">
+                  Homebase: {this.state.nationality}
+                </div>
+                <div className="Artistdata">Bio: {this.state.bio}</div>
+                <div className="Artistdata">
+                  Homebase: {this.state.nationality}
+                </div>
+                <div className="Artistdata">Website: {this.state.website}</div>
+                <div className="line" />
+                {/* <p>
             Designs:{" "}
             {this.state.techniques.map(oneTech => {
               return <div>{oneTech}</div>;
             })}
           </p> */}
-              {/* <h2>social</h2>
+                {/* <h2>social</h2>
           <p>vimeo: {this.state.social.vimeo}</p>
           <p>pinterest: {this.state.social.pinterest}</p>
           <p>youtube: {this.state.social.youtube}</p>
           <p>instagram: {this.state.social.instagram}</p> */}
-              <div>{this.renderEditForm()} </div>
+                <div>{this.renderEditForm()} </div>
+              </div>
             </div>
           </div>
         </div>
