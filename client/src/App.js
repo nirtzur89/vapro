@@ -60,9 +60,9 @@ class App extends Component {
 
   render() {
     // console.log("propssss", this.props.searchTerm);
-  
+
     this.fetchUser();
-    console.log('MEEEE', this.state.loggedInUser)
+    console.log("MEEEE", this.state.loggedInUser);
     return (
       <BrowserRouter>
         <div className="App">
@@ -138,7 +138,13 @@ class App extends Component {
                 )
               }
             /> */}
-            <Route exact path="/artists/:id" userInSession={this.state.loggedInUser} getUser={this.getTheUser} component={PublicProfile}  />
+            <Route
+              exact
+              path="/artists/:id"
+              userInSession={this.state.loggedInUser}
+              getUser={this.getTheUser}
+              component={PublicProfile}
+            />
             <Route component={Notfound} />
           </Switch>
         </div>

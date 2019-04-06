@@ -67,3 +67,31 @@
     background: #893843;
   }
 }
+
+.color-change-3x-2 {
+  -webkit-animation: color-change-3x 4s linear infinite alternate both;
+  animation: color-change-3x 4s linear infinite alternate both;
+}
+
+@-webkit-keyframes color-change-3x {
+  0% {
+    background: white;
+  }
+  50% {
+    background: rgba(0, 0, 0, 0.5);
+  }
+  100% {
+    background: #893843;
+  }
+}
+@keyframes color-change-3x {
+  0% {
+    background: white;
+  }
+  50% {
+    background: rgba(0, 0, 0, 0.5);
+  }
+  100% {
+    background: #893843;
+  }
+}
