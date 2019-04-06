@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import SignupService from "../signup-service";
 import "../Auth.css";
 import { Link, withRouter } from "react-router-dom";
-
+import "./ArtistSignupForm.css";
 import axios from "axios";
 
 class ArtistSignupForm extends Component {
@@ -120,10 +120,10 @@ class ArtistSignupForm extends Component {
     return (
       <div className="wrappersignupForm color-change-3x">
         <div className="col-md-6 mx-auto text-center">
-          <div className="slide-right">Signup</div>
+          <div className="slide-right">Contribute</div>
         </div>
         <div className="SignupForm slide-right">
-          <form onSubmit={this.handleFormSubmit}>
+          <form className="Signup" onSubmit={this.handleFormSubmit}>
             <input
               type="text"
               name="artistName"
@@ -155,16 +155,18 @@ class ArtistSignupForm extends Component {
               className="inputfield"
               placeholder="Bio"
               onChange={this.handleChange}
+              rows="4"
+              cols="10"
             />
-
-            <ul>
+            <ul className="listul">
               {this.state.techniques.map(item => (
                 <li key={item}>{item}</li>
               ))}
             </ul>
-
             <input
               type="text"
+              className="inputfield"
+              placeholder="Technique"
               value={this.state.techniquevalue}
               onChange={this.onChangeValue}
             />
@@ -175,10 +177,7 @@ class ArtistSignupForm extends Component {
             >
               Add
             </button>
-
             {/* <h3>Techniques</h3>
-
-            
             {this.state.techniques.map((technique, index) => (
               <span key={index}>
                 <input
@@ -188,21 +187,17 @@ class ArtistSignupForm extends Component {
                   onChange={this.handleChange}
                   value={technique}
                 />
-                
               </span>
-
             ))}
+
 
             ))} */}
 {/* 
             <button onClick={this.addTechnique}>+</button> */}
 
+
             <input type="Submit" value="Signup" className="btn" />
           </form>
-          <p>
-            Already have account?
-            <Link to={"/login"}> Login</Link>
-          </p>
         </div>
       </div>
     );

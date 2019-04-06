@@ -1,0 +1,95 @@
+.wrappersignupForm {
+  margin-top: 0px;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+}
+
+.SignupForm {
+  margin-top: 0;
+  height: 100%;
+  margin-bottom: 1%;
+  position: relative;
+  bottom: 25px;
+}
+
+.Signup {
+  margin-left: 25%;
+  width: 600px;
+  height: 30px;
+  font-family: "Biryani";
+  position: fixed;
+  margin-bottom: 1%;
+}
+.inputfield {
+  padding: 10px;
+  width: 600px;
+  border: 4px solid black;
+  background: transparent;
+  height: 30px;
+  font-family: "Biryani";
+  font-size: 20px;
+  border-radius: 25px;
+  position: block;
+  outline: none;
+  overflow: auto;
+  margin-bottom: 5px;
+}
+.listul {
+  margin: 0;
+  padding: 0;
+}
+
+textarea {
+  overflow: scroll;
+}
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+.Authbutton,
+button {
+  padding: 5px;
+  border-radius: 25px;
+  font-family: "Biryani";
+  font-size: 20px;
+  background: transparent;
+  border: 4px solid black;
+  outline: none;
+  margin-right: 2%;
+}
+
+.btn {
+  padding: 5px;
+  border-radius: 25px;
+  font-family: "Biryani";
+  font-size: 20px;
+  background: transparent;
+  border: 4px solid black;
+  outline: none;
+  position: block;
+}
+
+.switch {
+  color: black;
+  font-family: "Biryani";
+}
+
+#form-switch {
+  display: none;
+}
+#register-form {
+  display: none;
+}
+#form-switch:checked ~ #register-form {
+  display: block;
+}
+#form-switch:checked ~ #login-form {
+  display: none;
+}
+
+.text-center {
+  font: "Biryani";
+  font-size: 30vh;
+}

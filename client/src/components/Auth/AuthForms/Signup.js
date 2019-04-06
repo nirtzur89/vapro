@@ -78,9 +78,9 @@ class Signup extends Component {
               onChange={e => this.handleChange(e)}
             />
             <button type="submit">Signup</button>
-            <label htmlFor="form-switch">
+            <label className="span" htmlFor="form-switch">
               <Link to={"/login"}>
-                <span className="switch">Login</span>
+                <span className="switch span">Login</span>
               </Link>
             </label>
           </form>
