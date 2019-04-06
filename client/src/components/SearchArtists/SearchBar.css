@@ -51,7 +51,7 @@ form:hover {
   cursor: pointer;
 }
 
-form:hover input {
+form:hover .input {
   display: list-item;
 }
 

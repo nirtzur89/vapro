@@ -36,7 +36,7 @@ const ShowArtists = props => {
           <div className="pickE" />
           <div className="flex-containerInner" key="E" id="slideE">
             {_.sampleSize(props.data, 4).map(Events => {
-              return _.sampleSize(Events.events, 2).map(oneEvent => {
+              return _.sampleSize(Events.events, 1).map(oneEvent => {
                 return (
                   <div className="Event color-change-3x" key={Events._id}>
                     <div className="EventName">{oneEvent}</div>

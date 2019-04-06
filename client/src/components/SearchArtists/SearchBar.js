@@ -36,7 +36,7 @@ class SearchBar extends Component {
           onSubmit={this.handleSearch}
         >
           <input
-            className="inputSearchbar"
+            className="inputSearchbar input"
             type="search"
             name="searchTerm"
             placeholder="Search"
